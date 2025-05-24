@@ -6,30 +6,31 @@ import { ExternalLink, Github } from "lucide-react"
 export function Projects() {
   const projects = [
     {
-      title: "E-Commerce Platform",
+      title: "iTradeAIMS",
       description:
-        "A full-stack e-commerce solution with payment integration, inventory management, and admin dashboard.",
+        "A comprehensive trading education platform featuring live Discord community, entry signals, and stress-free trading strategies. Built to help traders reach their potential with expert guidance.",
       image: "/placeholder.svg?height=300&width=500",
-      technologies: ["WordPress", "Bricks Builder", "PHP & JavaScript", "WooCommerce", "Stripe"],
-      liveUrl: "https://example.com",
-      githubUrl: "https://github.com",
+      technologies: ["React", "Node.js", "Discord Integration", "Payment Processing", "Real-time Data"],
+      liveUrl: "https://itradeaims.net/",
+      githubUrl: "#",
     },
     {
-      title: "Task Management App",
+      title: "Bewdley Farm Shop",
       description:
-        "A collaborative task management application with real-time updates and team collaboration features.",
+        "A fully functional e-commerce website for a local farm shop featuring online ordering, product catalog, and secure checkout. Built with modern WordPress architecture.",
       image: "/placeholder.svg?height=300&width=500",
-      technologies: ["React", "Node.js", "Socket.io", "MongoDB"],
-      liveUrl: "https://example.com",
-      githubUrl: "https://github.com",
+      technologies: ["WordPress", "WooCommerce", "Bricks Builder", "PHP", "Stripe Integration"],
+      liveUrl: "https://bewdleyfarmshop.co.uk/",
+      githubUrl: "#",
     },
     {
-      title: "Weather Dashboard",
-      description: "A responsive weather dashboard with location-based forecasts and interactive charts.",
+      title: "Splashbacks Birmingham",
+      description:
+        "Professional website for a local Birmingham splashback installation business, featuring service showcase, gallery, and customer contact forms.",
       image: "/placeholder.svg?height=300&width=500",
-      technologies: ["Vue.js", "Chart.js", "Weather API", "Tailwind"],
-      liveUrl: "https://example.com",
-      githubUrl: "https://github.com",
+      technologies: ["WordPress", "Custom PHP", "Local SEO", "Contact Forms", "Gallery System"],
+      liveUrl: "https://splashbacks.co/",
+      githubUrl: "#",
     },
   ]
 
@@ -65,13 +66,13 @@ export function Projects() {
                     <Button size="sm" asChild>
                       <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
                         <ExternalLink className="w-4 h-4 mr-2" />
-                        Live Demo
+                        Live Site
                       </a>
                     </Button>
                     <Button variant="outline" size="sm" asChild>
                       <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
                         <Github className="w-4 h-4 mr-2" />
-                        Code
+                        Details
                       </a>
                     </Button>
                   </div>
