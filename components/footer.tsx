@@ -9,7 +9,7 @@ export function Footer() {
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="mb-4 md:mb-0">
               <h3 className="text-xl font-bold">I M Yousafzai (aka Immy)</h3>
-              <p className="text-muted-foreground">Full-Stack Web Developer</p>
+              <p className="text-muted-foreground">FinTech and Web Developer</p>
             </div>
 
             <div className="flex space-x-4">
