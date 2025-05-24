@@ -8,12 +8,12 @@ export function Skills() {
       skills: ["React", "Next.js", "TypeScript", "Tailwind CSS", "HTML5", "CSS3", "JavaScript"],
     },
     {
-      title: "Backend & Trading",
-      skills: ["Node.js", "Express", "Python", "PostgreSQL", "MongoDB", "REST APIs", "TradingView Pinescript", "MQL4"],
+      title: "Backend",
+      skills: ["Node.js", "Express", "Python", "PostgreSQL", "MongoDB", "REST APIs", "GraphQL"],
     },
     {
       title: "Tools & Others",
-      skills: ["Git", "Docker", "AWS", "Vercel", "Figma", "VS Code", "Linux", "MetaTrader"],
+      skills: ["Git", "Docker", "AWS", "Vercel", "Figma", "VS Code", "Linux"],
     },
   ]
 

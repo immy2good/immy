@@ -8,11 +8,11 @@ export function Projects() {
     {
       title: "iTradeAIMS",
       description:
-        "A comprehensive trading education platform featuring live Discord community, entry signals, and stress-free trading strategies. Includes custom TradingView Pinescript indicators and MQL4 Expert Advisors used by the trading community.",
+        "A comprehensive trading education platform featuring live Discord community, entry signals, and stress-free trading strategies. Built to help traders reach their potential with expert guidance.",
       image: "/images/itradeaims-screenshot.jpg",
-      technologies: ["React", "Node.js", "Discord Integration", "TradingView Pinescript", "MQL4", "Real-time Data"],
+      technologies: ["React", "Node.js", "Discord Integration", "Payment Processing", "Real-time Data"],
       liveUrl: "https://itradeaims.net/",
-      githubUrl: "https://www.tradingview.com/u/iTradeAIMS/",
+      githubUrl: "#",
     },
     {
       title: "Bewdley Farm Shop",
