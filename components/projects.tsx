@@ -10,7 +10,7 @@ export function Projects() {
       description:
         "A full-stack e-commerce solution with payment integration, inventory management, and admin dashboard.",
       image: "/placeholder.svg?height=300&width=500",
-      technologies: ["Next.js", "TypeScript", "Stripe", "PostgreSQL"],
+      technologies: ["Wordpress", "Bricks Builder", "PHP & Javascript", "WooCommerce" ,"Stripe"],
       liveUrl: "https://example.com",
       githubUrl: "https://github.com",
     },
