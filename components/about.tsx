@@ -14,8 +14,8 @@ export function About() {
               <div className="grid md:grid-cols-2 gap-8 items-center">
                 <div>
                   <img
-                    src="/placeholder.svg?height=400&width=400"
-                    alt="Profile"
+                    src="/images/immy-profile.jpg"
+                    alt="Immy Yo - FinTech Developer and Web Developer"
                     className="rounded-lg w-full max-w-sm mx-auto"
                   />
                 </div>
