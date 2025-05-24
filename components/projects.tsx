@@ -17,8 +17,8 @@ export function Projects() {
     {
       title: "TradingView Pine Script Indicators",
       description:
-        "Collection of advanced Pine Script indicators and technical analysis tools published on TradingView. Features Elliott Wave analysis, custom oscillators, trend detection algorithms, and automated trading signals used by thousands of traders globally.",
-      image: "/placeholder.svg?height=300&width=400",
+        "Collection of advanced Pine Script indicators and technical analysis tools published on TradingView. Features Elliott Wave analysis, custom oscillators, trend detection algorithms, and automated trading signals used by thousands of traders globally. 1.2K+ followers, 240+ published ideas.",
+      image: "/images/tradingview-profile-screenshot.png",
       technologies: ["Pine Script", "Technical Analysis", "Elliott Wave", "TradingView", "Algorithmic Trading"],
       liveUrl: "https://www.tradingview.com/u/iTradeAIMS/",
       githubUrl: "https://www.tradingview.com/u/itradeaims-tv/",
