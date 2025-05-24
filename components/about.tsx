@@ -19,22 +19,23 @@ export function About() {
                 </div>
                 <div className="space-y-4">
                   <p className="text-lg text-muted-foreground">
-                    I'm a passionate web developer with over 5 years of experience creating digital solutions that make
-                    a difference. I specialize in modern web technologies and love turning complex problems into simple,
-                    beautiful designs.
+                    I'm a passionate full-stack developer and financial trading expert with over 13 years of experience
+                    in the financial markets since 2011. I specialize in creating fintech solutions, trading platforms,
+                    and educational resources that bridge the gap between technology and finance.
                   </p>
                   <p className="text-lg text-muted-foreground">
-                    When I'm not coding, you can find me exploring new technologies, contributing to open-source
-                    projects, or enjoying a good cup of coffee while planning my next project.
+                    My unique combination of programming skills and deep market knowledge allows me to build
+                    sophisticated trading tools, automation systems, and educational platforms. I've authored courses,
+                    written books on trading, and developed scripts used by trading communities worldwide.
                   </p>
                   <div className="grid grid-cols-2 gap-4 pt-4">
                     <div>
                       <h4 className="font-semibold mb-2">Experience</h4>
-                      <p className="text-muted-foreground">5+ Years</p>
+                      <p className="text-muted-foreground">13+ Years Trading</p>
                     </div>
                     <div>
                       <h4 className="font-semibold mb-2">Projects</h4>
-                      <p className="text-muted-foreground">50+ Completed</p>
+                      <p className="text-muted-foreground">100+ Scripts Published</p>
                     </div>
                   </div>
                 </div>

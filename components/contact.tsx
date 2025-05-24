@@ -16,8 +16,9 @@ export function Contact() {
             <div>
               <h3 className="text-2xl font-semibold mb-6">Let's work together</h3>
               <p className="text-lg text-muted-foreground mb-8">
-                I'm always interested in new opportunities and exciting projects. Whether you have a question or just
-                want to say hi, feel free to reach out!
+                I'm always interested in fintech opportunities, trading automation projects, and exciting web
+                development challenges. Whether you need trading tools, educational platforms, or custom web solutions,
+                feel free to reach out!
               </p>
 
               <div className="space-y-4">
@@ -32,6 +33,17 @@ export function Contact() {
                 <div className="flex items-center space-x-3">
                   <MapPin className="w-5 h-5 text-primary" />
                   <span>San Francisco, CA</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <span className="w-5 h-5 text-primary">📊</span>
+                  <a
+                    href="https://www.tradingview.com/u/iTradeAIMS/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-primary"
+                  >
+                    TradingView Profile
+                  </a>
                 </div>
               </div>
             </div>
