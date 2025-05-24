@@ -14,11 +14,11 @@ export function Contact() {
 
           <div className="grid lg:grid-cols-2 gap-12">
             <div>
-              <h3 className="text-2xl font-semibold mb-6">Let's work together</h3>
+              <h3 className="text-2xl font-semibold mb-6">Let's build the future of FinTech</h3>
               <p className="text-lg text-muted-foreground mb-8">
-                I'm always interested in fintech opportunities, trading automation projects, and exciting web
-                development challenges. Whether you need trading tools, educational platforms, or custom web solutions,
-                feel free to reach out!
+                I'm always interested in FinTech opportunities, technical analysis projects, and algorithmic trading
+                solutions. Whether you need trading automation, Elliott Wave analysis tools, or custom FinTech
+                platforms, let's discuss how we can bring your vision to life.
               </p>
 
               <div className="space-y-4">
@@ -45,13 +45,26 @@ export function Contact() {
                     TradingView Profile
                   </a>
                 </div>
+                <div className="flex items-center space-x-3">
+                  <span className="w-5 h-5 text-primary">📚</span>
+                  <a
+                    href="https://amzn.eu/d/735UjWD"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-primary"
+                  >
+                    Elliott Wave Book on Amazon
+                  </a>
+                </div>
               </div>
             </div>
 
             <Card>
               <CardHeader>
                 <CardTitle>Send me a message</CardTitle>
-                <CardDescription>Fill out the form below and I'll get back to you as soon as possible.</CardDescription>
+                <CardDescription>
+                  Interested in FinTech development or technical analysis consulting? Let's discuss your project.
+                </CardDescription>
               </CardHeader>
               <CardContent>
                 <form className="space-y-4">
@@ -71,11 +84,15 @@ export function Contact() {
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="subject">Subject</Label>
-                    <Input id="subject" placeholder="Project Inquiry" />
+                    <Input id="subject" placeholder="FinTech Project Inquiry" />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="message">Message</Label>
-                    <Textarea id="message" placeholder="Tell me about your project..." className="min-h-[120px]" />
+                    <Textarea
+                      id="message"
+                      placeholder="Tell me about your FinTech or technical analysis project..."
+                      className="min-h-[120px]"
+                    />
                   </div>
                   <Button type="submit" className="w-full">
                     Send Message

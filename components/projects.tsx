@@ -8,9 +8,9 @@ export function Projects() {
     {
       title: "iTradeAIMS",
       description:
-        "A comprehensive trading education platform featuring live Discord community, entry signals, and stress-free trading strategies. Built to help traders reach their potential with expert guidance.",
+        "A comprehensive FinTech education platform featuring advanced technical analysis tools, live Discord community, algorithmic trading signals, and Elliott Wave analysis. Built to help traders master technical analysis and reach their potential with expert guidance.",
       image: "/images/itradeaims-screenshot.jpg",
-      technologies: ["React", "Node.js", "Discord Integration", "Payment Processing", "Real-time Data"],
+      technologies: ["React", "Node.js", "FinTech APIs", "Technical Analysis", "Real-time Data", "Elliott Wave"],
       liveUrl: "https://itradeaims.net/",
       githubUrl: "#",
     },
@@ -38,7 +38,7 @@ export function Projects() {
     <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/50">
       <div className="container mx-auto">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12">Featured Projects</h2>
+          <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12">Featured FinTech & Web Projects</h2>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projects.map((project) => (

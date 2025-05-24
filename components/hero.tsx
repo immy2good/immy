@@ -10,12 +10,12 @@ export function Hero() {
             Hi, I'm <span className="text-primary">Immy</span>
           </h1>
           <p className="text-xl sm:text-2xl text-muted-foreground mb-8">
-            Full-Stack Developer & Financial Trading Expert
+            FinTech Developer & Technical Analysis Expert
           </p>
           <p className="text-lg text-muted-foreground mb-12 max-w-2xl mx-auto">
-            I create beautiful, responsive websites and trading applications using modern technologies. With over 13
-            years of experience in financial markets since 2011, I specialize in fintech solutions, trading automation,
-            and educational platforms for the trading community.
+            I create cutting-edge FinTech solutions and trading applications using modern technologies. Specializing in
+            technical analysis, algorithmic trading, and financial education platforms. Published author of Elliott Wave
+            Principle and creator of trading automation systems used by global trading communities.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
