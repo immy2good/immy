@@ -137,8 +137,8 @@ I'm I M Yousafzai (Immy), a passionate FinTech developer and technical analysis 
 - **Website**: https://imyousafzai.com
 - **Email**: imran@brumbyte.com
 - **TradingView**: [@iTradeAIMS](https://www.tradingview.com/u/iTradeAIMS/)
-- **LinkedIn**: [Your LinkedIn Profile]
-- **GitHub**: [Your GitHub Profile](https://github.com/immy2good)
+- **LinkedIn**: [Immy Yousafzai](https://www.linkedin.com/in/immy-yousafzai/)
+- **GitHub**: [immy2good](https://github.com/immy2good)
 
 ## 📄 License
 
