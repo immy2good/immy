@@ -9,7 +9,7 @@ export function Projects() {
       title: "iTradeAIMS",
       description:
         "A comprehensive trading education platform featuring live Discord community, entry signals, and stress-free trading strategies. Built to help traders reach their potential with expert guidance.",
-      image: "/placeholder.svg?height=300&width=500",
+      image: "/images/itradeaims-screenshot.jpg",
       technologies: ["React", "Node.js", "Discord Integration", "Payment Processing", "Real-time Data"],
       liveUrl: "https://itradeaims.net/",
       githubUrl: "#",
@@ -46,7 +46,7 @@ export function Projects() {
                 <div className="aspect-video overflow-hidden">
                   <img
                     src={project.image || "/placeholder.svg"}
-                    alt={project.title}
+                    alt={`${project.title} website screenshot`}
                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                   />
                 </div>
