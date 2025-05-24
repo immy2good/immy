@@ -4,7 +4,7 @@ A modern, responsive portfolio website showcasing my expertise as a **FinTech De
 
 ## 🚀 Live Demo
 
-Visit the live website: [Your Portfolio URL]
+Visit the live website: https://imyousafzai.com
 
 ## 👨‍💻 About Me
 
@@ -134,11 +134,11 @@ I'm I M Yousafzai (Immy), a passionate FinTech developer and technical analysis 
 
 ## 🔗 Connect With Me
 
-- **Website**: [Your Website URL]
+- **Website**: https://imyousafzai.com
 - **Email**: imran@brumbyte.com
 - **TradingView**: [@iTradeAIMS](https://www.tradingview.com/u/iTradeAIMS/)
 - **LinkedIn**: [Your LinkedIn Profile]
-- **GitHub**: [Your GitHub Profile]
+- **GitHub**: [Your GitHub Profile](https://github.com/immy2good)
 
 ## 📄 License
 
@@ -158,21 +158,9 @@ While this is a personal portfolio, I'm open to suggestions and improvements. Fe
 Interested in FinTech development, web development, or technical analysis consulting? Let's discuss your project!
 
 - **Email**: imran@brumbyte.com
-- **Portfolio**: [Your Website URL]
+- **Portfolio**: https://imyousafzai.com
 
 ---
 
 **Built with ❤️ by I M Yousafzai**
 ```
-
-This README provides a comprehensive overview of your portfolio website and repository, including:
-
-- **Professional introduction** highlighting your dual expertise
-- **Complete tech stack** and project structure
-- **Setup instructions** for other developers
-- **Feature highlights** showcasing the website's capabilities
-- **Project showcase** of your FinTech and web development work
-- **Contact information** and social links
-- **Professional formatting** with emojis and clear sections
-
-You can customize the URLs, add specific metrics, or modify any sections to better reflect your preferences!
