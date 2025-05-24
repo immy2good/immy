@@ -35,10 +35,10 @@ export function Projects() {
     {
       title: "MetaTrader Automation Bots",
       description:
-        "Advanced MQL4 and MQL5 trading robots and expert advisors for MetaTrader platform. Automated trading systems covering forex, CFDs, and futures markets with sophisticated risk management and technical analysis integration.",
-      image: "/placeholder.svg?height=300&width=400",
+        "Advanced MQL4 and MQL5 trading robots and expert advisors for MetaTrader platform. Features the 'Banana EA' - a fully automated trading system with plug & profit simplicity, tested strategy, 24/5 automation, smart risk management, and lightning-fast execution across major currency pairs.",
+      image: "/images/metatrader-banana-ea.png",
       technologies: ["MQL4", "MQL5", "MetaTrader", "Algorithmic Trading", "Risk Management", "Forex"],
-      liveUrl: "#",
+      liveUrl: "https://itradeaims.net/",
       githubUrl: "#",
     },
     {
