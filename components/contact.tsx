@@ -24,7 +24,7 @@ export function Contact() {
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
                   <Mail className="w-5 h-5 text-primary" />
-                  <span>alex@example.com</span>
+                  <a href="mailto:mr.imrankhan+portfoliowebsite@gmail.com">info@imyousafzai.com</a>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Phone className="w-5 h-5 text-primary" />
