@@ -125,6 +125,7 @@ I'm I M Yousafzai (Immy), a passionate FinTech developer and technical analysis 
 ### Web Development Projects
 - **Bewdley Farm Shop** - E-commerce site with WordPress/WooCommerce
 - **Splashbacks Birmingham** - Local business website with SEO
+- **iTradeAIMS** - A financial trading website that provoides courses, tools and memberships. 
 
 ## 📚 Published Work
 
