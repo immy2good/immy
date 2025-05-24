@@ -2,7 +2,15 @@
 
 import { Resend } from "resend"
 
-export async function submitContactForm(formData: FormData) {
+export async function submitContactForm(prevState: any, formData: FormData) {
+  // Check if formData exists
+  if (!formData) {
+    return {
+      success: false,
+      message: "Form data is missing. Please try again.",
+    }
+  }
+
   const firstName = formData.get("firstName") as string
   const lastName = formData.get("lastName") as string
   const email = formData.get("email") as string

@@ -10,7 +10,7 @@ import { submitContactForm } from "@/lib/actions"
 import { useActionState } from "react"
 
 export function Contact() {
-  const [state, action, isPending] = useActionState(submitContactForm, null)
+  const [state, formAction, isPending] = useActionState(submitContactForm, null)
 
   return (
     <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8">
@@ -74,7 +74,7 @@ export function Contact() {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <form action={action} className="space-y-4">
+                <form action={formAction} className="space-y-4">
                   <div className="grid grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <Label htmlFor="firstName">First Name</Label>
