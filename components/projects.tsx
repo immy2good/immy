@@ -27,7 +27,7 @@ export function Projects() {
       title: "Elliott Wave Analysis Tools",
       description:
         "Sophisticated Pine Script tools for Elliott Wave pattern recognition and analysis. Automated wave counting, Fibonacci retracement levels, and pattern validation systems. Based on my published book on Elliott Wave Principle available on Amazon.",
-      image: "/placeholder.svg?height=300&width=400",
+      image: "/images/elliott-wave-book-amazon.png",
       technologies: ["Pine Script", "Elliott Wave Theory", "Pattern Recognition", "Fibonacci Analysis", "TradingView"],
       liveUrl: "https://www.tradingview.com/u/iTradeAIMS/",
       githubUrl: "https://amzn.eu/d/735UjWD",
