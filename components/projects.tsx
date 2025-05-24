@@ -17,8 +17,8 @@ export function Projects() {
     {
       title: "Bewdley Farm Shop",
       description:
-        "A fully functional e-commerce website for a local farm shop featuring online ordering, product catalog, and secure checkout. Built with modern WordPress architecture.",
-      image: "/placeholder.svg?height=300&width=500",
+        "A complete e-commerce solution for a local farm shop featuring fresh produce delivery, online ordering system, and customer subscriptions. Showcases beautiful product photography and local delivery services.",
+      image: "/images/bewdley-farmshop-screenshot.png",
       technologies: ["WordPress", "WooCommerce", "Bricks Builder", "PHP", "Stripe Integration"],
       liveUrl: "https://bewdleyfarmshop.co.uk/",
       githubUrl: "#",
