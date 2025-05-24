@@ -26,8 +26,8 @@ export function Projects() {
     {
       title: "Splashbacks Birmingham",
       description:
-        "Professional website for a local Birmingham splashback installation business, featuring service showcase, gallery, and customer contact forms.",
-      image: "/placeholder.svg?height=300&width=500",
+        "Professional website for UK's #1 rated splashback provider in the West Midlands. Features service showcase, consultation booking, and comprehensive product catalog for kitchen splashbacks and bespoke mirrors.",
+      image: "/images/splashbacks-screenshot.png",
       technologies: ["WordPress", "Custom PHP", "Local SEO", "Contact Forms", "Gallery System"],
       liveUrl: "https://splashbacks.co/",
       githubUrl: "#",
