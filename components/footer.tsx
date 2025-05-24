@@ -8,25 +8,25 @@ export function Footer() {
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="mb-4 md:mb-0">
-              <h3 className="text-xl font-bold">Immy Yo</h3>
-              <p className="text-muted-foreground">Full-Stack Web Developer</p>
+              <h3 className="text-xl font-bold">I M Yousafzai (aka Immy)</h3>
+              <p className="text-muted-foreground">FinTech and Web Developer</p>
             </div>
 
             <div className="flex space-x-4">
               <Button variant="ghost" size="icon" asChild>
-                <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+                <a href="https://github.com/immy2good" target="_blank" rel="noopener noreferrer">
                   <Github className="h-5 w-5" />
                   <span className="sr-only">GitHub</span>
                 </a>
               </Button>
               <Button variant="ghost" size="icon" asChild>
-                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.linkedin.com/in/immy-yousafzai/" target="_blank" rel="noopener noreferrer">
                   <Linkedin className="h-5 w-5" />
                   <span className="sr-only">LinkedIn</span>
                 </a>
               </Button>
               <Button variant="ghost" size="icon" asChild>
-                <a href="mailto:alex@example.com">
+                <a href="mailto:imran@brumbyte.com">
                   <Mail className="h-5 w-5" />
                   <span className="sr-only">Email</span>
                 </a>
