@@ -16,9 +16,7 @@ export function Contact() {
             <div>
               <h3 className="text-2xl font-semibold mb-6">Let's Create A Solution</h3>
               <p className="text-lg text-muted-foreground mb-8">
-                I'm always interested in FinTech opportunities, technical analysis projects, and algorithmic trading
-                solutions. Whether you need trading automation, Trading Courses and Technical Analysis Tools, Algorithmic Trading Programming, or custom FinTech
-                platforms, let's discuss how we can bring your vision to life. Also, I can build you fully functional eCommerce Websites on various technologies. 
+                I'm always interested in FinTech adn Web development opportunities, PineScript and MetaTrader 4/5 algorithmic trading solutions. Whether you need eCommerice Websites, Company Websites, Trading Automation or Algorithmic Trading Programming, or custom FinTech platforms, let's discuss how we can bring your vision to life. Also, I can build you fully functional eCommerce Websites on various technologies. 
               </p>
 
               <div className="space-y-4">
