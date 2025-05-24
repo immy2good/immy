@@ -61,7 +61,7 @@ export function Contact() {
               <CardHeader>
                 <CardTitle>Send me a message</CardTitle>
                 <CardDescription>
-                  Interested in FinTech development or technical analysis consulting? Let's discuss your project.
+                  Interested in FinTech or Web development or technical analysis consulting? Let's discuss your project.
                 </CardDescription>
               </CardHeader>
               <CardContent>
