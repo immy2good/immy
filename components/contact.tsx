@@ -31,7 +31,7 @@ export function Contact() {
                 </div>
                 <div className="flex items-center space-x-3">
                   <MapPin className="w-5 h-5 text-primary" />
-                  <span>San Francisco, CA</span>
+                  <span>Birmingham, UK</span>
                 </div>
               </div>
             </div>
