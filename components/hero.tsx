@@ -38,7 +38,7 @@ export function Hero() {
               </a>
             </Button>
             <Button variant="ghost" size="icon" asChild>
-              <a href="mailto:alex@example.com">
+              <a href="mailto:mr.imnrankhan+vercel@google.com">
                 <Mail className="h-6 w-6" />
                 <span className="sr-only">Email</span>
               </a>
