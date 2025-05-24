@@ -15,6 +15,33 @@ export function Projects() {
       githubUrl: "#",
     },
     {
+      title: "TradingView Pine Script Indicators",
+      description:
+        "Collection of advanced Pine Script indicators and technical analysis tools published on TradingView. Features Elliott Wave analysis, custom oscillators, trend detection algorithms, and automated trading signals used by thousands of traders globally.",
+      image: "/placeholder.svg?height=300&width=400",
+      technologies: ["Pine Script", "Technical Analysis", "Elliott Wave", "TradingView", "Algorithmic Trading"],
+      liveUrl: "https://www.tradingview.com/u/iTradeAIMS/",
+      githubUrl: "https://www.tradingview.com/u/itradeaims-tv/",
+    },
+    {
+      title: "Elliott Wave Analysis Tools",
+      description:
+        "Sophisticated Pine Script tools for Elliott Wave pattern recognition and analysis. Automated wave counting, Fibonacci retracement levels, and pattern validation systems. Based on my published book on Elliott Wave Principle available on Amazon.",
+      image: "/placeholder.svg?height=300&width=400",
+      technologies: ["Pine Script", "Elliott Wave Theory", "Pattern Recognition", "Fibonacci Analysis", "TradingView"],
+      liveUrl: "https://www.tradingview.com/u/iTradeAIMS/",
+      githubUrl: "https://amzn.eu/d/735UjWD",
+    },
+    {
+      title: "MetaTrader Automation Bots",
+      description:
+        "Advanced MQL4 and MQL5 trading robots and expert advisors for MetaTrader platform. Automated trading systems covering forex, CFDs, and futures markets with sophisticated risk management and technical analysis integration.",
+      image: "/placeholder.svg?height=300&width=400",
+      technologies: ["MQL4", "MQL5", "MetaTrader", "Algorithmic Trading", "Risk Management", "Forex"],
+      liveUrl: "#",
+      githubUrl: "#",
+    },
+    {
       title: "Bewdley Farm Shop",
       description:
         "A complete e-commerce solution for a local farm shop featuring fresh produce delivery, online ordering system, and customer subscriptions. Showcases beautiful product photography and local delivery services.",
@@ -66,13 +93,17 @@ export function Projects() {
                     <Button size="sm" asChild>
                       <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
                         <ExternalLink className="w-4 h-4 mr-2" />
-                        Live Site
+                        {project.liveUrl.includes("tradingview") ? "View Profile" : "Live Site"}
                       </a>
                     </Button>
                     <Button variant="outline" size="sm" asChild>
                       <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
                         <Github className="w-4 h-4 mr-2" />
-                        Details
+                        {project.githubUrl.includes("amazon")
+                          ? "View Book"
+                          : project.githubUrl.includes("tradingview")
+                            ? "Alt Profile"
+                            : "Details"}
                       </a>
                     </Button>
                   </div>
