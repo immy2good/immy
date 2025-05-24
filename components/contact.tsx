@@ -14,11 +14,11 @@ export function Contact() {
 
           <div className="grid lg:grid-cols-2 gap-12">
             <div>
-              <h3 className="text-2xl font-semibold mb-6">Let's build the future of FinTech</h3>
+              <h3 className="text-2xl font-semibold mb-6">Let's Create A Solution</h3>
               <p className="text-lg text-muted-foreground mb-8">
                 I'm always interested in FinTech opportunities, technical analysis projects, and algorithmic trading
-                solutions. Whether you need trading automation, Elliott Wave analysis tools, or custom FinTech
-                platforms, let's discuss how we can bring your vision to life.
+                solutions. Whether you need trading automation, Trading Courses and Technical Analysis Tools, Algorithmic Trading Programming, or custom FinTech
+                platforms, let's discuss how we can bring your vision to life. Also, I can build you fully functional eCommerce Websites on various technologies. 
               </p>
 
               <div className="space-y-4">
