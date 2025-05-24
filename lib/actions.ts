@@ -2,8 +2,6 @@
 
 import { Resend } from "resend"
 
-const resend = new Resend(process.env.RESEND_API_KEY)
-
 export async function submitContactForm(formData: FormData) {
   const firstName = formData.get("firstName") as string
   const lastName = formData.get("lastName") as string
@@ -19,7 +17,19 @@ export async function submitContactForm(formData: FormData) {
     }
   }
 
+  // Check if API key is available
+  const apiKey = process.env.RESEND_API_KEY
+  if (!apiKey) {
+    console.error("RESEND_API_KEY environment variable is not set")
+    return {
+      success: false,
+      message: "Email service is not configured. Please try again later.",
+    }
+  }
+
   try {
+    const resend = new Resend(apiKey)
+
     await resend.emails.send({
       from: "Portfolio Contact <onboarding@resend.dev>", // Use your verified domain
       to: ["mr.imrankhan+portfoliowebsite@gmail.com"],
