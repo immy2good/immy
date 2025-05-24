@@ -1,4 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
+import { ExternalLink } from "lucide-react"
 
 export function About() {
   return (
@@ -12,29 +14,39 @@ export function About() {
               <div className="grid md:grid-cols-2 gap-8 items-center">
                 <div>
                   <img
-                    src="/placeholder.svg?height=400&width=400"
-                    alt="Profile"
+                    src="/images/immy-profile.jpg"
+                    alt="Immy Yo - FinTech Developer and Web Developer"
                     className="rounded-lg w-full max-w-sm mx-auto"
                   />
                 </div>
                 <div className="space-y-4">
                   <p className="text-lg text-muted-foreground">
-                    I'm a passionate web developer with over 5 years of experience creating digital solutions that make
-                    a difference. I specialize in modern web technologies and love turning complex problems into simple,
-                    beautiful designs.
+                    I'm a passionate FinTech developer and technical analysis expert with over 13 years of experience in
+                    financial markets since 2011. I specialize in creating innovative FinTech solutions, algorithmic
+                    trading platforms, and comprehensive technical analysis tools that empower traders worldwide.
                   </p>
                   <p className="text-lg text-muted-foreground">
-                    When I'm not coding, you can find me exploring new technologies, contributing to open-source
-                    projects, or enjoying a good cup of coffee while planning my next project.
+                    As a published author, I've written extensively on technical analysis, including my book on the
+                    Elliott Wave Principle available on Amazon. My expertise spans forex, CFDs, futures, stocks, and
+                    cryptocurrency markets, with automation scripts and trading bots used by thousands of community
+                    members globally.
                   </p>
+                  <div className="flex gap-4 pt-4">
+                    <Button variant="outline" size="sm" asChild>
+                      <a href="https://amzn.eu/d/735UjWD" target="_blank" rel="noopener noreferrer">
+                        <ExternalLink className="w-4 h-4 mr-2" />
+                        View My Book
+                      </a>
+                    </Button>
+                  </div>
                   <div className="grid grid-cols-2 gap-4 pt-4">
                     <div>
-                      <h4 className="font-semibold mb-2">Experience</h4>
-                      <p className="text-muted-foreground">5+ Years</p>
+                      <h4 className="font-semibold mb-2">Trading Experience</h4>
+                      <p className="text-muted-foreground">13+ Years</p>
                     </div>
                     <div>
-                      <h4 className="font-semibold mb-2">Projects</h4>
-                      <p className="text-muted-foreground">50+ Completed</p>
+                      <h4 className="font-semibold mb-2">Published Scripts</h4>
+                      <p className="text-muted-foreground">100+ FinTech Tools</p>
                     </div>
                   </div>
                 </div>
