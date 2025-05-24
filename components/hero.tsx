@@ -9,9 +9,7 @@ export function Hero() {
           <h1 className="text-4xl sm:text-6xl font-bold text-foreground mb-6">
             Hi, I'm <span className="text-primary">Immy</span>
           </h1>
-          <p className="text-xl sm:text-2xl text-muted-foreground mb-8">
-            FinTech Developer & Technical Analysis Expert
-          </p>
+          <p className="text-xl sm:text-2xl text-muted-foreground mb-8">FinTech Developer & Web Developer</p>
           <p className="text-lg text-muted-foreground mb-12 max-w-2xl mx-auto">
             I create cutting-edge FinTech solutions and trading applications using modern technologies. Specializing in
             technical analysis, algorithmic trading, and financial education platforms. Published author of Elliott Wave
