@@ -27,19 +27,19 @@ export function Hero() {
 
           <div className="flex justify-center space-x-6">
             <Button variant="ghost" size="icon" asChild>
-              <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+              <a href="https://github.com/immy2good " target="_blank" rel="noopener noreferrer">
                 <Github className="h-6 w-6" />
                 <span className="sr-only">GitHub</span>
               </a>
             </Button>
             <Button variant="ghost" size="icon" asChild>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.linkedin.com/in/immy-yousafzai/" target="_blank" rel="noopener noreferrer">
                 <Linkedin className="h-6 w-6" />
                 <span className="sr-only">LinkedIn</span>
               </a>
             </Button>
             <Button variant="ghost" size="icon" asChild>
-              <a href="mailto:mr.imnrankhan+vercel@google.com">
+              <a href="mailto:imran@brumbyte.com" target="_blank" rel="noopener noreferrer">
                 <Mail className="h-6 w-6" />
                 <span className="sr-only">Email</span>
               </a>

@@ -1,5 +1,6 @@
 {
-  "name": "my-v0-project",
+  "name": "immy-portfolio",
+  "description": "A portfolio website showcasing Immy's work and skills, built with Next.js and Radix UI.",
   "version": "0.1.0",
   "private": true,
   "scripts": {
