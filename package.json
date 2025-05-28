@@ -61,6 +61,9 @@
     "vaul": "^0.9.6",
     "zod": "^3.24.1"
   },
+  "overrides": {
+    "react-day-picker>date-fns": "^3.0.0"
+  },
   "devDependencies": {
     "@types/node": "^22",
     "@types/react": "^19",
