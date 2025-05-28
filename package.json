@@ -1,5 +1,6 @@
 {
-  "name": "my-v0-project",
+  "name": "immy-portfolio",
+  "description": "A portfolio website showcasing Immy's work and skills, built with Next.js and Radix UI.",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -53,11 +54,15 @@
     "react-hook-form": "^7.54.1",
     "react-resizable-panels": "^2.1.7",
     "recharts": "2.15.0",
+    "resend": "latest",
     "sonner": "^1.7.1",
     "tailwind-merge": "^2.5.5",
     "tailwindcss-animate": "^1.0.7",
     "vaul": "^0.9.6",
     "zod": "^3.24.1"
+  },
+  "overrides": {
+    "react-day-picker>date-fns": "^3.0.0"
   },
   "devDependencies": {
     "@types/node": "^22",

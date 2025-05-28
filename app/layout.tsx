@@ -3,12 +3,14 @@ import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
+// import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Yousafzai",
-  description: "FinTech Programmer and Full-stack web developer specializing in modern technologies"
+  title: "Alex Johnson - Web Developer Portfolio",
+  description: "Full-stack web developer specializing in modern web technologies",
+    generator: 'v0.dev'
 }
 
 export default function RootLayout({

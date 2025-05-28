@@ -4,16 +4,16 @@ import { Badge } from "@/components/ui/badge"
 export function Skills() {
   const skillCategories = [
     {
-      title: "Frontend",
-      skills: ["React", "Next.js", "TypeScript", "Tailwind CSS", "HTML5", "CSS3", "JavaScript"],
+      title: "FinTech & Frontend",
+      skills: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Pine Script", "Technical Analysis", "Elliott Wave"],
     },
     {
-      title: "Backend",
-      skills: ["Node.js", "Express", "Python", "PostgreSQL", "MongoDB", "REST APIs", "GraphQL"],
+      title: "Backend & Trading",
+      skills: ["Node.js", "Python", "MQL4", "MQL5", "PostgreSQL", "Financial APIs", "Algorithmic Trading"],
     },
     {
-      title: "Tools & Others",
-      skills: ["Git", "Docker", "AWS", "Vercel", "Figma", "VS Code", "Linux"],
+      title: "Tools & Platforms",
+      skills: ["TradingView", "MetaTrader", "AWS", "Docker", "Git", "FinTech Solutions", "Market Data APIs"],
     },
   ]
 
@@ -21,7 +21,9 @@ export function Skills() {
     <section id="skills" className="py-20 px-4 sm:px-6 lg:px-8">
       <div className="container mx-auto">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12">Skills & Technologies</h2>
+          <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12">
+            FinTech Skills & Technical Analysis Expertise
+          </h2>
 
           <div className="grid md:grid-cols-3 gap-8">
             {skillCategories.map((category) => (

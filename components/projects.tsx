@@ -6,30 +6,58 @@ import { ExternalLink, Github } from "lucide-react"
 export function Projects() {
   const projects = [
     {
-      title: "E-Commerce Platform",
+      title: "iTradeAIMS",
       description:
-        "A full-stack e-commerce solution with payment integration, inventory management, and admin dashboard.",
-      image: "/placeholder.svg?height=300&width=500",
-      technologies: ["Next.js", "TypeScript", "Stripe", "PostgreSQL"],
-      liveUrl: "https://example.com",
-      githubUrl: "https://github.com",
+        "A comprehensive FinTech education platform featuring advanced technical analysis tools, live Discord community, algorithmic trading signals, and Elliott Wave analysis. Built to help traders master technical analysis and reach their potential with expert guidance.",
+      image: "/images/itradeaims-screenshot.jpg",
+      technologies: ["React", "Node.js", "FinTech APIs", "Technical Analysis", "Real-time Data", "Elliott Wave"],
+      liveUrl: "https://itradeaims.net/",
+      githubUrl: "#",
     },
     {
-      title: "Task Management App",
+      title: "TradingView Pine Script Indicators",
       description:
-        "A collaborative task management application with real-time updates and team collaboration features.",
-      image: "/placeholder.svg?height=300&width=500",
-      technologies: ["React", "Node.js", "Socket.io", "MongoDB"],
-      liveUrl: "https://example.com",
-      githubUrl: "https://github.com",
+        "Collection of advanced Pine Script indicators and technical analysis tools published on TradingView. Features Elliott Wave analysis, custom oscillators, trend detection algorithms, and automated trading signals used by thousands of traders globally. 1.2K+ followers, 240+ published ideas.",
+      image: "/images/tradingview-profile-screenshot.png",
+      technologies: ["Pine Script", "Technical Analysis", "Elliott Wave", "TradingView", "Algorithmic Trading"],
+      liveUrl: "https://www.tradingview.com/u/iTradeAIMS/",
+      githubUrl: "https://www.tradingview.com/u/itradeaims-tv/",
     },
     {
-      title: "Weather Dashboard",
-      description: "A responsive weather dashboard with location-based forecasts and interactive charts.",
-      image: "/placeholder.svg?height=300&width=500",
-      technologies: ["Vue.js", "Chart.js", "Weather API", "Tailwind"],
-      liveUrl: "https://example.com",
-      githubUrl: "https://github.com",
+      title: "Elliott Wave Analysis Tools",
+      description:
+        "Sophisticated Pine Script tools for Elliott Wave pattern recognition and analysis. Automated wave counting, Fibonacci retracement levels, and pattern validation systems. Based on my published book on Elliott Wave Principle available on Amazon.",
+      image: "/images/elliott-wave-book-amazon.png",
+      technologies: ["Pine Script", "Elliott Wave Theory", "Pattern Recognition", "Fibonacci Analysis", "TradingView"],
+      liveUrl: "https://www.tradingview.com/u/iTradeAIMS/",
+      githubUrl: "https://amzn.eu/d/735UjWD",
+    },
+    {
+      title: "MetaTrader Automation Bots",
+      description:
+        "Advanced MQL4 and MQL5 trading robots and expert advisors for MetaTrader platform. Features the 'Banana EA' - a fully automated trading system with plug & profit simplicity, tested strategy, 24/5 automation, smart risk management, and lightning-fast execution across major currency pairs.",
+      image: "/images/metatrader-banana-ea.png",
+      technologies: ["MQL4", "MQL5", "MetaTrader", "Algorithmic Trading", "Risk Management", "Forex"],
+      liveUrl: "https://itradeaims.net/",
+      githubUrl: "#",
+    },
+    {
+      title: "Bewdley Farm Shop",
+      description:
+        "A complete e-commerce solution for a local farm shop featuring fresh produce delivery, online ordering system, and customer subscriptions. Showcases beautiful product photography and local delivery services.",
+      image: "/images/bewdley-farmshop-screenshot.png",
+      technologies: ["WordPress", "WooCommerce", "Bricks Builder", "PHP", "Stripe Integration"],
+      liveUrl: "https://bewdleyfarmshop.co.uk/",
+      githubUrl: "#",
+    },
+    {
+      title: "Splashbacks Birmingham",
+      description:
+        "Professional website for UK's #1 rated splashback provider in the West Midlands. Features service showcase, consultation booking, and comprehensive product catalog for kitchen splashbacks and bespoke mirrors.",
+      image: "/images/splashbacks-screenshot.png",
+      technologies: ["WordPress", "Custom PHP", "Local SEO", "Contact Forms", "Gallery System"],
+      liveUrl: "https://splashbacks.co/",
+      githubUrl: "#",
     },
   ]
 
@@ -37,7 +65,7 @@ export function Projects() {
     <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/50">
       <div className="container mx-auto">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12">Featured Projects</h2>
+          <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12">Featured FinTech & Web Projects</h2>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projects.map((project) => (
@@ -45,7 +73,7 @@ export function Projects() {
                 <div className="aspect-video overflow-hidden">
                   <img
                     src={project.image || "/placeholder.svg"}
-                    alt={project.title}
+                    alt={`${project.title} website screenshot`}
                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                   />
                 </div>
@@ -65,13 +93,17 @@ export function Projects() {
                     <Button size="sm" asChild>
                       <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
                         <ExternalLink className="w-4 h-4 mr-2" />
-                        Live Demo
+                        {project.liveUrl.includes("tradingview") ? "View Profile" : "Live Site"}
                       </a>
                     </Button>
                     <Button variant="outline" size="sm" asChild>
                       <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
                         <Github className="w-4 h-4 mr-2" />
-                        Code
+                        {project.githubUrl.includes("amazon")
+                          ? "View Book"
+                          : project.githubUrl.includes("tradingview")
+                            ? "Alt Profile"
+                            : "Details"}
                       </a>
                     </Button>
                   </div>
