@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button"
 import { Github, Linkedin, Mail } from "lucide-react"
+import { Download } from "lucide-react"
 
 export function Hero() {
   return (
@@ -23,6 +24,18 @@ export function Hero() {
             <Button variant="outline" size="lg" asChild>
               <a href="#contact">Get In Touch</a>
             </Button>
+            <Button variant="secondary" size="lg" asChild>
+              <a
+                href="cv/cv.pdf"
+                download
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2"
+              >
+                <Download className="h-5 w-5" />{" "}
+                Download CV
+              </a>
+            </Button>
           </div>
 
           <div className="flex justify-center space-x-6">
@@ -44,6 +57,7 @@ export function Hero() {
                 <span className="sr-only">Email</span>
               </a>
             </Button>
+            
           </div>
         </div>
       </div>
