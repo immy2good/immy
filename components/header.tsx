@@ -13,8 +13,8 @@ export function Header() {
     { href: "#about", label: "About" },
     { href: "#skills", label: "Skills" },
     { href: "#projects", label: "Projects" },
-    { href: "/cv/cv.pdf", label: "CV" },
     { href: "#contact", label: "Contact" },
+    { href: "/cv/cv.pdf", label: "CV" },
   ]
 
   return (
