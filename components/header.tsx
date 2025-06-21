@@ -14,7 +14,7 @@ export function Header() {
     { href: "#skills", label: "Skills" },
     { href: "#projects", label: "Projects" },
     { href: "#contact", label: "Contact" },
-    { href: "/cv/cv.pdf", label: "CV" },
+    { href: "cv/Yousafzai_PM_SE_CV_21_June_2025-.pdf", label: "CV" },
   ]
 
   return (
