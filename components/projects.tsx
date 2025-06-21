@@ -139,7 +139,7 @@ export function Projects() {
               variant="ghost"
               size="icon"
               onClick={prevSlide}
-              className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-transparent hover:bg-gray-200/50 w-14 h-14"
+              className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-white-500 hover:bg-gray-200/50 w-14 h-14"
             >
               <ChevronLeft className="w-10 h-10 text-black/70" />
             </Button>
@@ -147,7 +147,7 @@ export function Projects() {
               variant="ghost"
               size="icon"
               onClick={nextSlide}
-              className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-transparent hover:bg-gray-200/50 w-14 h-14"
+              className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-white-500 hover:bg-gray-200/50 w-14 h-14"
             >
               <ChevronRight className="w-10 h-10 text-black/70" />
             </Button>
