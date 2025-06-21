@@ -22,6 +22,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <meta property="og:url" content="https://imyousafzai.com" />
+        <meta property="og:image" content="/og-image.png" />
+        <link rel="canonical" href="https://imyousafzai.com" />
+      </head>
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           {children}

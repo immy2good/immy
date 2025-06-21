@@ -14,6 +14,15 @@ export function Projects() {
       liveUrl: "https://itradeaims.net/",
       githubUrl: "#",
     },
+        {
+      title: "The Banana EA",
+      description:
+        "A fully automated trading system with plug & profit simplicity, tested strategy, 24/5 automation, smart risk management, and lightning-fast execution across major currency pairs.",
+      image: "/images/itradeaims-screenshot.jpg",
+      technologies: ["MQL4", "MQL5", "MetaTrader", "Algorithmic Trading", "Risk Management", "Forex"],
+      liveUrl: "https://banana.imyousafzai.com/",
+      githubUrl: "#",
+    },
     {
       title: "TradingView Pine Script Indicators",
       description:
@@ -59,6 +68,7 @@ export function Projects() {
       liveUrl: "https://splashbacks.co/",
       githubUrl: "#",
     },
+    
   ]
 
   return (

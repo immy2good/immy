@@ -26,7 +26,7 @@ export function Hero() {
             </Button>
             <Button variant="secondary" size="lg" asChild>
               <a
-                href="cv/cv.pdf"
+                href="cv/Yousafzai_PM_SE_CV_21_June_2025-.pdf"
                 download
                 target="_blank"
                 rel="noopener noreferrer"
