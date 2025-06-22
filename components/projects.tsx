@@ -97,12 +97,18 @@ export function Projects() {
 
 
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [itemsPerSlide, setItemsPerSlide] = useState(2);
+  const [itemsPerSlide, setItemsPerSlide] = useState(3);
   const trackRef = useRef(null);
 
   useEffect(() => {
     const updateItemsPerSlide = () => {
-      setItemsPerSlide(window.innerWidth < 768 ? 1 : 2);
+      if (window.innerWidth < 640) {
+        setItemsPerSlide(1);
+      } else if (window.innerWidth < 1024) {
+        setItemsPerSlide(2);
+      } else {
+        setItemsPerSlide(3);
+      }
     };
     updateItemsPerSlide();
     window.addEventListener("resize", updateItemsPerSlide);
