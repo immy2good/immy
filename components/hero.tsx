@@ -32,7 +32,7 @@ export function Hero() {
             </Button>
             <Button variant="secondary" size="lg" asChild>
               <a
-                href="cv/Yousafzai_PM_SE_CV_21_June_2025-V2.pdf"
+                href="cv/Yousafzai_PM_SE_CV_21_June_2025-V3.pdf"
                 download
                 target="_blank"
                 rel="noopener noreferrer"

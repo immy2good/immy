@@ -5,8 +5,7 @@ const nextConfig = {
   },
   typescript: {
     ignoreBuildErrors: true,
-  },
-  images: {
+  },  images: {
     unoptimized: true,
   },
 }

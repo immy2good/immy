@@ -26,22 +26,26 @@ export function About() {
                 {/* Introduction & Metrics */}
                 <div className="space-y-6">
                   <p className="text-lg text-muted-foreground">
-                    I’m a seasoned <strong>Senior Product Manager</strong> and{" "}
+                    Hey! I'm a <strong>Founder - Product Manager</strong> and{" "}
                     <strong>Full-Stack Developer</strong> with over{" "}
-                    <strong>13 years</strong> driving product strategy and
-                    building scalable web applications in FinTech, e‑commerce,
-                    and SaaS. I bridge technical and business teams to deliver
-                    user-centric products that increase engagement, revenue, and
-                    operational efficiency.
+                    <strong>13 years</strong> experience of driving product
+                    strategy and building cool stuff for FinTech, e‑commerce,
+                    and SaaS companies. I love connecting technical and business
+                    teams to create products that users actually want to use -
+                    ones that boost engagement, revenue, and make operations
+                    smoother.
                   </p>
 
                   <p className="text-lg text-muted-foreground">
-                    My expertise includes leading Agile teams, defining
-                    roadmaps, and executing end‑to‑end development using React,
-                    Next.js, TypeScript, Node.js, and cloud infrastructure (AWS,
-                    Docker). As a published author on technical analysis, I’ve
-                    also created algorithmic trading bots and educational
-                    platforms used by thousands globally.
+                    When I'm not coding or leading Agile teams, I'm a proud
+                    father and husband. In my free time, you'll find me
+                    tinkering with trading strategies, running backtests and
+                    optimization in MT4 and TradingView platforms. I'm also a
+                    big Cricket fan! On the professional side, I work with
+                    React, Next.js, TypeScript, Node.js, and cloud
+                    infrastructure (AWS, Docker). As a published author on
+                    technical analysis, I've created algorithmic trading bots
+                    and educational platforms used by thousands globally.
                   </p>
 
                   <div className="flex flex-wrap gap-4 pt-4">
@@ -53,17 +57,19 @@ export function About() {
                         className="flex items-center"
                       >
                         <ExternalLink className="w-4 h-4 mr-2" />
-                        View My Book
+                        Read My Book
                       </a>
                     </Button>
                     <Button variant="secondary" size="sm" asChild>
                       <a
-                        href="cv/Yousafzai_PM_SE_CV_21_June_2025-.pdf"
-                        download
+                        href="https://itradeaims.net/"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="flex items-center"
+                        download
                       >
                         <ExternalLink className="w-4 h-4 mr-2" />
-                        Download CV
+                        Visit iTradeAIMS
                       </a>
                     </Button>
                   </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, TouchEvent } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -94,11 +94,14 @@ export function Projects() {
       liveLabel: "Visit Website"
     },
   ]
-
-
   const [currentIndex, setCurrentIndex] = useState(0);
   const [itemsPerSlide, setItemsPerSlide] = useState(3);
   const trackRef = useRef(null);
+  const touchStartX = useRef(0);
+  const touchEndX = useRef(0);
+  
+  // Create a wrapped version of projects for infinite scrolling effect
+  const wrappedProjects = [...projects];
 
   useEffect(() => {
     const updateItemsPerSlide = () => {
@@ -113,23 +116,66 @@ export function Projects() {
     updateItemsPerSlide();
     window.addEventListener("resize", updateItemsPerSlide);
     return () => window.removeEventListener("resize", updateItemsPerSlide);
-  }, []);
-
+  }, []);  // Track if we're in the middle of a transition
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  
   useEffect(() => {
     const interval = setInterval(() => {
-      nextSlide();
-    }, 5000);
+      if (!isTransitioning) {
+        nextSlide();
+      }
+    }, 5000); // Increased from 2000 to 5000ms for better user experience
     return () => clearInterval(interval);
-  }, [itemsPerSlide]);
+  }, [itemsPerSlide, isTransitioning]);
 
   const nextSlide = () => {
+    if (isTransitioning) return;
+    
+    setIsTransitioning(true);
     setCurrentIndex((prevIndex) => (prevIndex + 1) % projects.length);
+    
+    // Reset transition state after animation completes
+    setTimeout(() => {
+      setIsTransitioning(false);
+    }, 700); // Match duration-700 class on the track
   };
-
+  
   const prevSlide = () => {
+    if (isTransitioning) return;
+    
+    setIsTransitioning(true);
     setCurrentIndex((prevIndex) =>
       prevIndex === 0 ? projects.length - 1 : prevIndex - 1
     );
+    
+    // Reset transition state after animation completes
+    setTimeout(() => {
+      setIsTransitioning(false);
+    }, 700); // Match duration-700 class on the track
+  };
+  
+  // Handle touch events for swipe
+  const handleTouchStart = (e: TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+  
+  const handleTouchMove = (e: TouchEvent) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+    const handleTouchEnd = () => {
+    if (isTransitioning) return;
+    
+    const difference = touchStartX.current - touchEndX.current;
+    // If the swipe was significant enough (more than 50px)
+    if (Math.abs(difference) > 50) {
+      if (difference > 0) {
+        // Swiped left, go to next slide
+        nextSlide();
+      } else {
+        // Swiped right, go to previous slide
+        prevSlide();
+      }
+    }
   };
 
   const pageCount = Math.ceil(projects.length / itemsPerSlide);
@@ -138,14 +184,14 @@ export function Projects() {
     <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/50">
       <div className="container mx-auto">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12">Featured FinTech & Web Projects</h2>
-
-          <div className="relative overflow-hidden">
+          <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12">
+            Featured FinTech & Web Projects
+          </h2>          <div className="relative overflow-hidden">
             <Button
               variant="ghost"
               size="icon"
               onClick={prevSlide}
-              className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-white-500 hover:bg-gray-200/50 w-14 h-14"
+              className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-gray-200/50 hover:bg-gray-200/50 text-white w-14 h-14"
             >
               <ChevronLeft className="w-10 h-10 text-black/70" />
             </Button>
@@ -153,16 +199,40 @@ export function Projects() {
               variant="ghost"
               size="icon"
               onClick={nextSlide}
-              className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-white-500 hover:bg-gray-200/50 w-14 h-14"
+              className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-gray-200/50 hover:bg-gray-200/50 text-white w-14 h-14"
             >
               <ChevronRight className="w-10 h-10 text-black/70" />
-            </Button>
-
-            <div
+            </Button>            <div
               ref={trackRef}
-              className="flex transition-transform duration-700 ease-in-out"
-              style={{ transform: `translateX(-${(100 / itemsPerSlide) * currentIndex}%)` }}
+              className="flex transition-transform duration-700 ease-in-out touch-pan-y"
+              style={{
+                transform: `translateX(-${(100 / itemsPerSlide) * currentIndex}%)`,
+              }}
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
             >
+              {/* First we render clones of the last items for continuity when scrolling backward */}
+              {currentIndex === 0 && projects.slice(-itemsPerSlide).map((project, index) => (
+                <div
+                  key={`before-${index}`}
+                  className="px-4 flex-shrink-0 opacity-0 pointer-events-none absolute"
+                  style={{ width: `${100 / itemsPerSlide}%`, transform: `translateX(-${100 * itemsPerSlide}%)` }}
+                >
+                  <Card className="flex flex-col h-full">
+                    {/* Project content (same as below) */}
+                    <div className="aspect-video overflow-hidden">
+                      <img
+                        src={project.image || "/placeholder.svg"}
+                        alt={`${project.title} screenshot`}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  </Card>
+                </div>
+              ))}
+              
+              {/* Render all projects */}
               {projects.map((project, index) => (
                 <div
                   key={index}
@@ -183,20 +253,92 @@ export function Projects() {
                     </CardHeader>
                     <CardContent className="flex flex-col justify-between flex-grow">
                       <div className="flex flex-col gap-2 text-xs mb-4 text-muted-foreground">
-                        <div><strong>Type:</strong> {project.type}</div>
-                        <div><strong>Target:</strong> {project.target}</div>
-                        <div><strong>Problem:</strong> {project.problem}</div>
+                        <div>
+                          <strong>Type:</strong> {project.type}
+                        </div>
+                        <div>
+                          <strong>Target:</strong> {project.target}
+                        </div>
+                        <div>
+                          <strong>Problem:</strong> {project.problem}
+                        </div>
                       </div>
                       <div className="flex flex-wrap gap-2 mb-4">
                         {project.technologies.map((tech) => (
-                          <Badge key={tech} variant="outline" className="text-xs">
+                          <Badge
+                            key={tech}
+                            variant="outline"
+                            className="text-xs"
+                          >
                             {tech}
                           </Badge>
                         ))}
                       </div>
                       <div className="mt-auto">
                         <Button size="sm" asChild>
-                          <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
+                          <a
+                            href={project.liveUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <ExternalLink className="w-4 h-4 mr-2" />
+                            {project.liveLabel || "Live Site"}
+                          </a>
+                        </Button>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>              ))}
+              
+              {/* Then we render clones of the first items for continuity when scrolling forward */}
+              {currentIndex >= projects.length - itemsPerSlide && projects.slice(0, itemsPerSlide).map((project, index) => (
+                <div
+                  key={`after-${index}`}
+                  className="px-4 flex-shrink-0"
+                  style={{ width: `${100 / itemsPerSlide}%` }}
+                >
+                  <Card className="flex flex-col h-full">
+                    <div className="aspect-video overflow-hidden">
+                      <img
+                        src={project.image || "/placeholder.svg"}
+                        alt={`${project.title} screenshot`}
+                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-500 ease-in-out"
+                      />
+                    </div>
+                    <CardHeader className="flex-grow">
+                      <CardTitle className="text-xl">{project.title}</CardTitle>
+                      <CardDescription>{project.description}</CardDescription>
+                    </CardHeader>
+                    <CardContent className="flex flex-col justify-between flex-grow">
+                      <div className="flex flex-col gap-2 text-xs mb-4 text-muted-foreground">
+                        <div>
+                          <strong>Type:</strong> {project.type}
+                        </div>
+                        <div>
+                          <strong>Target:</strong> {project.target}
+                        </div>
+                        <div>
+                          <strong>Problem:</strong> {project.problem}
+                        </div>
+                      </div>
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        {project.technologies.map((tech) => (
+                          <Badge
+                            key={tech}
+                            variant="outline"
+                            className="text-xs"
+                          >
+                            {tech}
+                          </Badge>
+                        ))}
+                      </div>
+                      <div className="mt-auto">
+                        <Button size="sm" asChild>
+                          <a
+                            href={project.liveUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
                             <ExternalLink className="w-4 h-4 mr-2" />
                             {project.liveLabel || "Live Site"}
                           </a>
@@ -215,7 +357,9 @@ export function Projects() {
                 key={index}
                 onClick={() => setCurrentIndex(index * itemsPerSlide)}
                 className={`w-3 h-3 rounded-full cursor-pointer transition-colors duration-300 ease-in-out ${
-                  Math.floor(currentIndex / itemsPerSlide) === index ? "bg-primary" : "bg-gray-400"
+                  Math.floor(currentIndex / itemsPerSlide) === index
+                    ? "bg-primary"
+                    : "bg-gray-400"
                 }`}
               ></span>
             ))}
