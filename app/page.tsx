@@ -12,8 +12,8 @@ export default function Portfolio() {
       <Header />
       <main>
         <Hero />
-        <About />
         <Skills />
+        <About />
         <Projects />
         <Contact />
       </main>

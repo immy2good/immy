@@ -11,8 +11,8 @@ export function Hero() {
             Hey! <span className="text-primary">I M Yousafzai</span>
           </h1>
           <p className="text-xl sm:text-2xl text-muted-foreground mb-8">
-            Entrepreneurial Leader Driving Product
-            Growth
+            Entrepreneur - Product Manager - Softare Engineer - Finanical
+            Trader/Investor
           </p>
 
           <p className="text-lg text-muted-foreground mb-12 max-w-2xl mx-auto">
