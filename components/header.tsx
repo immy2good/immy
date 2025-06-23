@@ -15,7 +15,9 @@ export function Header() {
     { href: "#projects", label: "Projects" },
     { href: "#contact", label: "Contact" },
     { href: "cv/Yousafzai_PM_SE_CV_21_June_2025-V3.pdf", label: "CV" },
-  ]
+    { href: "https://chatbot.imyousafzai.com/", label: "ChatBot" },
+    { href: "https://banana.imyousafzai.com/", label: "Banana EA" },
+  ];
 
   return (
     <header className="fixed top-0 w-full bg-background/80 backdrop-blur-sm border-b z-50">
