@@ -40,10 +40,10 @@ export async function submitContactForm(prevState: any, formData: FormData) {
     console.log("Sending contact form submission email", {
       to: "mr.imrankhan@gmail.com",
       subject: `Portfolio Contact: ${subject}`,
-      from: "Contact Form <onboarding@resend.dev>"
+      from: "Contact Form <contact@imyousafzai.com>"
     });
       const response = await resend.emails.send({
-      from: "Contact Form <onboarding@resend.dev>", // Using Resend's verified sender
+      from: "Contact Form <contact@imyousafzai.com>", // Using Resend's verified sender
       to: ["mr.imrankhan@gmail.com"],
       subject: `Portfolio Contact: ${subject}`,
       html: `
