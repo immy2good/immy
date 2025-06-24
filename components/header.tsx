@@ -8,13 +8,12 @@ import { ThemeToggle } from "@/components/theme-toggle"
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-
   const navItems = [
     { href: "#about", label: "About" },
     { href: "#skills", label: "Skills" },
     { href: "#projects", label: "Projects" },
     { href: "#contact", label: "Contact" },
-    { href: "cv/Yousafzai_PM_SE_CV_21_June_2025-V3.pdf", label: "CV" },
+    { href: "/api/download/cv", label: "CV" },
     { href: "https://chatbot.imyousafzai.com/", label: "ChatBot" },
     { href: "https://banana.imyousafzai.com/", label: "Banana EA" },
   ];
@@ -24,7 +23,9 @@ export function Header() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           <Link href="/" className="text-2xl font-bold text-primary">
-            Immy Yousafzai
+            <h1 className="bg-gradient-to-r from-primary/60 to-primary/20 bg-clip-text text-transparent">
+              I M Yousafzai
+            </h1>
           </Link>
 
           {/* Desktop Navigation */}
@@ -43,8 +44,17 @@ export function Header() {
           {/* Theme Toggle and Mobile Menu */}
           <div className="flex items-center space-x-2">
             <ThemeToggle />
-            <Button variant="ghost" size="icon" className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            <Button
+              variant="ghost"
+              size="icon"
+              className="md:hidden"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
+              {isMenuOpen ? (
+                <X className="h-6 w-6" />
+              ) : (
+                <Menu className="h-6 w-6" />
+              )}
             </Button>
           </div>
         </div>
@@ -66,5 +76,5 @@ export function Header() {
         )}
       </div>
     </header>
-  )
+  );
 }

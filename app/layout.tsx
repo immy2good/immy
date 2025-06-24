@@ -9,9 +9,9 @@ const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: "IM Yousafzai | Portfolio",
-  description: "Full-stack web developer specializing in modern web technologies",
+  description: "Portfolio of I M Yousafzai - Entrepreneur, Product Manager, Software Engineer, Financial Trader/Investor ",
     generator: 'Next.js',
-  applicationName: 'IM Yousafzai Portfolio',
+  applicationName: 'I M Yousafzai Portfolio',
   
 }
 

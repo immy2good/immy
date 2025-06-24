@@ -13,18 +13,18 @@ export function About() {
 
           <Card>
             <CardContent className="p-8">
-              <div className="grid md:grid-cols-2 gap-8 items-start">
+              <div className="grid md:grid-cols-4 gap-12 items-start">
                 {/* Profile Image */}
-                <div>
+                <div className="profile-image-container">
                   <img
                     src="/images/immy-profile.jpg"
                     alt="Immy Yousafzai Portfolio"
-                    className="rounded-lg w-full max-w-sm mx-auto"
+                    className="rounded-lg w-full max-w-sm mx-auto profile-image"
                   />
                 </div>
 
                 {/* Introduction & Metrics */}
-                <div className="space-y-6">
+                <div className="space-y-6 md:col-span-3">
                   <p className="text-lg text-muted-foreground">
                     Hey! I'm a <strong>Founder - Product Manager</strong> and{" "}
                     <strong>Full-Stack Developer</strong> with over{" "}
@@ -41,11 +41,21 @@ export function About() {
                     father and husband. In my free time, you'll find me
                     tinkering with trading strategies, running backtests and
                     optimization in MT4 and TradingView platforms. I'm also a
-                    big Cricket fan! On the professional side, I work with
-                    React, Next.js, TypeScript, Node.js, and cloud
-                    infrastructure (AWS, Docker). As a published author on
-                    technical analysis, I've created algorithmic trading bots
-                    and educational platforms used by thousands globally.
+                    big Cricket fan! 
+                    </p>
+
+                   <p className="text-lg text-muted-foreground">
+                     On the professional side, I work with
+                     React, Next.js, TypeScript, Node.js, and cloud
+                     infrastructure (AWS, Docker). As a published author on
+                     technical analysis, I've created algorithmic trading bots
+                     and educational platforms used by thousands globally.
+                   </p>
+                                    <p className="text-lg text-muted-foreground pt-4">
+                    I'm always looking for new challenges that blend product
+                    management and software engineering. Let's connect if you
+                    need someone who can bridge the gap between business needs
+                    and technical execution.
                   </p>
 
                   <div className="flex flex-wrap gap-4 pt-4">
@@ -73,6 +83,8 @@ export function About() {
                       </a>
                     </Button>
                   </div>
+
+
 
                   {/* Key Metrics */}
                   <div className="grid grid-cols-2 gap-4 pt-6">

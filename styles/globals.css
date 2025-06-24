@@ -6,6 +6,123 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+/* Profile image styling for theme compatibility */
+.profile-image-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.5rem;
+}
+
+.profile-image {
+  filter: saturate(0.85) contrast(0.95);
+  transition: all 0.3s ease;
+}
+
+/* Light theme specific adjustments */
+:root {
+  --image-overlay: rgba(255, 255, 255, 0.15);
+}
+
+/* Dark theme specific adjustments */
+.dark .profile-image {
+  filter: saturate(0.75) contrast(0.9) brightness(0.9);
+}
+
+.dark {
+  --image-overlay: rgba(0, 0, 0, 0.2);
+}
+
+/* Overlay effect for image */
+.profile-image-container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--image-overlay);
+  pointer-events: none;
+  border-radius: 0.5rem;
+}
+
+/* Add pulsing cursor animation for the typewriter effect */
+@keyframes pulse-border {
+  0% {
+    border-color: transparent;
+  }
+  50% {
+    border-color: currentColor;
+  }
+  100% {
+    border-color: transparent;
+  }
+}
+
+.animate-pulse-border {
+  animation: pulse-border 1s infinite;
+}
+
+/* Modern gradient text animation with blues and purples */
+@keyframes rainbow-text-animate {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+.modern-gradient {
+  background: linear-gradient(to right, #407CFF, #7852E8, #4299E1, #916CFF, #38B2FF);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  background-size: 200% auto;
+  animation: rainbow-text-animate 6s linear infinite;
+}
+
+/* Glassmorphism effect */
+.glassmorphism-container {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.dark .glassmorphism-container {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* More robust rainbow text animation */
+@keyframes rainbow-text-animate {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+/* Original rainbow text animation (keeping as fallback) */
+@keyframes rainbow {
+  0% { color: rgba(255, 0, 0, 0.7); }
+  14% { color: rgba(255, 127, 0, 0.7); }
+  28% { color: rgba(255, 255, 0, 0.7); }
+  42% { color: rgba(0, 255, 0, 0.7); }
+  57% { color: rgba(0, 0, 255, 0.7); }
+  71% { color: rgba(75, 0, 130, 0.7); }
+  85% { color: rgba(148, 0, 211, 0.7); }
+  100% { color: rgba(255, 0, 0, 0.7); }
+}
+
+.text-rainbow {
+  animation: rainbow 8s linear infinite;
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
