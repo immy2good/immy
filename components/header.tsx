@@ -12,10 +12,10 @@ export function Header() {
     { href: "#about", label: "About" },
     { href: "#skills", label: "Skills" },
     { href: "#projects", label: "Projects" },
-    { href: "#contact", label: "Contact" },
     { href: "/api/download/cv", label: "CV" },
     { href: "https://chatbot.imyousafzai.com/", label: "ChatBot" },
     { href: "https://banana.imyousafzai.com/", label: "Banana EA" },
+    { href: "#contact", label: "Contact" },
   ];
 
   return (
