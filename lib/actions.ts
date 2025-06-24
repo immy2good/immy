@@ -23,24 +23,28 @@ export async function submitContactForm(prevState: any, formData: FormData) {
       success: false,
       message: "Please fill in all fields.",
     }
-  }
-
-  // Check if API key is available
-  const apiKey = process.env.RESEND_API_KEY
+  }  // Check if API key is available
+  const apiKey = process.env.RESEND_API_KEY;
+  
   if (!apiKey) {
     console.error("RESEND_API_KEY environment variable is not set")
     return {
       success: false,
       message: "Email service is not configured. Please try again later.",
     }
-  }
-
-  try {
-    const resend = new Resend(apiKey)
-
-    await resend.emails.send({
-      from: "Portfolio Contact <onboarding@resend.dev>", // Use your verified domain
-      to: ["mr.imrankhan+portfoliowebsite@gmail.com"],
+  }  try {
+    // Use the API key from environment variables
+    const resend = new Resend(apiKey);
+    
+    // Minimal logging for production
+    console.log("Sending contact form submission email", {
+      to: "mr.imrankhan@gmail.com",
+      subject: `Portfolio Contact: ${subject}`,
+      from: "Contact Form <onboarding@resend.dev>"
+    });
+      const response = await resend.emails.send({
+      from: "Contact Form <onboarding@resend.dev>", // Using Resend's verified sender
+      to: ["mr.imrankhan@gmail.com"],
       subject: `Portfolio Contact: ${subject}`,
       html: `
         <h2>New Contact Form Submission</h2>
@@ -51,17 +55,19 @@ export async function submitContactForm(prevState: any, formData: FormData) {
         <p>${message.replace(/\n/g, "<br>")}</p>
       `,
       replyTo: email,
-    })
+    })    // Log minimal info for security
+    console.log("Email sent successfully:", response);
 
     return {
       success: true,
       message: "Thank you for your message! I'll get back to you soon.",
-    }
-  } catch (error) {
+    }  } catch (error) {
     console.error("Failed to send email:", error)
+    // Add more detailed error information
+    const errorMessage = error instanceof Error ? error.message : String(error);
     return {
       success: false,
-      message: "Failed to send message. Please try again later.",
+      message: `Message not sent: ${errorMessage}. Please try again or contact me directly at mr.imrankhan+portfoliowebsite@gmail.com`,
     }
   }
 }
