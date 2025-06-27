@@ -10,16 +10,43 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 export function Projects() {
   const projects = [
     {
-      title: "iTradeAIMS",
-      type: "Digital course & membership product",
+      title: "iTradeAIMS FinTech Education Platform",
+      type: "Digital courses & membership product",
       target: "Beginner–intermediate traders",
-      problem: "Structured roadmap to profitable trading through community, live coaching, and self-paced content",
+      problem:
+        "Structured roadmap to profitable trading through community, live coaching, and self-paced content",
       description:
-        "A comprehensive FinTech education platform featuring advanced technical analysis tools, live Discord community, algorithmic trading signals, and Elliott Wave analysis.",
+        "A comprehensive FinTech education platform featuring advanced technical analysis tools, live Discord community, and self-paced content",
       image: "/images/itradeaims-screenshot.jpg",
-      technologies: ["React", "Node.js", "FinTech APIs", "Technical Analysis", "Real-time Data", "Elliott Wave"],
+      technologies: [
+        "WordPress",
+        "MemberPress",
+        "RESTful APIs",
+        "Discord API",
+        "WebSockets",
+        "Stripe Integration",
+      ],
       liveUrl: "https://itradeaims.net/",
-      liveLabel: "Visit iTradeAIMS"
+      liveLabel: "Visit iTradeAIMS",
+    },
+    {
+      title: "Printing Company Website",
+      type: "E-commerce Website",
+      target: "Small to medium-sized businesses",
+      problem: "Need for an online presence and e-commerce capabilities",
+      description:
+        "A fully functional e-commerce website built on WooCommerce, featuring product listings, shopping cart functionality, and secure payment processing.",
+      image: "/images/brumprint-screenshot.webp",
+      technologies: [
+        "WordPress",
+        "WooCommerce",
+        "Bricks Builder",
+        "PHP",
+        "Stripe Integration",
+        "E-commerce",
+      ],
+      liveUrl: "https://brumprint.com",
+      liveLabel: "Visit BrumPrint",
     },
     {
       title: "The Banana EA",
@@ -29,21 +56,56 @@ export function Projects() {
       description:
         "A fully automated trading system with plug & profit simplicity, tested strategy, 24/5 automation, and smart risk management.",
       image: "/images/banana-ea-project-screenshot.webp",
-      technologies: ["MQL4", "MQL5", "MetaTrader", "Algorithmic Trading", "Risk Management", "Forex"],
+      technologies: [
+        "C++",
+        "Python",
+        "MQL4",
+        "MQL5",
+        "MetaTrader",
+        "Algorithmic Trading",
+      ],
       liveUrl: "https://banana.imyousafzai.com/",
-      liveLabel: "Try Banana EA"
+      liveLabel: "Try Banana EA",
+    },
+    {
+      title: "Bewdley Farm Shop",
+      type: "E-commerce website",
+      target: "Local grocery customers",
+      problem:
+        "Local farm produce delivery with custom shop and order handling",
+      description:
+        "WooCommerce solution with delivery system, payment gateway, and beautiful product layouts.",
+      image: "/images/bewdley-farmshop-screenshot.png",
+      technologies: [
+        "WordPress",
+        "WooCommerce",
+        "Bricks Builder",
+        "PHP",
+        "Stripe Integration",
+      ],
+      liveUrl: "https://bewdleyfarmshop.co.uk/",
+      liveLabel: "Visit Shop",
     },
     {
       title: "TradingView Pine Script Indicators",
       type: "Technical Analysis Toolkit",
       target: "Retail traders",
-      problem: "Visual tools for trend detection, pattern recognition, and automated alerts",
+      problem:
+        "Visual tools for trend detection, pattern recognition, and automated alerts",
       description:
         "Collection of advanced Pine Script indicators and technical tools with 1.2K+ followers on TradingView.",
       image: "/images/tradingview-profile-screenshot.png",
-      technologies: ["Pine Script", "Technical Analysis", "Elliott Wave", "TradingView", "Algorithmic Trading"],
+      technologies: [
+        "Pine Script",
+        "Python",
+        "API Integration",
+        "WebSockets",
+        "WebHooks",
+        "TradingView",
+        "PineConnector",
+      ],
       liveUrl: "https://www.tradingview.com/u/iTradeAIMS/",
-      liveLabel: "View Profile"
+      liveLabel: "View Profile",
     },
     {
       title: "Financial Education Book (Amazon)",
@@ -53,34 +115,37 @@ export function Projects() {
       description:
         "Published book with practical tools for Elliott Wave recognition. Linked to automated Pine Script indicators.",
       image: "/images/elliott-wave-book-amazon.png",
-      technologies: ["Pine Script", "Elliott Wave Theory", "Pattern Recognition", "Fibonacci Analysis", "TradingView"],
-      liveUrl: "https://www.amazon.co.uk/10-Seconds-Elliott-Wave-within-ebook/dp/B0C4FZZNX6",
-      liveLabel: "Buy on Amazon"
+      technologies: [
+        "Pine Script",
+        "Elliott Wave Theory",
+        "Pattern Recognition",
+        "Fibonacci Analysis",
+        "TradingView",
+      ],
+      liveUrl:
+        "https://www.amazon.co.uk/10-Seconds-Elliott-Wave-within-ebook/dp/B0C4FZZNX6",
+      liveLabel: "Buy on Amazon",
     },
-    {
-      title: "MetaTrader Automation Bots",
-      type: "MQL4/5 Expert Advisors",
-      target: "Algorithmic traders",
-      problem: "Hands-free trading with predefined logic and visual overlays",
-      description:
-        "Advanced trading robots for MetaTrader with custom SL/TP and indicator filters.",
-      image: "/images/metatrader-banana-ea.png",
-      technologies: ["MQL4", "MQL5", "MetaTrader", "Algorithmic Trading", "Risk Management", "Forex"],
-      liveUrl: "https://itradeaims.net/",
-      liveLabel: "Learn More"
-    },
-    {
-      title: "Bewdley Farm Shop",
-      type: "E-commerce website",
-      target: "Local grocery customers",
-      problem: "Local farm produce delivery with custom shop and order handling",
-      description:
-        "WooCommerce solution with delivery system, payment gateway, and beautiful product layouts.",
-      image: "/images/bewdley-farmshop-screenshot.png",
-      technologies: ["WordPress", "WooCommerce", "Bricks Builder", "PHP", "Stripe Integration"],
-      liveUrl: "https://bewdleyfarmshop.co.uk/",
-      liveLabel: "Visit Shop"
-    },
+    // {
+    //   title: "MetaTrader Automation Bots",
+    //   type: "MQL4/5 Expert Advisors",
+    //   target: "Algorithmic traders",
+    //   problem: "Hands-free trading with predefined logic and visual overlays",
+    //   description:
+    //     "Advanced trading robots for MetaTrader with custom SL/TP and indicator filters.",
+    //   image: "/images/metatrader-banana-ea.png",
+    //   technologies: [
+    //     "MQL4",
+    //     "MQL5",
+    //     "MetaTrader",
+    //     "Algorithmic Trading",
+    //     "Risk Management",
+    //     "Forex",
+    //   ],
+    //   liveUrl: "https://itradeaims.net/",
+    //   liveLabel: "Learn More",
+    // },
+    
     {
       title: "Splashbacks Birmingham",
       type: "Business website",
@@ -89,11 +154,17 @@ export function Projects() {
       description:
         "Professional brochure website for top-rated splashback company in West Midlands.",
       image: "/images/splashbacks-screenshot.png",
-      technologies: ["WordPress", "Custom PHP", "Local SEO", "Contact Forms", "Gallery System"],
+      technologies: [
+        "WordPress",
+        "Custom PHP",
+        "Local SEO",
+        "Contact Forms",
+        "Gallery System",
+      ],
       liveUrl: "https://splashbacks.co/",
-      liveLabel: "Visit Website"
+      liveLabel: "Visit Website",
     },
-  ]
+  ];
   const [currentIndex, setCurrentIndex] = useState(0);
   const [itemsPerSlide, setItemsPerSlide] = useState(3);
   const trackRef = useRef(null);
