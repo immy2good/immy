@@ -4,7 +4,7 @@ import path from 'path';
 
 export async function GET(request: NextRequest) {
   // Get the actual file path
-  const filePath = path.join(process.cwd(), 'public', 'cv', 'Yousafzai_PM_SE_CV_21_June_2025-V3.pdf');
+  const filePath = path.join(process.cwd(), 'public', 'cv', 'cv.pdf');
   
   try {
     // Check if file exists
