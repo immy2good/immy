@@ -4,16 +4,16 @@ import { Badge } from "@/components/ui/badge"
 export function Skills() {
   const skillCategories = [
     {
-      title: "FinTech & Frontend",
-      skills: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Pine Script", "Technical Analysis", "Elliott Wave"],
+      title: "Frontend",
+      skills: [ "React", "Next.js", "Tailwind CSS", "HTML5", "CSS3", "JavaScript", "TypeScript", "Redux", "GraphQL"],
     },
     {
-      title: "Backend & Trading",
-      skills: ["Node.js", "Python", "MQL4", "MQL5", "PostgreSQL", "Financial APIs", "Algorithmic Trading"],
+      title: "Backend",
+      skills: [ "Node.js", "Express", "GraphQL", "REST APIs", "PostgreSQL", "MongoDB", "Redis", "WebSockets"],
     },
     {
-      title: "Tools & Platforms",
-      skills: ["TradingView", "MetaTrader", "AWS", "Docker", "Git", "FinTech Solutions", "Market Data APIs"],
+      title: "Languages & DevOps",
+      skills: [ "JavaScript", "TypeScript", "Python", "Docker", "AWS", "Git", "CI/CD", "Agile Methodologies", "MQL4", "MQL5", "TradingView Pine Script", "Technical Analysis"],
     },
   ]
 
@@ -22,7 +22,7 @@ export function Skills() {
       <div className="container mx-auto">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12">
-            FinTech Skills & Technical Analysis Expertise
+            Software Engineering Skills & Technical Proficiencies
           </h2>
 
           <div className="grid md:grid-cols-3 gap-8">

@@ -12,7 +12,7 @@ export function Projects() {
     {
       title: "iTradeAIMS FinTech Education Platform",
       type: "Digital courses & membership product",
-      target: "Beginner–intermediate traders",
+      target: "Beginner–Intermediate Traders",
       problem:
         "Structured roadmap to profitable trading through community, live coaching, and self-paced content",
       description:
@@ -254,7 +254,7 @@ export function Projects() {
   return (
     <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/50">
       <div className="container mx-auto">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-8xl mx-auto">
           <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12">
             Featured FinTech & Web Projects
           </h2>          <div className="relative overflow-hidden">
