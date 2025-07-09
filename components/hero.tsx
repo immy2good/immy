@@ -1,8 +1,10 @@
 "use client"
-import { useState, useEffect, use } from "react";
+
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Github, Linkedin, Mail } from "lucide-react";
 import { Download } from "lucide-react";
+import { ResumeDownload } from "./ResumeDownload";
 
 function TypewriterEffect() {
   const titles = [
@@ -76,27 +78,27 @@ function TypewriterEffect() {
 export function Hero() {
   return (
     <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
-      <div className="container mx-auto text-center">
-        <div className="max-w-4xl mx-auto">
+      <div className="container max-w-6xl mx-auto text-center">
+        <div className="max-w-6xl mx-auto">
           {" "}
-          <h1 className="text-4xl sm:text-6xl font-bold text-foreground mb-6">
+          <h1 className="text-6xl sm:text-6xl font-bold text-foreground mb-6">
             Hey! <span className="text-primary">I M Yousafzai</span>
           </h1>          <div className="h-10 sm:h-12">
-            <div className="glassmorphism-container text-xl sm:text-2xl text-primary font-medium mb-8 inline-block px-4 py-2">
+            <div className="glassmorphism-container text-xl sm:text-3xl text-primary font-medium mb-8 inline-block px-4 py-2">
               <TypewriterEffect />
             </div>
           </div>
-          <p className="text-lg text-muted-foreground mb-12 max-w-2xl mx-auto">
+          <p className="text-lg text-muted-foreground mb-12 max-w-3xl mx-auto">
             Product‐minded technologist with 13+ years in fintech and web
             development, proven at leading cross-functional teams and delivering
             scalable, secure, user-centric applications (e-commerce, SaaS,
             full-stack).
           </p>
-          <p className="text-lg pt-4 sm: text-muted-foreground mb-8 max-w-2xl mx-auto">
+          {/* <p className="text-lg pt-4 sm: text-muted-foreground mb-8 max-w-3xl mx-auto">
             {" "}
             Seeking a role that blends software engineering and product
             leadership to tackle user-first challenges at scale.
-          </p>
+          </p> */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
             <Button size="lg" asChild>
               <a href="#projects">View My Work</a>
@@ -104,17 +106,12 @@ export function Hero() {
             <Button variant="outline" size="lg" asChild>
               <a href="#contact">Get In Touch</a>
             </Button>
-            <Button variant="secondary" size="lg" asChild>
-              <a
-                href="api/download/cv" // Ensure this path is correct for your Next.js API route to handle CV
-                download
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2"
-              >
-                <Download className="h-5 w-5" /> Download CV
-              </a>
-            </Button>
+            <ResumeDownload 
+              variant="secondary" 
+              size="lg" 
+              showDropdown={true}
+              label="Download Resume"
+            />
           </div>
           <div className="flex justify-center space-x-6">
             <Button variant="ghost" size="icon" asChild>

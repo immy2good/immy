@@ -1,18 +1,28 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Link from "next/link"
 import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { ThemeToggle } from "@/components/theme-toggle"
+import { ResumeDownload } from "@/components/ResumeDownload"
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [resumeText, setResumeText] = useState("CV")
+  
+  // Flip between CV and Resume every 3 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setResumeText(prev => prev === "CV" ? "Resume" : "CV")
+    }, 3000)
+    return () => clearInterval(interval)
+  }, [])
+  
   const navItems = [
     { href: "#about", label: "About" },
     { href: "#skills", label: "Skills" },
     { href: "#projects", label: "Projects" },
-    { href: "/api/download/cv", label: "CV" },
     { href: "https://chatbot.imyousafzai.com/", label: "ChatBot" },
     { href: "https://banana.imyousafzai.com/", label: "Banana EA" },
     { href: "#contact", label: "Contact" },
@@ -29,7 +39,7 @@ export function Header() {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-8">
+          <nav className="hidden md:flex items-center space-x-6">
             {navItems.map((item) => (
               <Link
                 key={item.href}
@@ -39,6 +49,17 @@ export function Header() {
                 {item.label}
               </Link>
             ))}
+            {/* Resume Download with flipping text */}
+            <div className="ml-2">
+              <ResumeDownload 
+                variant="ghost" 
+                size="sm" 
+                showDropdown={true}
+                label={resumeText}
+                className="text-muted-foreground hover:text-primary transition-colors font-normal text-sm px-0 min-w-[80px] justify-center"
+                showIcon={false}
+              />
+            </div>
           </nav>
 
           {/* Theme Toggle and Mobile Menu */}
@@ -61,7 +82,7 @@ export function Header() {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <nav className="md:hidden py-4 border-t">
+          <nav className="md:hidden py-4 border-t space-y-2">
             {navItems.map((item) => (
               <Link
                 key={item.href}
@@ -72,6 +93,17 @@ export function Header() {
                 {item.label}
               </Link>
             ))}
+            {/* Mobile Resume Download */}
+            <div className="py-2">
+              <ResumeDownload 
+                variant="ghost" 
+                size="sm" 
+                showDropdown={true}
+                label={resumeText}
+                className="text-muted-foreground hover:text-primary transition-colors font-normal text-sm justify-start px-0 min-w-[80px]"
+                showIcon={false}
+              />
+            </div>
           </nav>
         )}
       </div>
