@@ -2,78 +2,11 @@
 
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Github, Linkedin, Mail } from "lucide-react";
+import { GithubIcon, LinkedinIcon, Mail } from "lucide-react";
 import { Download } from "lucide-react";
 import { ResumeDownload } from "./ResumeDownload";
+import TypewriterEffect from "./TypewriterEffect";
 
-function TypewriterEffect() {
-  const titles = [
-    "Entrepreneur",
-    "Founder",
-    "Product Manager", 
-    "Software Engineer",
-    "Financial Trader",
-    "Investor"
-  ];
-  
-  const [currentTitleIndex, setCurrentTitleIndex] = useState(0);
-  const [currentText, setCurrentText] = useState("");
-  const [phase, setPhase] = useState("typing"); // typing, pausing, or deleting
-  
-  useEffect(() => {
-    const currentTitle = titles[currentTitleIndex];
-    
-    if (phase === "typing") {
-      if (currentText.length < currentTitle.length) {
-        // Still typing the current title
-        const timeout = setTimeout(() => {
-          setCurrentText(currentTitle.slice(0, currentText.length + 1));
-        }, 50);
-        return () => clearTimeout(timeout);
-      } else {
-        // Finished typing, now pause
-        const timeout = setTimeout(() => {
-          setPhase("pausing");
-        }, 500);
-        return () => clearTimeout(timeout);
-      }
-    } else if (phase === "pausing") {
-      // After pausing, start deleting
-      const timeout = setTimeout(() => {
-        setPhase("deleting");
-      }, 500);
-      return () => clearTimeout(timeout);
-    } else if (phase === "deleting") {
-      if (currentText.length > 0) {
-        // Still deleting
-        const timeout = setTimeout(() => {
-          setCurrentText(currentText.slice(0, -1));
-        }, 25);
-        return () => clearTimeout(timeout);
-      } else {
-        // Move to next title
-        setCurrentTitleIndex((currentTitleIndex + 1) % titles.length);
-        setPhase("typing");
-      }
-    }
-  }, [currentText, currentTitleIndex, phase, titles]);  return (
-    <span className="border-r-2 border-primary pr-1 animate-pulse-border">
-      <span className="modern-gradient font-bold" style={{
-        background: "linear-gradient(to right, rgba(64,124,255,0.85), rgba(120,82,232,0.85), rgba(66,153,225,0.85), rgba(145,108,255,0.85), rgba(56,178,255,0.85))",
-        WebkitBackgroundClip: "text",
-        backgroundClip: "text",
-        color: "transparent",
-        backgroundSize: "200% auto",
-        animation: "rainbow-text-animate 6s linear infinite",
-        textShadow: "0 0 10px rgba(128,128,255,0.15)",
-        padding: "2px 4px",
-        borderRadius: "4px",
-      }}>
-        {currentText}
-      </span>
-    </span>
-  );
-}
 
 export function Hero() {
   return (
@@ -83,7 +16,8 @@ export function Hero() {
           {" "}
           <h1 className="text-6xl sm:text-6xl font-bold text-foreground mb-6">
             Hey! <span className="text-primary">I M Yousafzai</span>
-          </h1>          <div className="h-10 sm:h-12">
+          </h1>{" "}
+          <div className="h-10 sm:h-12">
             <div className="glassmorphism-container text-xl sm:text-3xl text-primary font-medium mb-8 inline-block px-4 py-2">
               <TypewriterEffect />
             </div>
@@ -106,9 +40,9 @@ export function Hero() {
             <Button variant="outline" size="lg" asChild>
               <a href="#contact">Get In Touch</a>
             </Button>
-            <ResumeDownload 
-              variant="secondary" 
-              size="lg" 
+            <ResumeDownload
+              variant="secondary"
+              size="lg"
               showDropdown={true}
               label="Download Resume"
             />
@@ -120,7 +54,7 @@ export function Hero() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Github className="h-6 w-6" />
+                <GithubIcon className="h-6 w-6" />
                 <span className="sr-only">GitHub</span>
               </a>
             </Button>
@@ -130,7 +64,7 @@ export function Hero() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Linkedin className="h-6 w-6" />
+                <LinkedinIcon className="h-6 w-6" />
                 <span className="sr-only">LinkedIn</span>
               </a>
             </Button>
@@ -147,6 +81,8 @@ export function Hero() {
           </div>
         </div>
       </div>
+
+
     </section>
   );
 }

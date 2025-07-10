@@ -5,9 +5,17 @@ const nextConfig = {
   },
   typescript: {
     ignoreBuildErrors: true,
-  },  images: {
+  },
+  images: {
     unoptimized: true,
   },
-}
+  // Disable tracing to avoid permission errors
+  outputFileTracingExcludes: {
+    "*": ["**/*"],
+  },
+  experimental: {
+    disableOptimizedLoading: true,
+  },
+};
 
-export default nextConfig
+export default nextConfig;

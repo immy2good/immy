@@ -5,6 +5,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "dev:safe": "cross-env NEXT_TELEMETRY_DISABLED=1 next dev --no-open",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"

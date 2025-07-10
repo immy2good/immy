@@ -51,9 +51,9 @@ export function Header() {
             ))}
             {/* Resume Download with flipping text */}
             <div className="ml-2">
-              <ResumeDownload 
-                variant="ghost" 
-                size="sm" 
+              <ResumeDownload
+                variant="ghost"
+                size="sm"
                 showDropdown={true}
                 label={resumeText}
                 className="text-muted-foreground hover:text-primary transition-colors font-normal text-sm px-0 min-w-[80px] justify-center"
@@ -95,9 +95,9 @@ export function Header() {
             ))}
             {/* Mobile Resume Download */}
             <div className="py-2">
-              <ResumeDownload 
-                variant="ghost" 
-                size="sm" 
+              <ResumeDownload
+                variant="ghost"
+                size="sm"
                 showDropdown={true}
                 label={resumeText}
                 className="text-muted-foreground hover:text-primary transition-colors font-normal text-sm justify-start px-0 min-w-[80px]"
