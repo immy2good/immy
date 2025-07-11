@@ -5,8 +5,8 @@ function TypewriterEffect() {
   const titles = [
     "Software Engineer | Full Stack Developer",
     "MBA Marketing | BSc Computer Science", 
-    "Quantitative Analyst | Financial Engineer",
-    "Entrepreneur | Founder | Investor",
+    "Quant Trader | FinTech Engineer",
+    "Entrepreneur | Founder",
     "Author | Blogger | Youtuber",
   ];
   
@@ -51,11 +51,13 @@ function TypewriterEffect() {
       }
     }
   }, [currentText, currentTitleIndex, phase, titles]);  return (
-    <span className="border-r-2 border-primary pr-1 animate-pulse-border">
-      <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-400 to-slate-200">
-        {currentText}
+    <div className="flex items-center justify-center h-12 sm:h-16 " >
+      <span className="border-r-2 border-primary pr-1 animate-pulse-border">
+        <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-400 to-slate-400">
+          {currentText}
+        </span>
       </span>
-    </span>
+    </div>
 
   );
 }

@@ -1,5 +1,4 @@
-import { Github, Linkedin, Mail } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { SocialLinks } from "@/components/common/SocialLinks";
 
 export function Footer() {
   return (
@@ -12,25 +11,8 @@ export function Footer() {
               <p className="text-muted-foreground">FinTech and Web Developer</p>
             </div>
 
-            <div className="flex space-x-4">
-              <Button variant="ghost" size="icon" asChild>
-                <a href="https://github.com/immy2good" target="_blank" rel="noopener noreferrer">
-                  <Github className="h-5 w-5" />
-                  <span className="sr-only">GitHub</span>
-                </a>
-              </Button>
-              <Button variant="ghost" size="icon" asChild>
-                <a href="https://www.linkedin.com/in/immy-yousafzai/" target="_blank" rel="noopener noreferrer">
-                  <Linkedin className="h-5 w-5" />
-                  <span className="sr-only">LinkedIn</span>
-                </a>
-              </Button>
-              <Button variant="ghost" size="icon" asChild>
-                <a href="mailto:imran@brumbyte.com">
-                  <Mail className="h-5 w-5" />
-                  <span className="sr-only">Email</span>
-                </a>
-              </Button>
+            <div>
+              <SocialLinks spacing="tight" size="sm" />
             </div>
           </div>
 
@@ -40,5 +22,5 @@ export function Footer() {
         </div>
       </div>
     </footer>
-  )
+  );
 }

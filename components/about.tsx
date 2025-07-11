@@ -25,60 +25,42 @@ export function About() {
 
                 {/* Introduction & Metrics */}
                 <div className="space-y-6 md:col-span-3">
-                  <p className="text-lg text-muted-foreground">
-                    Hey! I'm a Founder of{" "}
-                    <a
-                      href="https://itradeaims.net/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      iTradeAIMS Ltd
-                    </a>{" "}
-                    and{" "}
-                    <a
-                      href="https://brumbyte.com/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      BrumByte Ltd
-                    </a>
-                    . It all started back in 2011 when I decided to quit my job
-                    for building something that delivers value. Being a founder
-                    forced me to wear multiple hats. <br />
-                    <br />
-                    Now, I'm a <strong>Full-Stack Developer</strong> and{" "}
-                    <strong>Product Manager</strong> with a passion for building
-                    innovative solutions that solve real-world problems.
-                    <br />
-                    <br />
-                    <strong>13 years</strong> experience of driving product
-                    strategy and building cool stuff for FinTech, e‑commerce,
-                    and SaaS companies. I love connecting technical and business
-                    teams to create products that users actually want to use -
-                    ones that boost engagement, revenue, and make operations
-                    smoother.
-                  </p>
+<p className="text-lg text-muted-foreground">
+  Hey! I'm the founder of{" "}
+  <a
+    href="https://itradeaims.net/"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    iTradeAIMS Ltd
+  </a>{" "}
+  and{" "}
+  <a
+    href="https://brumbyte.com/"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    BrumByte Ltd
+  </a>
+  . My journey in tech began back in 2011 when I left my job to build solutions that deliver real value. Since then, I’ve evolved into a{" "}
+  <strong>full-stack software engineer</strong> with a deep interest in automation, financial systems, and user-focused development.
+  <br />
+  <br />
+  With over <strong>13 years</strong> of hands-on experience, I’ve designed and built web applications, algorithmic trading platforms, and digital tools for FinTech and e-commerce. I enjoy solving real-world problems with code—whether it’s enhancing UX, automating workflows, or integrating data-rich APIs.
+</p>
 
-                  <p className="text-lg text-muted-foreground">
-                    On the professional side, I work with React, Next.js,
-                    TypeScript, Node.js, and cloud infrastructure (AWS, Docker).
-                    As a published author on technical analysis, I've created
-                    algorithmic trading bots and educational platforms used by
-                    thousands globally.
-                  </p>
-                  <p className="text-lg text-muted-foreground">
-                    When I'm not coding or leading Agile teams, I'm a proud
-                    father and husband. In my free time, you'll find me
-                    tinkering with trading strategies, running backtests and
-                    optimization in MT4 and TradingView platforms.
-                  </p>
+<p className="text-lg text-muted-foreground">
+  I specialize in modern tech stacks like React, Next.js, TypeScript, Node.js, and Python, along with AWS and Docker for cloud and deployment. I’ve also published technical analysis tools and trading bots used by thousands globally across MT4, MQL4/5, and TradingView.
+</p>
 
-                  <p className="text-lg text-muted-foreground pt-4">
-                    I'm always looking for new challenges that blend product
-                    management and software engineering. Let's connect if you
-                    need someone who can bridge the gap between business needs
-                    and technical execution.
-                  </p>
+<p className="text-lg text-muted-foreground">
+  Outside of coding, I'm a proud father and husband. I enjoy backtesting trading strategies, building smart indicators, and continually exploring how software can make data and decisions more accessible.
+</p>
+
+<p className="text-lg text-muted-foreground pt-4">
+  I’m currently open to software engineering and web development opportunities—especially roles where I can contribute immediately while continuing to grow. If you’re looking for a developer who combines business insight with hands-on coding experience, let’s connect.
+</p>
+
 
                   <div className="flex flex-wrap gap-4 pt-4">
                     <Button variant="outline" size="sm" asChild>
