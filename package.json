@@ -3,6 +3,7 @@
   "description": "A portfolio website showcasing Immy's work and skills, built with Next.js and Radix UI.",
   "version": "0.1.0",
   "private": true,
+  "packageManager": "pnpm@10.15.1",
   "scripts": {
     "dev": "next dev",
     "dev:safe": "cross-env NEXT_TELEMETRY_DISABLED=1 next dev --no-open",
@@ -64,6 +65,11 @@
   },
   "overrides": {
     "react-day-picker>date-fns": "^3.0.0"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "sharp"
+    ]
   },
   "devDependencies": {
     "@types/node": "^22",
