@@ -274,69 +274,84 @@ export const generateResumePDF = (data: ResumeData): void => {
 // Default resume data based on your profile
 export const defaultResumeData: ResumeData = {
   personalInfo: {
-    name: "I M Yousafzai",
-    title: "Product Manager & Full-Stack Developer",
+    name: "I M Yousafzai (Immy)",
+    title: "AI Product & Automation Engineer | Agentic Systems | FinTech Founder",
     email: "mr.imrankhan@gmail.com",
-    phone: "+44 121 400 2972",
-    location: "Birmingham, England, UK",
+    phone: "+44 74623 99990",
+    location: "Birmingham, UK | Remote",
     linkedin: "linkedin.com/in/immy-yousafzai",
     github: "github.com/immy2good"
   },
-  summary: "Product-minded technologist with 13+ years in fintech and web development, proven at leading cross-functional teams and delivering scalable, secure, user-centric applications (e-commerce, SaaS, full-stack). Seeking a role that blends software engineering and product leadership to tackle user-first challenges at scale.",
+  summary: "AI product and automation engineer, FinTech founder and business operator with 15+ years building and commercialising digital products. Founder of iTradeAIMS, sold in 2022 and reacquired in 2023, then rebuilt into a highly automated multi-product platform. I design agentic workflows, MCP tooling, reusable skills/plugins, CI/CD guardrails, API integrations, licensing, customer operations and applied financial-ML systems.",
   experience: [
     {
-      title: "Founder & Product Manager",
+      title: "Founder / AI Product & Automation Engineer",
       company: "iTradeAIMS",
-      duration: "2020 - Present",
+      duration: "2010-2022; 2023-Present",
       description: [
-        "Built and launched comprehensive FinTech education platform serving 100K+ users globally",
-        "Developed algorithmic trading systems and educational content for technical analysis",
-        "Led product strategy, roadmap planning, and cross-functional team coordination",
-        "Integrated Discord API and real-time data feeds for community-driven learning"
+        "Built iTradeAIMS from an organic trading community into a commercial FinTech product business spanning education, indicators, automated trading software, memberships, payments and customer infrastructure.",
+        "Sold the business via Flippa for $20,000 in November 2022, reacquired it in 2023, and led the subsequent platform and automation rebuild.",
+        "Automated customer fulfilment from Stripe purchase through entitlement, DLMS licence generation, member portal delivery, Amazon SES email and private TradingView access where applicable.",
+        "Created AIMStack, a multi-harness agent engineering environment with reusable skills, spec-driven workflows, TDD, code review, CI gates and repository-specific guardrails.",
+        "Directed applied financial-ML work across Edge Hunt, Train Model and AIMS Quant, including point-in-time features, leakage controls, PyTorch models, ONNX export and MetaTrader 5 integration."
       ]
     },
     {
-      title: "Full-Stack Developer & Consultant",
-      company: "Various Clients",
-      duration: "2010 - Present",
+      title: "Product Originator / FinTech Domain Expert",
+      company: "ChartBridge",
+      duration: "2025-Present",
       description: [
-        "Delivered 20+ responsive web applications using React, Next.js, and WordPress",
-        "Built e-commerce solutions with WooCommerce, Stripe integration, and custom features",
-        "Developed MQL4/5 Expert Advisors and automated trading systems",
-        "Implemented RESTful APIs, microservices architecture, and cloud deployments"
+        "Originated the product concept for connecting TradingView strategy signals with MT4/MT5 execution and define domain workflows and product requirements while the engineering team owns implementation."
+      ]
+    },
+    {
+      title: "Business Owner & Operator",
+      company: "Industrial & Commercial Assets",
+      duration: "1998-Present",
+      description: [
+        "Earlier operated a marble-processing business supplying downstream tile manufacturers, including quarry leasing, contracted extraction, production and B2B sales.",
+        "Own one flour mill outright and a 25% share of a second family mill; co-own an expanding cold-storage business and personally own 12 warehouses."
       ]
     }
   ],
   skills: [
-    "React", "Next.js", "TypeScript", "Node.js", "Python", "PHP", "WordPress", "WooCommerce",
-    "MQL4/5", "Pine Script", "PostgreSQL", "MongoDB", "AWS", "Docker", "Stripe Integration",
-    "Technical Analysis", "Algorithmic Trading", "Product Management", "Agile/Scrum"
+    "Multi-Agent Orchestration", "Codex", "Claude Code", "Gemini", "MCP", "Agent Skills & Plugins",
+    "Spec-Driven Development", "TDD", "Business Process Automation", "REST APIs", "Webhooks", "Stripe",
+    "Python", "TypeScript", "JavaScript", "React", "Next.js", "Laravel", "PHP", "Docker", "GitHub Actions",
+    "PyTorch", "ONNX", "Financial Time-Series Validation", "MQL4/5", "Pine Script", "MetaTrader", "TradingView"
   ],
   projects: [
     {
-      name: "iTradeAIMS FinTech Platform",
-      description: "Comprehensive education platform with membership system, Discord integration, and real-time trading signals",
-      technologies: ["WordPress", "MemberPress", "Discord API", "WebSockets", "Stripe"],
-      url: "https://itradeaims.net"
+      name: "DLMS - Digital Licence Management System",
+      description: "Laravel/API-driven licensing platform built to protect commercial MQL software and automate licence generation, entitlement and delivery after purchase.",
+      technologies: ["Laravel", "REST APIs", "Authentication", "Stripe", "CI/CD", "MQL4/5"]
     },
     {
-      name: "The Banana EA",
-      description: "Automated forex trading system with advanced risk management and 24/5 execution",
-      technologies: ["MQL4", "MQL5", "MetaTrader", "C++", "Python"],
-      url: "https://banana.imyousafzai.com"
+      name: "AIMStack - Agent Engineering Platform",
+      description: "Private skills/plugin stack and operating method for AI coding agents with session bootstraps, domain skills, TDD, debugging, review and delivery controls.",
+      technologies: ["Codex", "Claude Code", "Cursor", "Antigravity", "MCP", "Agent Skills", "CI Gates"]
     },
     {
-      name: "TradingView Indicators",
-      description: "Collection of technical analysis tools with 1.2K+ followers on TradingView platform",
-      technologies: ["Pine Script", "API Integration", "WebHooks", "TradingView"],
-      url: "https://www.tradingview.com/u/iTradeAIMS"
+      name: "Quant Research & Model Deployment Platform",
+      description: "Connected research-to-production workflow across Edge Hunt, Train Model and AIMS Quant for statistical evidence, financial-ML training/validation and ONNX deployment into MT5.",
+      technologies: ["Python", "PyTorch", "ONNX", "HMM", "Meta-labeling", "Time-Series CV", "MQL5", "React/TypeScript"]
     }
   ],
   education: [
     {
-      degree: "Self-taught Developer & Entrepreneur",
-      institution: "Continuous Learning & Industry Experience",
-      year: "2010 - Present"
+      degree: "BSc Computer Science (in progress)",
+      institution: "University of London (Online)",
+      year: "2024-Expected Oct 2028"
+    },
+    {
+      degree: "Master of Business Administration (MBA), Marketing",
+      institution: "Institute of Management Studies",
+      year: "2000-2002"
+    },
+    {
+      degree: "Bachelor of Business Administration",
+      institution: "Preston University, USA",
+      year: "1998-2000"
     }
   ]
 };
