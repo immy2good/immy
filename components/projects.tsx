@@ -61,178 +61,101 @@ const AccessibleImage = ({
 export function Projects() {
   const projects = [
     {
-      title: "Online Trading Academy",
-      type: "Membership Platform, community, and education",
-      target: "Beginner–Intermediate Traders",
-      problem:
-        "Structured roadmap to profitable trading through community, live coaching, and self-paced content",
+      title: "iTradeAIMS Revival & Automation",
+      type: "AI-enabled commercial platform",
+      target: "Digital product businesses",
+      problem: "Rebuild a reacquired FinTech business and remove routine operational work",
       description:
-        "A comprehensive FinTech education platform featuring advanced technical analysis tools, live Discord community, and self-paced content",
+        "Rebuilt iTradeAIMS into an API-driven commercial platform with automated payments, entitlements, licensing, customer access, email and TradingView fulfilment.",
       imageAlt:
-        "Screenshot of the iTradeAIMS platform showing trading education dashboard with technical analysis tools",
+        "Screenshot of the iTradeAIMS platform representing the automated commercial product ecosystem",
       image: "/images/itradeaims-screenshot.jpg",
       technologies: [
-        "WordPress",
-        "MemberPress",
-        "RESTful APIs",
-        "Discord API",
-        "WebSockets",
-        "Webhooks",
-        "PhpBB3",
-        "Stripe Integration",
+        "Stripe", "REST APIs", "WordPress", "PMPro", "Amazon SES", "CI/CD",
+        "Automation", "TradingView", "MetaTrader"
       ],
       liveUrl: "https://itradeaims.net/",
       liveLabel: "Visit iTradeAIMS",
     },
     {
-      title: "Printing Company Website",
-      type: "E-commerce Website",
-      target: "Small to medium-sized businesses",
-      problem: "Need for an online presence and e-commerce capabilities",
+      title: "DLMS — Digital Licence Management",
+      type: "Licensing & entitlement platform",
+      target: "Commercial software products",
+      problem: "Protect MQL software while eliminating manual licence fulfilment",
       description:
-        "A fully functional e-commerce website built on WooCommerce, Bricks Builder, and custom PHP code, featuring product listings, shopping cart functionality, and secure payment processing.",
-      image: "/images/brumprint-screenshot.webp",
+        "Laravel/API-driven licensing system that generates and delivers software entitlements after purchase and surfaces them in the iTradeAIMS member portal.",
       imageAlt:
-        "Screenshot of BrumPrint e-commerce website showing product catalog and shopping interface",
+        "iTradeAIMS platform screenshot representing automated digital licensing and customer entitlements",
+      image: "/images/itradeaims-screenshot.jpg",
       technologies: [
-        "WordPress",
-        "WooCommerce",
-        "Bricks Builder",
-        "PHP",
-        "Stripe Integration",
-        "E-commerce",
+        "Laravel", "PHP", "REST APIs", "Authentication", "Stripe", "CI/CD", "MQL4/5"
       ],
-      liveUrl: "https://brumprint.com",
-      liveLabel: "Visit BrumPrint",
+      liveUrl: "",
+      liveLabel: "",
     },
     {
-      title: "The Banana EA",
-      type: "Expert Advisor / MetaTrader Automation Bot",
-      target: "Retail traders",
-      problem: "Find a trading strategy with quantifiable edge",
+      title: "AIMStack — Agent Engineering Platform",
+      type: "Agentic engineering infrastructure",
+      target: "AI coding agents and multi-repo delivery",
+      problem: "Make powerful coding agents reliable across a complex production estate",
       description:
-        "A fully automated trading system with plug & profit simplicity, tested strategy, 24/5 automation, and smart risk management.\nEliminates emotional trading and manual execution.",
+        "Private skills and plugin stack spanning Codex, Claude Code, Cursor and Antigravity, with session bootstraps, TDD, code review, domain skills, guardrails and delivery gates.",
+      imageAlt:
+        "Portrait of Immy Yousafzai representing agent orchestration and AI engineering",
+      image: "/images/immy-profile.jpg",
+      technologies: [
+        "Codex", "Claude Code", "Gemini", "MCP", "Agent Skills", "TDD", "GitHub", "CI Gates"
+      ],
+      liveUrl: "https://github.com/immy2good",
+      liveLabel: "View GitHub",
+    },
+    {
+      title: "Quant Research & Model Deployment",
+      type: "Applied ML / quantitative research stack",
+      target: "Systematic trading research and model deployment",
+      problem: "Test whether ML improves an existing trading method without being fooled by leakage or overfitting",
+      description:
+        "Connected Edge Hunt, Train Model and AIMS Quant workflows for statistical evidence, point-in-time features, PyTorch training, adversarial leakage tests, ONNX export and MT5 integration.",
+      imageAlt:
+        "Banana EA trading interface representing financial machine learning and MetaTrader deployment",
       image: "/images/banana-ea-project-screenshot.webp",
-      imageAlt:
-        "Screenshot of Banana EA trading algorithm interface with chart indicators and automated trade positions",
       technologies: [
-        "C++",
-        "Python",
-        "MQL4",
-        "MQL5",
-        "MetaTrader",
-        "Algorithms",
+        "Python", "PyTorch", "ONNX", "Meta-labeling", "Purged CV", "HMM", "MQL5", "React", "TypeScript"
       ],
-      liveUrl: "https://banana.imyousafzai.com/",
-      liveLabel: "Try Banana EA",
+      liveUrl: "",
+      liveLabel: "",
     },
     {
-      title: "Bewdley Farm Shop",
-      type: "E-commerce website",
-      target: "Local grocery customers",
-      problem:
-        "Client wants to add online ordering and delivery for local farm shop.",
+      title: "AI Content & Support Operations",
+      type: "Agentic business operations",
+      target: "Customer support and content workflows",
+      problem: "Automate repetitive business work while retaining deterministic controls and human escalation",
       description:
-        "WooCommerce solution with delivery system, payment gateway, and beautiful product layouts.",
-      image: "/images/bewdley-farmshop-screenshot.png",
+        "Designed workflows combining deterministic scripts with AI reasoning, documentation and memory retrieval, severity-based escalation, governed content generation, review and distribution.",
       imageAlt:
-        "Screenshot of Bewdley Farm Shop website showing local produce offerings and delivery options",
+        "iTradeAIMS dashboard representing AI-assisted customer and content operations",
+      image: "/images/itradeaims-screenshot.jpg",
       technologies: [
-        "WordPress",
-        "WooCommerce",
-        "Bricks Builder",
-        "Custom Wordpress Themes",
-        "Custom Wordpress Plugins",
-        "PHP, JavaScript, HTML, CSS, jQuery, AJAX, JSON, XML, etc.",
-        "Stripe Integration",
+        "Gemini", "Discord Bot API", "MCP", "VPS", "Deterministic Automation", "Human-in-the-Loop"
       ],
-      liveUrl: "https://bewdleyfarmshop.co.uk/",
-      liveLabel: "Visit Shop",
+      liveUrl: "",
+      liveLabel: "",
     },
     {
-      title: "TradingView Pine Script Indicators",
-      type: "Technical Analysis Toolkit",
-      target: "Retail traders",
-      problem:
-        "Visual tools for trend detection, pattern recognition, automated alerts and webhooks",
+      title: "ChartBridge",
+      type: "Startup / product concept",
+      target: "TradingView and MetaTrader users",
+      problem: "Bridge TradingView strategy signals into MT4/MT5 execution workflows",
       description:
-        "Collection of advanced Pine Script indicators and technical tools with 1.2K+ followers on TradingView.",
+        "Originated the product concept and serve as the trading/FinTech domain expert, defining user workflows, requirements and product direction while the engineering team owns implementation.",
+      imageAlt:
+        "TradingView interface representing the ChartBridge product domain",
       image: "/images/tradingview-profile-screenshot.png",
-      imageAlt:
-        "Screenshot of TradingView profile showing Pine Script indicators and follower statistics",
       technologies: [
-        "Pine Script",
-        "Python",
-        "API Integration",
-        "WebSockets",
-        "WebHooks",
-        "TradingView",
-        "PineConnector",
+        "Product Discovery", "FinTech Domain", "TradingView", "MetaTrader", "API Workflows"
       ],
-      liveUrl: "https://www.tradingview.com/u/iTradeAIMS/",
-      liveLabel: "View Profile",
-    },
-    {
-      title: "Financial Education Book (Amazon)",
-      type: "Kindle Publication",
-      target: "Traders learning Elliott Wave",
-      problem:
-        "Educational book on Elliott Wave Theory: Simplifies complex wave pattern recognition",
-      description:
-        "Published book with practical tools for Elliott Wave analysis that helps traders understand and apply the theory.  Includes visual examples and case studies.  Linked to automated Pine Script indicators.",
-      image: "/images/elliott-wave-book-amazon.png",
-      imageAlt:
-        "Screenshot of Elliott Wave book listing on Amazon showing cover and description",
-      technologies: [
-        "Pine Script",
-        "Elliott Wave Theory",
-        "Pattern Recognition",
-        "Fibonacci Analysis",
-        "TradingView",
-      ],
-      liveUrl:
-        "https://www.amazon.co.uk/10-Seconds-Elliott-Wave-within-ebook/dp/B0C4FZZNX6",
-      liveLabel: "Buy on Amazon",
-    },
-    // {
-    //   title: "MetaTrader Automation Bots",
-    //   type: "MQL4/5 Expert Advisors",
-    //   target: "Algorithmic traders",
-    //   problem: "Hands-free trading with predefined logic and visual overlays",
-    //   description:
-    //     "Advanced trading robots for MetaTrader with custom SL/TP and indicator filters.",
-    //   image: "/images/metatrader-banana-ea.png",
-    //   technologies: [
-    //     "MQL4",
-    //     "MQL5",
-    //     "MetaTrader",
-    //     "Algorithmic Trading",
-    //     "Risk Management",
-    //     "Forex",
-    //   ],
-    //   liveUrl: "https://itradeaims.net/",
-    //   liveLabel: "Learn More",
-    // },
-
-    {
-      title: "Splashbacks Birmingham",
-      type: "Business website",
-      target: "Homeowners and interior decorators",
-      problem: "Online presence with gallery, booking, and contact options",
-      description:
-        "Professional brochure website for top-rated splashback company in West Midlands.",
-      image: "/images/splashbacks-screenshot.png",
-      imageAlt:
-        "Screenshot of Splashbacks Birmingham website showing kitchen installation gallery and services",
-      technologies: [
-        "WordPress",
-        "Custom PHP",
-        "Local SEO",
-        "Contact Forms",
-        "Gallery System",
-      ],
-      liveUrl: "https://splashbacks.co/",
-      liveLabel: "Visit Website",
+      liveUrl: "",
+      liveLabel: "",
     },
   ];
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -371,7 +294,7 @@ export function Projects() {
       <div className="container mx-auto">
         <div className="max-w-8xl mx-auto">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-4 sm:mb-6">
-            Projects
+            Flagship Case Studies
           </h2>
           <div
             className="relative overflow-hidden"
@@ -517,22 +440,24 @@ export function Projects() {
                           </Badge>
                         ))}
                       </div>
-                      <div className={cardStyles.buttonContainer}>
-                        <Button
-                          size="sm"
-                          asChild
-                          className="h-6 text-xs px-2 py-0"
-                        >
-                          <a
-                            href={project.liveUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
+                      {project.liveUrl && (
+                        <div className={cardStyles.buttonContainer}>
+                          <Button
+                            size="sm"
+                            asChild
+                            className="h-6 text-xs px-2 py-0"
                           >
-                            <ExternalLink className="w-2.5 h-2.5 mr-1" />
-                            {project.liveLabel || "Live Site"}
-                          </a>
-                        </Button>
-                      </div>
+                            <a
+                              href={project.liveUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              <ExternalLink className="w-2.5 h-2.5 mr-1" />
+                              {project.liveLabel || "View"}
+                            </a>
+                          </Button>
+                        </div>
+                      )}
                     </CardContent>
                   </Card>
                 </div>
@@ -597,22 +522,24 @@ export function Projects() {
                             </Badge>
                           ))}
                         </div>
-                        <div className={cardStyles.buttonContainer}>
-                          <Button
-                            size="sm"
-                            asChild
-                            className="h-6 text-xs px-2 py-0"
-                          >
-                            <a
-                              href={project.liveUrl}
-                              target="_blank"
-                              rel="noopener noreferrer"
+                        {project.liveUrl && (
+                          <div className={cardStyles.buttonContainer}>
+                            <Button
+                              size="sm"
+                              asChild
+                              className="h-6 text-xs px-2 py-0"
                             >
-                              <ExternalLink className="w-2.5 h-2.5 mr-1" />
-                              {project.liveLabel || "Live Site"}
-                            </a>
-                          </Button>
-                        </div>
+                              <a
+                                href={project.liveUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                <ExternalLink className="w-2.5 h-2.5 mr-1" />
+                                {project.liveLabel || "View"}
+                              </a>
+                            </Button>
+                          </div>
+                        )}
                       </CardContent>
                     </Card>
                   </div>

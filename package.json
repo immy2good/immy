@@ -3,6 +3,7 @@
   "description": "A portfolio website showcasing Immy's work and skills, built with Next.js and Radix UI.",
   "version": "0.1.0",
   "private": true,
+  "packageManager": "pnpm@10.15.1",
   "scripts": {
     "dev": "next dev",
     "dev:safe": "cross-env NEXT_TELEMETRY_DISABLED=1 next dev --no-open",
@@ -47,11 +48,11 @@
     "embla-carousel-react": "8.5.1",
     "input-otp": "1.4.1",
     "lucide-react": "^0.454.0",
-    "next": "15.2.4",
+    "next": "15.5.18",
     "next-themes": "latest",
-    "react": "^19",
+    "react": "19.0.6",
     "react-day-picker": "8.10.1",
-    "react-dom": "^19",
+    "react-dom": "19.0.6",
     "react-hook-form": "^7.54.1",
     "react-resizable-panels": "^2.1.7",
     "recharts": "2.15.0",
@@ -64,6 +65,11 @@
   },
   "overrides": {
     "react-day-picker>date-fns": "^3.0.0"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "sharp"
+    ]
   },
   "devDependencies": {
     "@types/node": "^22",
