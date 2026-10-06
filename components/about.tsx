@@ -2,130 +2,82 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ExternalLink } from "lucide-react";
 
+const metrics = [
+  { value: "15+ years", label: "building commercial digital products" },
+  { value: "500+", label: "Stripe customer records in the current platform" },
+  { value: "20+", label: "active commercial product configurations" },
+  { value: "~25", label: "active engineering repositories" },
+];
+
 export function About() {
   return (
     <section id="about" className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/50">
       <div className="container mx-auto">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12">
-            About Me
+            Builder first. Technology is the leverage.
           </h2>
 
           <Card>
             <CardContent className="p-8">
               <div className="grid md:grid-cols-4 gap-12 items-start">
-                {/* Profile Image */}
                 <div className="profile-image-container">
                   <img
                     src="/images/immy-profile.jpg"
-                    alt="Immy Yousafzai Portfolio"
+                    alt="Immy Yousafzai"
                     className="rounded-lg w-full max-w-sm mx-auto profile-image"
                   />
                 </div>
 
-                {/* Introduction & Metrics */}
                 <div className="space-y-6 md:col-span-3">
-<p className="text-lg text-muted-foreground">
-  Hey! I'm the founder of{" "}
-  <a
-    href="https://itradeaims.net/"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    iTradeAIMS Ltd
-  </a>{" "}
-  and{" "}
-  <a
-    href="https://brumbyte.com/"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    BrumByte Ltd
-  </a>
-  . My journey in tech began back in 2011 when I left my job to build solutions that deliver real value. Since then, I’ve evolved into a{" "}
-  <strong>full-stack software engineer</strong> with a deep interest in automation, financial systems, and user-focused development.
-  <br />
-  <br />
-  With over <strong>13 years</strong> of hands-on experience, I’ve designed and built web applications, algorithmic trading platforms, and digital tools for FinTech and e-commerce. I enjoy solving real-world problems with code—whether it’s enhancing UX, automating workflows, or integrating data-rich APIs.
-</p>
+                  <p className="text-lg text-muted-foreground">
+                    I have spent my working life building and operating things. Earlier in my career that meant physical businesses - marble processing, flour milling, cold storage and warehousing. Later it became trading systems, digital products and iTradeAIMS. AI has expanded the scale of what I can build and the speed at which I can move from an idea to a working system.
+                  </p>
 
-<p className="text-lg text-muted-foreground">
-  I specialize in modern tech stacks like React, Next.js, TypeScript, Node.js, and Python, along with AWS and Docker for cloud and deployment. I’ve also published technical analysis tools and trading bots used by thousands globally across MT4, MQL4/5, and TradingView.
-</p>
+                  <p className="text-lg text-muted-foreground">
+                    Today I design AI-native product and engineering workflows: specifications, agent orchestration, MCP tools, reusable skills, test-driven implementation, code review, CI/CD gates and controlled production access. I use Codex and Claude for serious engineering work, Gemini for selected automation and content workflows, and deterministic code wherever deterministic behaviour is the better choice.
+                  </p>
 
-<p className="text-lg text-muted-foreground">
-  Outside of coding, I'm a proud father and husband. I enjoy backtesting trading strategies, building smart indicators, and continually exploring how software can make data and decisions more accessible.
-</p>
+                  <p className="text-lg text-muted-foreground">
+                    My strongest domain is FinTech and algorithmic trading, where I combine long trading experience with MQL4/5, Pine Script, Python, PyTorch, ONNX and web technologies. The same approach applies outside trading: identify the business bottleneck, design the system, automate the repetitive work and keep humans in the loop where judgement matters.
+                  </p>
 
-<p className="text-lg text-muted-foreground pt-4">
-  I’m currently open to software engineering and web development opportunities—especially roles where I can contribute immediately while continuing to grow. If you’re looking for a developer who combines business insight with hands-on coding experience, let’s connect.
-</p>
+                  <p className="text-lg text-muted-foreground">
+                    I am open to UK-remote roles in AI product engineering, automation, agentic systems, solutions engineering and applied AI. I am particularly useful where a company needs someone who can bridge business context, product decisions and hands-on technical delivery.
+                  </p>
 
+                  <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 pt-4">
+                    {metrics.map((metric) => (
+                      <div key={metric.label} className="rounded-lg border bg-background p-4">
+                        <div className="text-2xl font-bold text-primary">{metric.value}</div>
+                        <div className="text-sm text-muted-foreground mt-1">{metric.label}</div>
+                      </div>
+                    ))}
+                  </div>
 
-                  <div className="flex flex-wrap gap-4 pt-4">
-                    <Button variant="outline" size="sm" asChild>
-                      <a
-                        href="https://amzn.eu/d/735UjWD"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center"
-                      >
-                        <ExternalLink className="w-4 h-4 mr-2" />
-                        Read My Book
-                      </a>
-                    </Button>
+                  <div className="flex flex-wrap gap-4 pt-2">
                     <Button variant="secondary" size="sm" asChild>
                       <a
                         href="https://itradeaims.net/"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex items-center"
-                        download
                       >
                         <ExternalLink className="w-4 h-4 mr-2" />
                         Visit iTradeAIMS
                       </a>
                     </Button>
-                    <Button variant="secondary" size="sm" asChild>
+                    <Button variant="outline" size="sm" asChild>
                       <a
-                        href="https://brumbyte.com/"
+                        href="https://github.com/immy2good"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex items-center"
-                        download
                       >
                         <ExternalLink className="w-4 h-4 mr-2" />
-                        Visit BrumByte
+                        GitHub
                       </a>
                     </Button>
-                  </div>
-
-                  {/* Key Metrics */}
-                  <div className="grid grid-cols-2 gap-4 pt-6">
-                    <div>
-                      <h4 className="font-semibold mb-2">Product Leadership</h4>
-                      <p className="text-muted-foreground">
-                        Managed 10+ product launches
-                      </p>
-                    </div>
-                    <div>
-                      <h4 className="font-semibold mb-2">Web Development</h4>
-                      <p className="text-muted-foreground">
-                        Built 20+ responsive apps
-                      </p>
-                    </div>
-                    <div>
-                      <h4 className="font-semibold mb-2">FinTech Tools</h4>
-                      <p className="text-muted-foreground">
-                        100+ published scripts
-                      </p>
-                    </div>
-                    <div>
-                      <h4 className="font-semibold mb-2">Global Impact</h4>
-                      <p className="text-muted-foreground">
-                        100K+ users served
-                      </p>
-                    </div>
                   </div>
                 </div>
               </div>
