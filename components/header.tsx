@@ -1,30 +1,29 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import Link from "next/link"
-import { Menu, X } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { ThemeToggle } from "@/components/theme-toggle"
-import { ResumeDownload } from "@/components/ResumeDownload"
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import { Menu, X } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { ThemeToggle } from "@/components/theme-toggle";
+import { ResumeDownload } from "@/components/ResumeDownload";
 
 export function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [resumeText, setResumeText] = useState("CV")
-  
-  // Flip between CV and Resume every 3 seconds
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [resumeText, setResumeText] = useState("CV");
+
   useEffect(() => {
     const interval = setInterval(() => {
-      setResumeText(prev => prev === "CV" ? "Resume" : "CV")
-    }, 3000)
-    return () => clearInterval(interval)
-  }, [])
-  
+      setResumeText((prev) => (prev === "CV" ? "Resume" : "CV"));
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
   const navItems = [
     { href: "#about", label: "About" },
     { href: "#skills", label: "Skills" },
-    { href: "#projects", label: "Projects" },
-    { href: "https://chatbot.imyousafzai.com/", label: "ChatBot" },
-    { href: "https://banana.imyousafzai.com/", label: "Banana EA" },
+    { href: "#projects", label: "Case Studies" },
+    { href: "https://itradeaims.net/", label: "iTradeAIMS" },
+    { href: "https://github.com/immy2good", label: "GitHub" },
     { href: "#contact", label: "Contact" },
   ];
 
@@ -34,11 +33,10 @@ export function Header() {
         <div className="flex justify-between items-center py-4">
           <Link href="/" className="text-2xl font-bold text-primary">
             <h1 className="bg-gradient-to-r from-primary/60 to-primary/20 bg-clip-text text-transparent">
-              I M Yousafzai
+              Immy Yousafzai
             </h1>
           </Link>
 
-          {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-6">
             {navItems.map((item) => (
               <Link
@@ -49,7 +47,6 @@ export function Header() {
                 {item.label}
               </Link>
             ))}
-            {/* Resume Download with flipping text */}
             <div className="ml-2">
               <ResumeDownload
                 variant="ghost"
@@ -62,7 +59,6 @@ export function Header() {
             </div>
           </nav>
 
-          {/* Theme Toggle and Mobile Menu */}
           <div className="flex items-center space-x-2">
             <ThemeToggle />
             <Button
@@ -70,17 +66,13 @@ export function Header() {
               size="icon"
               className="md:hidden"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label={isMenuOpen ? "Close navigation" : "Open navigation"}
             >
-              {isMenuOpen ? (
-                <X className="h-6 w-6" />
-              ) : (
-                <Menu className="h-6 w-6" />
-              )}
+              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </Button>
           </div>
         </div>
 
-        {/* Mobile Navigation */}
         {isMenuOpen && (
           <nav className="md:hidden py-4 border-t space-y-2">
             {navItems.map((item) => (
@@ -93,7 +85,6 @@ export function Header() {
                 {item.label}
               </Link>
             ))}
-            {/* Mobile Resume Download */}
             <div className="py-2">
               <ResumeDownload
                 variant="ghost"
