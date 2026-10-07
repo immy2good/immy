@@ -26,7 +26,7 @@ export function Contact() {
                 Looking for someone who can turn an AI idea into a working system?
               </h3>
               <p className="text-lg text-muted-foreground mb-8">
-                I am open to UK-remote permanent roles in AI product engineering, automation, agentic systems, solutions engineering and applied AI. I am comfortable working from business problem definition through architecture, implementation, testing and production delivery.
+                I am open to UK-remote permanent roles, full-time or part-time, across AI product engineering, automation, agentic systems, solutions engineering and applied AI. Occasional travel is fine. I am comfortable working from business problem definition through architecture, implementation, testing and production delivery.
               </p>
 
               <div className="grid md:grid-cols-2 gap-8 mb-8">

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -9,14 +9,6 @@ import { ResumeDownload } from "@/components/ResumeDownload";
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [resumeText, setResumeText] = useState("CV");
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setResumeText((prev) => (prev === "CV" ? "Resume" : "CV"));
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
 
   const navItems = [
     { href: "#about", label: "About" },
@@ -32,12 +24,12 @@ export function Header() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           <Link href="/" className="text-2xl font-bold text-primary">
-            <h1 className="bg-gradient-to-r from-primary/60 to-primary/20 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-primary/70 to-primary/30 bg-clip-text text-transparent">
               Immy Yousafzai
-            </h1>
+            </span>
           </Link>
 
-          <nav className="hidden md:flex items-center space-x-6">
+          <nav className="hidden md:flex items-center space-x-6" aria-label="Primary navigation">
             {navItems.map((item) => (
               <Link
                 key={item.href}
@@ -47,16 +39,13 @@ export function Header() {
                 {item.label}
               </Link>
             ))}
-            <div className="ml-2">
-              <ResumeDownload
-                variant="ghost"
-                size="sm"
-                showDropdown={true}
-                label={resumeText}
-                className="text-muted-foreground hover:text-primary transition-colors font-normal text-sm px-0 min-w-[80px] justify-center"
-                showIcon={false}
-              />
-            </div>
+            <ResumeDownload
+              variant="ghost"
+              size="sm"
+              label="CV"
+              className="text-muted-foreground hover:text-primary transition-colors font-normal text-sm px-1"
+              showIcon={false}
+            />
           </nav>
 
           <div className="flex items-center space-x-2">
@@ -67,6 +56,7 @@ export function Header() {
               className="md:hidden"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               aria-label={isMenuOpen ? "Close navigation" : "Open navigation"}
+              aria-expanded={isMenuOpen}
             >
               {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </Button>
@@ -74,7 +64,7 @@ export function Header() {
         </div>
 
         {isMenuOpen && (
-          <nav className="md:hidden py-4 border-t space-y-2">
+          <nav className="md:hidden py-4 border-t space-y-2" aria-label="Mobile navigation">
             {navItems.map((item) => (
               <Link
                 key={item.href}
@@ -89,9 +79,8 @@ export function Header() {
               <ResumeDownload
                 variant="ghost"
                 size="sm"
-                showDropdown={true}
-                label={resumeText}
-                className="text-muted-foreground hover:text-primary transition-colors font-normal text-sm justify-start px-0 min-w-[80px]"
+                label="CV"
+                className="text-muted-foreground hover:text-primary transition-colors font-normal text-sm justify-start px-0"
                 showIcon={false}
               />
             </div>
