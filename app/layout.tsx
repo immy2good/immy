@@ -23,7 +23,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <meta property="og:url" content="https://imyousafzai.com" />
-        <meta property="og:image" content="/og-image.png" />
+        <meta property="og:image" content="https://imyousafzai.com/images/immy-profile.jpg" />
         <link rel="canonical" href="https://imyousafzai.com" />
         <meta property="og:title" content="Immy Yousafzai | AI Product & Automation Engineer" />
         <meta
@@ -33,6 +33,7 @@ export default function RootLayout({
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="Immy Yousafzai" />
         <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content="https://imyousafzai.com/images/immy-profile.jpg" />
         <meta name="twitter:title" content="Immy Yousafzai | AI Product & Automation Engineer" />
         <meta
           name="twitter:description"
