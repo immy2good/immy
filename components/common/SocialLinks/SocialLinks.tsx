@@ -2,15 +2,11 @@
 
 import { GithubButton } from "./GithubButton";
 import { LinkedInButton } from "./LinkedInButton";
-import { EmailButton } from "./EmailButton";
 
 interface SocialLinksProps {
   className?: string;
   githubUrl?: string;
   linkedInUrl?: string;
-  emailName?: string;
-  emailDomain?: string;
-  emailTld?: string;
   variant?:
     | "default"
     | "destructive"
@@ -26,9 +22,6 @@ export function SocialLinks({
   className = "",
   githubUrl = "https://github.com/immy2good",
   linkedInUrl = "https://www.linkedin.com/in/immy-yousafzai/",
-  emailName = "imran",
-  emailDomain = "brumbyte",
-  emailTld = "com",
   variant = "ghost",
   size = "icon",
   spacing = "normal",
@@ -50,13 +43,6 @@ export function SocialLinks({
     <div className={`flex justify-center ${getSpacingClass()} ${className}`}>
       <GithubButton url={githubUrl} variant={variant} size={size} />
       <LinkedInButton url={linkedInUrl} variant={variant} size={size} />
-      <EmailButton
-        name={emailName}
-        domain={emailDomain}
-        tld={emailTld}
-        variant={variant}
-        size={size}
-      />
     </div>
   );
 }

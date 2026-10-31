@@ -35,4 +35,10 @@ pnpm run dev
 pnpm run build
 ```
 
-The contact form requires its configured email service environment variables. Do not commit secrets.
+The contact form sends mail server-side with [Resend](https://resend.com). Set these in Vercel (Production, and Preview if you want the form to work on preview deploys). Do not commit the values, and do not put the recipient address in source.
+
+- `RESEND_API_KEY` — Resend API key
+- `CONTACT_TO_EMAIL` — private inbox that receives enquiries
+- `CONTACT_FROM_EMAIL` — verified sender on your domain, for example `Contact Form <contact@imyousafzai.com>`
+
+`imyousafzai.com` must be verified in Resend (the DNS records Resend shows) before messages from that sender will deliver. Until then, Resend only delivers mail sent from its onboarding address to the address on the Resend account.

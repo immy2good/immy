@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Mail, MapPin } from "lucide-react";
+import { MapPin } from "lucide-react";
 import { submitContactForm } from "../lib/actions";
 import { useActionState } from "react";
 
@@ -56,12 +56,6 @@ export function Contact() {
 
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
-                  <Mail className="w-5 h-5 text-primary" />
-                  <a href="mailto:info@imyousafzai.com" className="hover:text-primary">
-                    info@imyousafzai.com
-                  </a>
-                </div>
-                <div className="flex items-center space-x-3">
                   <MapPin className="w-5 h-5 text-primary" />
                   <span>Birmingham, England, UK · Remote</span>
                 </div>
@@ -76,7 +70,21 @@ export function Contact() {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <form action={formAction} className="space-y-4">
+                <form action={formAction} className="relative space-y-4">
+                  <div
+                    className="pointer-events-none absolute -left-[9999px] h-px w-px overflow-hidden"
+                    aria-hidden="true"
+                  >
+                    <label htmlFor="hp_field">Leave blank</label>
+                    <input
+                      id="hp_field"
+                      name="hp_field"
+                      type="text"
+                      tabIndex={-1}
+                      autoComplete="off"
+                      defaultValue=""
+                    />
+                  </div>
                   <div className="grid grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <Label htmlFor="firstName">First Name</Label>
