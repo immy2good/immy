@@ -98,6 +98,15 @@ export async function submitContactForm(
   _prevState: ContactFormState | null,
   formData: FormData,
 ): Promise<ContactFormState> {
+  try {
+    return await sendContactForm(formData)
+  } catch (error) {
+    console.error("Contact form failed", error)
+    return { success: false, message: FAILURE_MESSAGE }
+  }
+}
+
+async function sendContactForm(formData: FormData): Promise<ContactFormState> {
   if (!formData) {
     return { success: false, message: "Form data is missing. Please try again." }
   }
