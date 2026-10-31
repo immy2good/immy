@@ -202,7 +202,7 @@ export const generateResumePDF = (data: ResumeData): void => {
         <h1>${data.personalInfo.name}</h1>
         <h2>${data.personalInfo.title}</h2>
         <div class="contact-info">
-          <div>📧 ${data.personalInfo.email}</div>
+          ${data.personalInfo.email ? `<div>📧 ${data.personalInfo.email}</div>` : ""}
           <div>📞 ${data.personalInfo.phone}</div>
           <div>📍 ${data.personalInfo.location}</div>
           <div>💼 ${data.personalInfo.linkedin}</div>
@@ -276,7 +276,7 @@ export const defaultResumeData: ResumeData = {
   personalInfo: {
     name: "I M Yousafzai (Immy)",
     title: "AI Product & Automation Engineer | Agentic Systems | FinTech Founder",
-    email: "mr.imrankhan@gmail.com",
+    email: "",
     phone: "+44 74623 99990",
     location: "Birmingham, UK | Remote",
     linkedin: "linkedin.com/in/immy-yousafzai",

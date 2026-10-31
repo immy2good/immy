@@ -106,7 +106,7 @@ The static PDF is served via Next.js API route at `/api/download/cv`:
 ## Customization
 
 ### Resume Data
-Update the `defaultResumeData` object in `lib/resumeGenerator.ts`:
+Update the `defaultResumeData` object in `lib/resumeGenerator.ts`. Leave `email` as an empty string in committed data so a private inbox is not shipped in the client bundle or the generated CV:
 
 ```tsx
 export const defaultResumeData: ResumeData = {
