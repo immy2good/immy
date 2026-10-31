@@ -7,11 +7,102 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { MapPin } from "lucide-react";
 import { submitContactForm } from "../lib/actions";
-import { useActionState } from "react";
+import { Component, type ReactNode, useActionState } from "react";
 
-export function Contact() {
+const FORM_FAILURE_MESSAGE = "Message not sent. Please try again later.";
+
+class ContactFormBoundary extends Component<{ children: ReactNode }, { hasError: boolean }> {
+  state = { hasError: false };
+
+  static getDerivedStateFromError(): { hasError: boolean } {
+    return { hasError: true };
+  }
+
+  componentDidCatch(error: unknown) {
+    console.error("Contact form crashed", error);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div className="space-y-3">
+          <div className="p-4 rounded-md bg-red-50 text-red-800 border border-red-200">
+            {FORM_FAILURE_MESSAGE}
+          </div>
+          <Button type="button" variant="outline" className="w-full" onClick={() => this.setState({ hasError: false })}>
+            Try again
+          </Button>
+        </div>
+      );
+    }
+
+    return this.props.children;
+  }
+}
+
+function ContactForm() {
   const [state, formAction, isPending] = useActionState(submitContactForm, null);
 
+  return (
+    <form action={formAction} className="relative space-y-4">
+      <div
+        className="pointer-events-none absolute -left-[9999px] h-px w-px overflow-hidden"
+        aria-hidden="true"
+      >
+        <label htmlFor="hp_field">Leave blank</label>
+        <input
+          id="hp_field"
+          name="hp_field"
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+          defaultValue=""
+        />
+      </div>
+      <div className="grid grid-cols-2 gap-4">
+        <div className="space-y-2">
+          <Label htmlFor="firstName">First Name</Label>
+          <Input id="firstName" name="firstName" placeholder="John" required autoComplete="given-name" />
+        </div>
+        <div className="space-y-2">
+          <Label htmlFor="lastName">Last Name</Label>
+          <Input id="lastName" name="lastName" placeholder="Doe" required autoComplete="family-name" />
+        </div>
+      </div>
+      <div className="space-y-2">
+        <Label htmlFor="email">Email</Label>
+        <Input id="email" name="email" type="email" placeholder="john@example.com" required autoComplete="email" />
+      </div>
+      <div className="space-y-2">
+        <Label htmlFor="subject">Subject</Label>
+        <Input id="subject" name="subject" placeholder="EA, Pine Script, AI workflow or role" required autoComplete="off" />
+      </div>
+      <div className="space-y-2">
+        <Label htmlFor="message">Message</Label>
+        <Textarea
+          id="message"
+          name="message"
+          placeholder="Tell me about the role, system or business problem..."
+          className="min-h-[120px]"
+          required
+          autoComplete="off"
+        />
+      </div>
+
+      {state && (
+        <div className={`p-4 rounded-md ${state.success ? "bg-green-50 text-green-800 border border-green-200" : "bg-red-50 text-red-800 border border-red-200"}`}>
+          {state.message}
+        </div>
+      )}
+
+      <Button type="submit" className="w-full" disabled={isPending}>
+        {isPending ? "Sending..." : "Send Message"}
+      </Button>
+    </form>
+  );
+}
+
+export function Contact() {
   return (
     <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8">
       <div className="container mx-auto">
@@ -71,61 +162,9 @@ export function Contact() {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <form action={formAction} className="relative space-y-4">
-                  <div
-                    className="pointer-events-none absolute -left-[9999px] h-px w-px overflow-hidden"
-                    aria-hidden="true"
-                  >
-                    <label htmlFor="hp_field">Leave blank</label>
-                    <input
-                      id="hp_field"
-                      name="hp_field"
-                      type="text"
-                      tabIndex={-1}
-                      autoComplete="off"
-                      defaultValue=""
-                    />
-                  </div>
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <Label htmlFor="firstName">First Name</Label>
-                      <Input id="firstName" name="firstName" placeholder="John" required autoComplete="given-name" />
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="lastName">Last Name</Label>
-                      <Input id="lastName" name="lastName" placeholder="Doe" required autoComplete="family-name" />
-                    </div>
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="email">Email</Label>
-                    <Input id="email" name="email" type="email" placeholder="john@example.com" required autoComplete="email" />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="subject">Subject</Label>
-                    <Input id="subject" name="subject" placeholder="EA, Pine Script, AI workflow or role" required autoComplete="off" />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="message">Message</Label>
-                    <Textarea
-                      id="message"
-                      name="message"
-                      placeholder="Tell me about the role, system or business problem..."
-                      className="min-h-[120px]"
-                      required
-                      autoComplete="off"
-                    />
-                  </div>
-
-                  {state && (
-                    <div className={`p-4 rounded-md ${state.success ? "bg-green-50 text-green-800 border border-green-200" : "bg-red-50 text-red-800 border border-red-200"}`}>
-                      {state.message}
-                    </div>
-                  )}
-
-                  <Button type="submit" className="w-full" disabled={isPending}>
-                    {isPending ? "Sending..." : "Send Message"}
-                  </Button>
-                </form>
+                <ContactFormBoundary>
+                  <ContactForm />
+                </ContactFormBoundary>
               </CardContent>
             </Card>
           </div>
