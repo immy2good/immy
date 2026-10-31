@@ -7,9 +7,9 @@ import { ThemeProvider } from "@/components/theme-provider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Immy Yousafzai | AI Product & Automation Engineer",
+  title: "Immy Yousafzai | MT5 EA & Pine Script Developer, AI Agent Engineering",
   description:
-    "Portfolio of Immy Yousafzai - AI product and automation engineer, agentic systems builder, FinTech founder and applied AI practitioner.",
+    "Founder of iTradeAIMS since 2011. I build MT4/MT5 Expert Advisors, TradingView Pine Script tools and EA licensing, and run tested AI agent workflows. Birmingham, UK.",
   generator: "Next.js",
   applicationName: "Immy Yousafzai Portfolio",
 };
@@ -25,19 +25,19 @@ export default function RootLayout({
         <meta property="og:url" content="https://imyousafzai.com" />
         <meta property="og:image" content="https://imyousafzai.com/images/immy-profile.jpg" />
         <link rel="canonical" href="https://imyousafzai.com" />
-        <meta property="og:title" content="Immy Yousafzai | AI Product & Automation Engineer" />
+        <meta property="og:title" content="Immy Yousafzai | MT5 EA & Pine Script Developer, AI Agent Engineering" />
         <meta
           property="og:description"
-          content="AI product engineering, agentic systems, business automation, FinTech and applied AI."
+          content="MT4/MT5 Expert Advisors, Pine Script, EA licensing and AI agent engineering. Founder of iTradeAIMS since 2011."
         />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="Immy Yousafzai" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:image" content="https://imyousafzai.com/images/immy-profile.jpg" />
-        <meta name="twitter:title" content="Immy Yousafzai | AI Product & Automation Engineer" />
+        <meta name="twitter:title" content="Immy Yousafzai | MT5 EA & Pine Script Developer, AI Agent Engineering" />
         <meta
           name="twitter:description"
-          content="AI product engineering, agentic systems, business automation, FinTech and applied AI."
+          content="MT4/MT5 Expert Advisors, Pine Script, EA licensing and AI agent engineering. Founder of iTradeAIMS since 2011."
         />
       </head>
       <body className={inter.className}>
