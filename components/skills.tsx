@@ -4,27 +4,27 @@ import { Badge } from "@/components/ui/badge";
 export function Skills() {
   const skillCategories = [
     {
-      title: "Agentic AI Engineering",
+      title: "Trading Development",
       skills: [
-        "Multi-Agent Orchestration", "Codex", "Claude Code", "Gemini", "MCP",
-        "Custom Skills & Plugins", "Agent Memory", "Guardrails", "Human-in-the-Loop",
+        "MQL5", "MQL4", "MetaTrader 5", "MetaTrader 4", "Expert Advisors",
+        "Indicators", "Pine Script v6", "TradingView", "Strategy Tester",
+        "EA Licensing", "MT4 to MT5 Conversion", "Parity Testing"
+      ],
+    },
+    {
+      title: "AI Agent Engineering",
+      skills: [
+        "Claude Code", "Codex", "Cursor", "Gemini", "Grok", "Antigravity", "MCP",
+        "Multi-Agent Orchestration", "Agent Memory", "Guardrails", "Human-in-the-Loop",
         "Spec-Driven Development", "TDD", "Code Review"
       ],
     },
     {
-      title: "Product & Automation",
+      title: "Web & Platforms",
       skills: [
-        "Business Process Automation", "Product Requirements", "Architecture",
-        "REST APIs", "Webhooks", "Stripe", "Amazon SES", "Discord APIs",
-        "Customer Fulfilment", "Licensing", "Support Automation", "Content Automation"
-      ],
-    },
-    {
-      title: "Engineering, ML & FinTech",
-      skills: [
-        "Python", "TypeScript", "JavaScript", "React", "Next.js", "Laravel", "PHP",
-        "Docker", "GitHub Actions", "CI/CD", "PyTorch", "ONNX", "Time-Series Validation",
-        "MQL4/5", "Pine Script", "MetaTrader", "TradingView"
+        "Python", "PowerShell", "TypeScript", "React", "Next.js", "Laravel", "PHP",
+        "WordPress", "Paid Memberships Pro", "Stripe", "PayPal", "REST APIs", "Webhooks",
+        "Amazon SES", "Docker"
       ],
     },
   ];
@@ -37,7 +37,7 @@ export function Skills() {
             What I build with
           </h2>
           <p className="text-center text-muted-foreground max-w-3xl mx-auto mb-12">
-            Tools matter, but the differentiator is the system around them: specifications, context, permissions, tests, review and deployment gates.
+            The tools matter less than the system around them: clear specs, permissions, tests and review before anything goes live.
           </p>
 
           <div className="grid md:grid-cols-3 gap-8">

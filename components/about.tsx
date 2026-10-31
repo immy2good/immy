@@ -3,10 +3,10 @@ import { Button } from "@/components/ui/button";
 import { ExternalLink } from "lucide-react";
 
 const metrics = [
-  { value: "15+ years", label: "building commercial digital products" },
-  { value: "500+", label: "Stripe customer records in the current platform" },
-  { value: "20+", label: "active commercial product configurations" },
-  { value: "~25", label: "active engineering repositories" },
+  { value: "Since 2011", label: "running iTradeAIMS" },
+  { value: "500+", label: "customers" },
+  { value: "21 + 8", label: "indicators and Expert Advisors for MT4, MT5 and TradingView" },
+  { value: "200+", label: "test, probe and verification scripts in my EA and indicator repos" },
 ];
 
 export function About() {
@@ -31,19 +31,19 @@ export function About() {
 
                 <div className="space-y-6 md:col-span-3">
                   <p className="text-lg text-muted-foreground">
-                    I have spent my working life building and operating things. Earlier in my career that meant physical businesses - marble processing, flour milling, cold storage and warehousing. Later it became trading systems, digital products and iTradeAIMS. AI has expanded the scale of what I can build and the speed at which I can move from an idea to a working system.
+                    I have spent my working life building and operating things. Earlier in my career that meant physical businesses - marble processing, flour milling, cold storage and warehousing. Then it became trading: I founded iTradeAIMS in 2011, and it still sells and supports 21 indicators and 8 Expert Advisors for MT4, MT5 and TradingView. I&apos;ve published on TradingView since 2014 and taught on YouTube, where the iTradeAIMS channel has 537 videos.
                   </p>
 
                   <p className="text-lg text-muted-foreground">
-                    Today I design AI-native product and engineering workflows: specifications, agent orchestration, MCP tools, reusable skills, test-driven implementation, code review, CI/CD gates and controlled production access. I use Codex and Claude for serious engineering work, Gemini for selected automation and content workflows, and deterministic code wherever deterministic behaviour is the better choice.
+                    Today I build with AI coding agents (Claude Code, Codex, Cursor, Gemini, Grok and Antigravity) inside a setup I run myself: specs, versioned skills, MCP tools, tests, hooks and review gates. Work is handed between agents with baton, my open-source relay, and the agents share a knowledge-graph memory. I use plain code wherever it beats AI, and I sign off anything that matters.
                   </p>
 
                   <p className="text-lg text-muted-foreground">
-                    My strongest domain is FinTech and algorithmic trading, where I combine long trading experience with MQL4/5, Pine Script, Python, PyTorch, ONNX and web technologies. The same approach applies outside trading: identify the business bottleneck, design the system, automate the repetitive work and keep humans in the loop where judgement matters.
+                    Trading development is my strongest area: MQL4/5, Pine Script, Python and web technologies, built around how traders actually work. The same approach applies outside trading: find the bottleneck, design the system, automate the repetitive work and keep a person in the loop where judgement matters.
                   </p>
 
                   <p className="text-lg text-muted-foreground">
-                    I am open to UK-remote roles in AI product engineering, automation, agentic systems, solutions engineering and applied AI. I am particularly useful where a company needs someone who can bridge business context, product decisions and hands-on technical delivery.
+                    I&apos;m open to UK remote roles in trading technology, AI automation and agentic systems, and to freelance work on MT4/MT5, Pine Script and AI agent workflows.
                   </p>
 
                   <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 pt-4">

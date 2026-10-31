@@ -2,11 +2,11 @@ import { useState, useEffect } from "react";
 
 function TypewriterEffect() {
   const titles = [
-    "AI Product & Automation Engineer",
-    "Agentic Systems Builder",
-    "FinTech Founder & Product Builder",
-    "Applied AI / ML Practitioner",
-    "Business Operator & Problem Solver",
+    "MT4/MT5 Expert Advisor Developer",
+    "Pine Script & TradingView Developer",
+    "AI Agent & MCP Engineer",
+    "iTradeAIMS Founder since 2011",
+    "Spec-first, test-heavy builder",
   ];
 
   const [currentTitleIndex, setCurrentTitleIndex] = useState(0);

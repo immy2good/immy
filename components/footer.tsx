@@ -9,7 +9,7 @@ export function Footer() {
             <div className="mb-4 md:mb-0">
               <h3 className="text-xl font-bold">Immy Yousafzai</h3>
               <p className="text-muted-foreground">
-                AI Product & Automation Engineer · Agentic Systems · FinTech Founder
+                iTradeAIMS founder · MT4/MT5 EAs · Pine Script · AI agent engineering
               </p>
             </div>
             <div>

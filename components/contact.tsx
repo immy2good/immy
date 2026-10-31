@@ -23,20 +23,21 @@ export function Contact() {
           <div className="grid lg:grid-cols-2 gap-12">
             <div>
               <h3 className="text-2xl font-semibold mb-6">
-                Looking for someone who can turn an AI idea into a working system?
+                Need an EA, a Pine Script tool or an AI workflow that actually works?
               </h3>
               <p className="text-lg text-muted-foreground mb-8">
-                I am open to UK-remote permanent roles, full-time or part-time, across AI product engineering, automation, agentic systems, solutions engineering and applied AI. Occasional travel is fine. I am comfortable working from business problem definition through architecture, implementation, testing and production delivery.
+                I&apos;m open to UK remote roles, full-time or part-time, in trading technology, AI automation and agentic systems, and to freelance projects. Occasional travel is fine. Tell me what you want to build and I&apos;ll tell you plainly whether and how I&apos;d do it.
               </p>
 
               <div className="grid md:grid-cols-2 gap-8 mb-8">
                 <div>
                   <h4 className="text-xl font-medium mb-4">I can help with</h4>
                   <ul className="list-disc list-inside space-y-2 text-muted-foreground">
-                    <li>Agentic workflow design and orchestration</li>
-                    <li>Business-process and operational automation</li>
-                    <li>AI-enabled product engineering</li>
-                    <li>APIs, integrations and production workflows</li>
+                    <li>MT4/MT5 Expert Advisors and indicators</li>
+                    <li>MT4 to MT5 and MQL to Pine Script conversions</li>
+                    <li>TradingView Pine Script tools with reliable alerts</li>
+                    <li>EA licensing and code protection</li>
+                    <li>AI agent workflows and MCP integrations</li>
                   </ul>
                 </div>
                 <div>
@@ -51,7 +52,7 @@ export function Contact() {
               </div>
 
               <p className="text-lg text-muted-foreground mb-8">
-                FinTech is my deepest domain, but I am not limited to it. The common thread is solving operational and product problems with AI, automation and software.
+                Trading is my deepest domain, but not my only one. The common thread is solving real business problems with tested software and AI under human control.
               </p>
 
               <div className="space-y-4">
@@ -93,7 +94,7 @@ export function Contact() {
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="subject">Subject</Label>
-                    <Input id="subject" name="subject" placeholder="AI / Automation Opportunity" required autoComplete="off" />
+                    <Input id="subject" name="subject" placeholder="EA, Pine Script, AI workflow or role" required autoComplete="off" />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="message">Message</Label>
