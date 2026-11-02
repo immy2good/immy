@@ -25,6 +25,8 @@ export function About() {
                   <img
                     src="/images/immy-profile.jpg"
                     alt="Immy Yousafzai"
+                    width={768}
+                    height={1024}
                     className="rounded-lg w-full max-w-sm mx-auto profile-image"
                   />
                 </div>
@@ -35,7 +37,7 @@ export function About() {
                   </p>
 
                   <p className="text-lg text-muted-foreground">
-                    Today I build with AI coding agents (Claude Code, Codex, Cursor, Gemini, Grok and Antigravity) inside a setup I run myself: specs, versioned skills, MCP tools, tests, hooks and review gates. Work is handed between agents with baton, my open-source relay, and the agents share a knowledge-graph memory. I use plain code wherever it beats AI, and I sign off anything that matters.
+                    Today I build with AI coding agents (Claude Code, Codex, Cursor, Gemini, Grok and Antigravity) inside AIMStack, the software factory I built and run: specs, versioned skills, MCP tools, tests, hooks and review gates. Work is handed between agents with baton, my open-source relay, and the agents share a knowledge-graph memory. I use plain code wherever it beats AI, and I sign off anything that matters.
                   </p>
 
                   <p className="text-lg text-muted-foreground">

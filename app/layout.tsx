@@ -24,13 +24,11 @@ export const metadata: Metadata = {
     url: "/",
     type: "website",
     siteName: "Immy Yousafzai",
-    images: ["/images/immy-profile.jpg"],
   },
   twitter: {
     card: "summary_large_image",
     title: siteTitle,
     description: shareDescription,
-    images: ["/images/immy-profile.jpg"],
   },
 };
 

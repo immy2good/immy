@@ -37,7 +37,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       url: `/case-studies/${study.slug}`,
       type: "article",
     },
-    twitter: { title, description: study.summary },
+    twitter: { card: "summary_large_image", title, description: study.summary },
   };
 }
 

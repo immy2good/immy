@@ -11,8 +11,8 @@ export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navItems = [
-    { href: "/#about", label: "About" },
     { href: "/#skills", label: "Skills" },
+    { href: "/#about", label: "About" },
     { href: "/#projects", label: "Case Studies" },
     { href: "https://itradeaims.net/", label: "iTradeAIMS" },
     { href: "https://github.com/immy2good", label: "GitHub" },
