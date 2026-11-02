@@ -34,7 +34,6 @@ export function Hero() {
             <ResumeDownload
               variant="outline"
               size="lg"
-              showDropdown={true}
               label="Download CV"
               className="w-48"
             />
