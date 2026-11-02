@@ -11,12 +11,12 @@ export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navItems = [
-    { href: "#about", label: "About" },
-    { href: "#skills", label: "Skills" },
-    { href: "#projects", label: "Case Studies" },
+    { href: "/#about", label: "About" },
+    { href: "/#skills", label: "Skills" },
+    { href: "/#projects", label: "Case Studies" },
     { href: "https://itradeaims.net/", label: "iTradeAIMS" },
     { href: "https://github.com/immy2good", label: "GitHub" },
-    { href: "#contact", label: "Contact" },
+    { href: "/#contact", label: "Contact" },
   ];
 
   return (
