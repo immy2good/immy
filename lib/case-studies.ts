@@ -69,8 +69,8 @@ export const caseStudies: CaseStudy[] = [
     slug: "banana-ea",
     number: "01",
     category: "Flagship product · MT4 → MT5",
-    title: "Rebuilding Banana EA, a trading robot customers have run since 2017, for MetaTrader 5",
-    cardTitle: "Banana EA: rebuilding a flagship trading robot for MT5",
+    title: "Rebuilding Banana EA, trade-management software customers have run since 2017, for MetaTrader 5",
+    cardTitle: "Banana EA: rebuilding flagship trade-management software for MT5",
     summary:
       "An audit of the MT4 engine found 23 defects. The MT5 rebuild fixes each one behind a failing test first, explains every difference from the old version, and took its exit design from a customer's own research.",
     metrics: [
@@ -80,7 +80,7 @@ export const caseStudies: CaseStudy[] = [
     ],
     tags: ["MQL5", "MQL4", "Python", "Strategy Tester", "ADRs"],
     eyebrow: "Case study · Trading software · Product engineering",
-    headline: "Rebuilding Banana EA, a trading robot customers have run since 2017, for MetaTrader 5",
+    headline: "Rebuilding Banana EA, trade-management software customers have run since 2017, for MetaTrader 5",
     lede:
       "Banana EA is the flagship of my trading-software business, iTradeAIMS: an automated expert advisor for the DAX index on 5-minute charts. Customers have run it on MetaTrader 4 since 2017. Moving it to MetaTrader 5 meant changing how a live product behaves for people who already trust it, so I didn't port the old code. I audited it, rebuilt the engine cleanly, and made every change from the old behaviour something I could name and test.",
     meta: [
