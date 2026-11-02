@@ -51,7 +51,7 @@ export function Projects() {
           </p>
         </div>
 
-        <div className="grid gap-6 lg:grid-cols-3 lg:grid-rows-[auto_auto_1fr_auto_auto_auto]">
+        <div className="grid gap-6 lg:grid-cols-2">
           {caseStudies.map((study) => (
             <Link
               key={study.slug}
