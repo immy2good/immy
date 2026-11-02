@@ -1,31 +1,25 @@
 # Immy Yousafzai - Portfolio
 
-Career portfolio for **Immy Yousafzai**, focused on AI product engineering, agentic systems, business automation, FinTech and applied AI.
+Portfolio of **Immy Yousafzai**: trading software (MT4/MT5, Pine Script) and AI agent engineering.
 
 Live site: https://imyousafzai.com
 
-## Positioning
+## What's on the site
 
-I build AI-enabled systems that solve real business and product problems. My work combines:
-
-- Agentic AI engineering: Codex, Claude Code, Gemini, MCP, custom skills/plugins, guardrails and human-in-the-loop workflows
-- Product and automation: requirements, architecture, APIs, webhooks, commerce, licensing, support and content operations
-- Applied ML: PyTorch, ONNX, financial time-series validation, leakage controls, meta-labeling and model-to-MT5 deployment
-- FinTech engineering: MQL4/5, Pine Script, MetaTrader, TradingView and algorithmic trading systems
-- Full product delivery: React/Next.js, TypeScript, Python, Laravel/PHP, WordPress, Docker, GitHub and CI/CD
-
-## Flagship case studies
-
-1. **iTradeAIMS Revival & Automation** - rebuilt a reacquired FinTech business into an increasingly turnkey, API-driven operation.
-2. **DLMS** - automated software licensing and entitlement delivery for commercial MQL products.
-3. **AIMStack** - private agent engineering stack for multi-harness AI development with skills, TDD, review and delivery gates.
-4. **Quant Research & Model Deployment** - Edge Hunt + Train Model + AIMS Quant, spanning statistical evidence, ML training/validation, ONNX and MT5.
-5. **AI Content & Support Operations** - governed agentic workflows using deterministic automation, retrieval, escalation and review.
-6. **ChartBridge** - product concept and trading-domain leadership; engineering implementation is handled by the startup team.
+- **Case studies** (`lib/case-studies.ts`, rendered by `app/case-studies/[slug]/page.tsx`):
+  1. Banana EA: rebuilding a flagship trading robot for MT5
+  2. EA and indicator licensing for MT4/MT5
+  3. Confluence Pack for MT5
+  4. AIMStack: the software factory behind iTradeAIMS
+- **More work** cards: `components/projects.tsx`.
+- **CV**: `public/cv/cv.pdf`, linked from the header and hero. Its source is `cv/cv.html` in the
+  itradeaims-job-hunt repo; run `bash cv/export.sh` there to rebuild and copy it here.
+- **Share images, favicon, sitemap, robots**: `app/opengraph-image.tsx`, `app/case-studies/[slug]/opengraph-image.tsx`,
+  `app/icon.svg`, `app/apple-icon.png`, `app/sitemap.ts`, `app/robots.ts`.
 
 ## Stack
 
-Next.js 15, React 19, TypeScript, Tailwind CSS, Radix UI.
+Next.js 15, React 19, TypeScript, Tailwind CSS, Radix UI (shadcn/ui components in `components/ui`).
 
 ## Development
 

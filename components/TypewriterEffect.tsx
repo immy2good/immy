@@ -1,19 +1,26 @@
 import { useState, useEffect } from "react";
 
-function TypewriterEffect() {
-  const titles = [
-    "MT4/MT5 Expert Advisor Developer",
-    "Pine Script & TradingView Developer",
-    "AI Agent & MCP Engineer",
-    "iTradeAIMS Founder since 2011",
-    "Spec-first, test-heavy builder",
-  ];
+const titles = [
+  "MT4/MT5 Expert Advisor Developer",
+  "Pine Script & TradingView Developer",
+  "AI Agent & MCP Engineer",
+  "iTradeAIMS Founder since 2011",
+  "Spec-first, test-heavy builder",
+];
 
+function TypewriterEffect() {
   const [currentTitleIndex, setCurrentTitleIndex] = useState(0);
   const [currentText, setCurrentText] = useState("");
   const [phase, setPhase] = useState("typing");
+  const [reducedMotion, setReducedMotion] = useState(false);
+
+  // Visitors who ask for less motion get the first title, still.
+  useEffect(() => {
+    setReducedMotion(window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+  }, []);
 
   useEffect(() => {
+    if (reducedMotion) return;
     const currentTitle = titles[currentTitleIndex];
 
     if (phase === "typing") {
@@ -41,7 +48,15 @@ function TypewriterEffect() {
 
     setCurrentTitleIndex((currentTitleIndex + 1) % titles.length);
     setPhase("typing");
-  }, [currentText, currentTitleIndex, phase, titles]);
+  }, [currentText, currentTitleIndex, phase, reducedMotion]);
+
+  if (reducedMotion) {
+    return (
+      <div className="flex items-center justify-center h-12 sm:h-16">
+        <span className="text-slate-400">{titles[0]}</span>
+      </div>
+    );
+  }
 
   return (
     <div className="flex items-center justify-center h-12 sm:h-16">
