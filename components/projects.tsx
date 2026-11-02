@@ -7,7 +7,7 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ExternalLink } from "lucide-react";
+import { BookOpen, ExternalLink } from "lucide-react";
 
 const projects = [
   {
@@ -35,18 +35,36 @@ const projects = [
     type: "Licensing & entitlement platform",
     problem: "Protect commercial MQL code and stop issuing licences by hand.",
     description:
-      "A Laravel/API licensing system, in use for my own MT4/MT5 products, that issues licences after purchase and shows them in the member portal (243 merged pull requests). A v2 runtime on the latest Laravel with current SSL/TLS standards is built and working but not yet in service.",
+      "A Laravel/API licensing system, in use for my own MT4/MT5 products, that issues licences after purchase and shows them in the member portal (243 merged pull requests). Its v2 runtime, on the latest Laravel with current SSL/TLS standards, adds one-click activation, per-install credentials and signed short-lived licences checked by a C++ library.",
     outcome:
       "Licensing is part of purchase-to-access, not a separate manual job. I build the same for traders who want to protect their own EAs.",
     imageAlt:
       "iTradeAIMS platform screenshot representing automated digital licensing and customer entitlements",
     image: "/images/itradeaims-screenshot.jpg",
     technologies: [
-      "Laravel", "PHP", "REST APIs", "Authentication", "Stripe", "CI/CD", "MQL4/5"
+      "Laravel", "PHP", "REST APIs", "Authentication", "Stripe", "CI/CD", "MQL4/5", "C++"
     ],
+    caseStudyUrl: "/case-studies/licensing.html",
   },
   {
     number: "03",
+    title: "Confluence Pack for MT5",
+    type: "Commercial MT5 indicator pack",
+    problem: "Ship five indicators as one product, and change trading rules without silently changing signals.",
+    description:
+      "Four analysis indicators and a dashboard that reads them all, installed as one file. Every rule replays against recorded prices and is compared byte for byte with known-good output, in a check that stays under five minutes.",
+    outcome:
+      "Version 5.1.0 released in October 2026. Version 6 merges the pack into a single engine. No performance claims.",
+    imageAlt:
+      "MetaTrader chart representing the Confluence indicator pack",
+    image: "/images/metatrader-banana-ea.png",
+    technologies: [
+      "MQL5", "MetaTrader 5", "Golden-file testing", "Test fixtures", "PowerShell"
+    ],
+    caseStudyUrl: "/case-studies/confluence-pack.html",
+  },
+  {
+    number: "04",
     title: "AIMStack: agent skills and baton",
     type: "Agentic engineering infrastructure",
     problem: "Make powerful coding agents reliable across a complex multi-repository production estate.",
@@ -60,9 +78,10 @@ const projects = [
     technologies: [
       "Codex", "Claude Code", "Cursor", "Antigravity", "MCP", "Agent Skills", "TDD", "CI Gates"
     ],
+    caseStudyUrl: "/case-studies/agent-workflow.html",
   },
   {
-    number: "04",
+    number: "05",
     title: "Quant Research & Model Deployment",
     type: "Applied ML / quantitative research stack",
     problem: "Test whether ML improves an existing trading method without being fooled by leakage or overfitting.",
@@ -78,7 +97,7 @@ const projects = [
     ],
   },
   {
-    number: "05",
+    number: "06",
     title: "MCP support automation (2026, retired)",
     type: "Agentic business operations",
     problem: "Let an AI agent handle routine support without losing control of what goes to customers.",
@@ -94,7 +113,7 @@ const projects = [
     ],
   },
   {
-    number: "06",
+    number: "07",
     title: "ChartBridge",
     type: "BrumByte · Trading domain lead and MQL4/MQL5 developer",
     problem: "Send TradingView strategy alerts straight into MT4/MT5 trades.",
@@ -171,18 +190,28 @@ export function Projects() {
                     ))}
                   </div>
 
-                  {project.liveUrl && (
-                    <div className="mt-auto pt-2">
-                      <Button size="sm" asChild>
-                        <a
-                          href={project.liveUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <ExternalLink className="w-3.5 h-3.5 mr-2" />
-                          {project.liveLabel || "View"}
-                        </a>
-                      </Button>
+                  {(project.liveUrl || project.caseStudyUrl) && (
+                    <div className="mt-auto pt-2 flex flex-wrap gap-2">
+                      {project.caseStudyUrl && (
+                        <Button size="sm" asChild>
+                          <a href={project.caseStudyUrl}>
+                            <BookOpen className="w-3.5 h-3.5 mr-2" />
+                            Interactive case study
+                          </a>
+                        </Button>
+                      )}
+                      {project.liveUrl && (
+                        <Button size="sm" variant={project.caseStudyUrl ? "outline" : "default"} asChild>
+                          <a
+                            href={project.liveUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <ExternalLink className="w-3.5 h-3.5 mr-2" />
+                            {project.liveLabel || "View"}
+                          </a>
+                        </Button>
+                      )}
                     </div>
                   )}
                 </CardContent>
