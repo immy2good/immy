@@ -1,223 +1,134 @@
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import { BookOpen, ExternalLink } from "lucide-react";
+import { caseStudies } from "@/lib/case-studies";
 
-const projects = [
+const otherWork = [
   {
-    number: "01",
-    title: "iTradeAIMS: trading tools platform",
+    title: "iTradeAIMS",
     type: "Commercial platform · 500+ customers",
-    problem: "Run a trading tools business without handling every order by hand.",
     description:
-      "An API-driven platform connecting payments, licensing, member access, email and TradingView access, with a members site for billing, courses and support.",
-    outcome:
-      "Routine product delivery runs without manual handling after purchase. 21 indicators and 8 EAs are sold and supported through it.",
-    imageAlt:
-      "Screenshot of the iTradeAIMS platform representing the automated commercial product ecosystem",
-    image: "/images/itradeaims-screenshot.jpg",
-    technologies: [
-      "Stripe", "REST APIs", "WordPress", "PMPro", "Amazon SES", "CI/CD",
-      "Automation", "TradingView", "MetaTrader"
-    ],
-    liveUrl: "https://itradeaims.net/",
-    liveLabel: "Visit iTradeAIMS",
+      "An API-driven platform connecting payments, licensing, member access, email and TradingView access. 21 indicators and 8 EAs are sold and supported through it, with routine delivery running without manual handling.",
+    technologies: ["Stripe", "REST APIs", "WordPress", "PMPro", "Amazon SES", "TradingView", "MetaTrader"],
+    link: { href: "https://itradeaims.net/", label: "Visit iTradeAIMS" },
   },
   {
-    number: "02",
-    title: "EA licensing and code protection (MT4/MT5)",
-    type: "Licensing & entitlement platform",
-    problem: "Protect commercial MQL code and stop issuing licences by hand.",
+    title: "Quant research & model deployment",
+    type: "Applied ML research stack",
     description:
-      "A Laravel/API licensing system, in use for my own MT4/MT5 products, that issues licences after purchase and shows them in the member portal (243 merged pull requests). Its v2 runtime, on the latest Laravel with current SSL/TLS standards, adds one-click activation, per-install credentials and signed short-lived licences checked by a C++ library.",
-    outcome:
-      "Licensing is part of purchase-to-access, not a separate manual job. I build the same for traders who want to protect their own EAs.",
-    imageAlt:
-      "iTradeAIMS platform screenshot representing automated digital licensing and customer entitlements",
-    image: "/images/itradeaims-screenshot.jpg",
-    technologies: [
-      "Laravel", "PHP", "REST APIs", "Authentication", "Stripe", "CI/CD", "MQL4/5", "C++"
-    ],
-    caseStudyUrl: "/case-studies/licensing.html",
+      "A Python and PyTorch research pipeline with leakage tests, exporting models to ONNX to run natively inside MT5. A tested route from research to MetaTrader. No performance claims.",
+    technologies: ["Python", "PyTorch", "ONNX", "Meta-labeling", "Purged CV", "MQL5"],
   },
   {
-    number: "03",
-    title: "Confluence Pack for MT5",
-    type: "Commercial MT5 indicator pack",
-    problem: "Ship five indicators as one product, and change trading rules without silently changing signals.",
-    description:
-      "Four analysis indicators and a dashboard that reads them all, installed as one file. Every rule replays against recorded prices and is compared byte for byte with known-good output, in a check that stays under five minutes.",
-    outcome:
-      "Version 5.1.0 released in October 2026. Version 6 merges the pack into a single engine. No performance claims.",
-    imageAlt:
-      "MetaTrader chart representing the Confluence indicator pack",
-    image: "/images/metatrader-banana-ea.png",
-    technologies: [
-      "MQL5", "MetaTrader 5", "Golden-file testing", "Test fixtures", "PowerShell"
-    ],
-    caseStudyUrl: "/case-studies/confluence-pack.html",
-  },
-  {
-    number: "04",
-    title: "AIMStack: agent skills and baton",
-    type: "Agentic engineering infrastructure",
-    problem: "Make powerful coding agents reliable across a complex multi-repository production estate.",
-    description:
-      "A private, versioned set of agent skills shared across Claude Code, Codex, Cursor and Antigravity, with TDD, code review, trading domain skills and guardrails (197 merged pull requests). Work is handed between agents with baton, my open-source relay, where a different model reviews before a receipt gate marks it done.",
-    outcome:
-      "Agents start every job with the same standards and domain knowledge instead of being re-briefed prompt by prompt. baton is public on GitHub (MIT).",
-    imageAlt:
-      "Portrait of Immy Yousafzai representing agent orchestration and AI engineering",
-    image: "/images/immy-profile.jpg",
-    technologies: [
-      "Codex", "Claude Code", "Cursor", "Antigravity", "MCP", "Agent Skills", "TDD", "CI Gates"
-    ],
-    caseStudyUrl: "/case-studies/agent-workflow.html",
-  },
-  {
-    number: "05",
-    title: "Quant Research & Model Deployment",
-    type: "Applied ML / quantitative research stack",
-    problem: "Test whether ML improves an existing trading method without being fooled by leakage or overfitting.",
-    description:
-      "A research pipeline in Python and PyTorch with leakage tests, exporting models to ONNX to run inside MT5.",
-    outcome:
-      "A tested route from research to a model running natively in MetaTrader. No performance claims.",
-    imageAlt:
-      "Banana EA trading interface representing financial machine learning and MetaTrader deployment",
-    image: "/images/banana-ea-project-screenshot.webp",
-    technologies: [
-      "Python", "PyTorch", "ONNX", "Meta-labeling", "Purged CV", "HMM", "MQL5", "React", "TypeScript"
-    ],
-  },
-  {
-    number: "06",
-    title: "MCP support automation (2026, retired)",
+    title: "MCP support automation",
     type: "Agentic business operations",
-    problem: "Let an AI agent handle routine support without losing control of what goes to customers.",
+    status: "Retired",
     description:
-      "Two MCP servers (37 tools) let an agent work Discord tickets, support email, WordPress membership and CRM, and TradingView access. Every customer-facing send was drafted first and only went out after I confirmed it.",
-    outcome:
-      "Handled about 96 real support jobs over Aug–Sep 2026 with 63 passing tests, then retired. The design now guides how I build approval-gated agents.",
-    imageAlt:
-      "iTradeAIMS dashboard representing AI-assisted customer and content operations",
-    image: "/images/itradeaims-screenshot.jpg",
-    technologies: [
-      "MCP", "Python", "Discord API", "WordPress", "FluentCRM", "Human-in-the-Loop"
-    ],
+      "Two MCP servers (37 tools) let an agent work Discord tickets, support email, membership, CRM and TradingView access, with every customer-facing send confirmed by me first. Handled about 96 real support jobs over Aug–Sep 2026, with 63 passing tests.",
+    technologies: ["MCP", "Python", "Discord API", "WordPress", "FluentCRM", "Human-in-the-loop"],
   },
   {
-    number: "07",
     title: "ChartBridge",
-    type: "BrumByte · Trading domain lead and MQL4/MQL5 developer",
-    problem: "Send TradingView strategy alerts straight into MT4/MT5 trades.",
+    type: "BrumByte · Trading domain lead, MQL4/MQL5 developer",
     description:
-      "Trading domain lead and MQL4/MQL5 developer on a TradingView-to-MetaTrader bridge built with a small team. I owned the MT4/MT5 EAs and the MetaTrader integration, and contributed to the React/Next.js front end.",
-    outcome:
-      "I tested the full signal path end to end, from TradingView alert to MetaTrader trade.",
-    imageAlt:
-      "TradingView interface representing the ChartBridge product domain",
-    image: "/images/tradingview-profile-screenshot.png",
-    technologies: [
-      "MQL4", "MQL5", "MetaTrader", "TradingView", "Webhooks", "React", "Next.js"
-    ],
+      "A TradingView-to-MetaTrader bridge built with a small team. I owned the MT4/MT5 EAs and the MetaTrader integration, contributed to the React/Next.js front end, and tested the full signal path end to end.",
+    technologies: ["MQL4", "MQL5", "TradingView", "Webhooks", "React", "Next.js"],
   },
 ];
 
 export function Projects() {
   return (
-    <section id="projects" className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-muted/50">
-      <div className="container mx-auto">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-10">
-            <h2 className="text-3xl sm:text-4xl font-bold">
-              Flagship Case Studies
-            </h2>
-            <p className="text-muted-foreground max-w-3xl mx-auto mt-4">
-              Systems I've built and run. Most of the code is private, so each one says what I did and what you can check. Past projects are marked as retired.
-            </p>
-          </div>
+    <section id="projects" className="scroll-mt-20 bg-muted/50 px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
+      <div className="mx-auto max-w-6xl">
+        <div className="mb-10 max-w-3xl">
+          <p className="mb-2 text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+            Selected work
+          </p>
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Case studies</h2>
+          <p className="mt-4 text-muted-foreground">
+            Systems I've built and run in production. The code is private, so each case study walks
+            through the architecture, the decisions behind it and the problems found along the way.
+          </p>
+        </div>
 
-          <div className="grid md:grid-cols-2 gap-6">
-            {projects.map((project) => (
-              <Card key={project.title} className="overflow-hidden flex flex-col">
-                <div className="h-44 overflow-hidden border-b bg-muted">
-                  <img
-                    src={project.image}
-                    alt={project.imageAlt}
-                    className="w-full h-full object-cover"
-                    loading="lazy"
-                  />
-                </div>
+        <div className="grid gap-6 lg:grid-cols-3 lg:grid-rows-[auto_auto_1fr_auto_auto_auto]">
+          {caseStudies.map((study) => (
+            <Link
+              key={study.slug}
+              href={`/case-studies/${study.slug}`}
+              className="group flex flex-col rounded-xl border bg-card p-6 transition-all lg:row-span-6 lg:grid lg:grid-rows-subgrid lg:gap-0 hover:-translate-y-0.5 hover:border-foreground/25 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            >
+              <div className="mb-6 flex items-start justify-between gap-4">
+                <span className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
+                  {study.category}
+                </span>
+                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
+                  <ArrowUpRight className="h-4 w-4" />
+                </span>
+              </div>
 
-                <CardHeader className="pb-3">
-                  <div className="text-xs font-semibold tracking-[0.18em] text-primary mb-2">
-                    CASE STUDY {project.number}
+              <h3 className="text-xl font-semibold leading-snug tracking-tight">{study.cardTitle}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{study.summary}</p>
+
+              <dl className="mt-6 grid grid-cols-3 gap-3 border-t pt-5">
+                {study.metrics.map((m) => (
+                  <div key={m.label} className="flex flex-col-reverse">
+                    <dt className="mt-0.5 text-[11px] leading-tight text-muted-foreground">{m.label}</dt>
+                    <dd className="text-lg font-bold tracking-tight">{m.value}</dd>
                   </div>
-                  <CardTitle className="text-xl">{project.title}</CardTitle>
-                  <CardDescription className="text-sm">
-                    {project.type}
-                  </CardDescription>
-                </CardHeader>
+                ))}
+              </dl>
 
-                <CardContent className="flex flex-col gap-4 flex-1">
-                  <div>
-                    <p className="text-sm font-medium mb-1">Problem</p>
-                    <p className="text-sm text-muted-foreground">{project.problem}</p>
-                  </div>
+              <div className="mt-5 flex flex-wrap gap-1.5">
+                {study.tags.map((tag) => (
+                  <Badge key={tag} variant="secondary" className="font-normal">
+                    {tag}
+                  </Badge>
+                ))}
+              </div>
 
-                  <div>
-                    <p className="text-sm font-medium mb-1">What I built / contributed</p>
-                    <p className="text-sm text-muted-foreground">{project.description}</p>
-                  </div>
+              <span className="mt-auto flex items-center gap-1.5 pt-6 text-sm font-medium lg:mt-0">
+                Read the case study
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </span>
+            </Link>
+          ))}
+        </div>
 
-                  <div>
-                    <p className="text-sm font-medium mb-1">Outcome / scope</p>
-                    <p className="text-sm text-muted-foreground">{project.outcome}</p>
-                  </div>
-
-                  <div className="flex flex-wrap gap-2 pt-1">
-                    {project.technologies.map((tech) => (
-                      <Badge key={tech} variant="outline" className="text-xs">
-                        {tech}
-                      </Badge>
-                    ))}
-                  </div>
-
-                  {(project.liveUrl || project.caseStudyUrl) && (
-                    <div className="mt-auto pt-2 flex flex-wrap gap-2">
-                      {project.caseStudyUrl && (
-                        <Button size="sm" asChild>
-                          <a href={project.caseStudyUrl}>
-                            <BookOpen className="w-3.5 h-3.5 mr-2" />
-                            Interactive case study
-                          </a>
-                        </Button>
-                      )}
-                      {project.liveUrl && (
-                        <Button size="sm" variant={project.caseStudyUrl ? "outline" : "default"} asChild>
-                          <a
-                            href={project.liveUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            <ExternalLink className="w-3.5 h-3.5 mr-2" />
-                            {project.liveLabel || "View"}
-                          </a>
-                        </Button>
-                      )}
-                    </div>
-                  )}
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+        <h3 className="mb-6 mt-16 text-xl font-semibold tracking-tight">More work</h3>
+        <div className="grid gap-4 md:grid-cols-2">
+          {otherWork.map((work) => (
+            <div key={work.title} className="flex flex-col rounded-xl border bg-card p-6">
+              <div className="flex flex-wrap items-center gap-2">
+                <h4 className="font-semibold">{work.title}</h4>
+                {work.status && (
+                  <Badge variant="outline" className="font-normal text-muted-foreground">
+                    {work.status}
+                  </Badge>
+                )}
+              </div>
+              <p className="mt-1 text-xs text-muted-foreground">{work.type}</p>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{work.description}</p>
+              <div className="mt-4 flex flex-wrap gap-1.5">
+                {work.technologies.map((tech) => (
+                  <Badge key={tech} variant="outline" className="text-xs font-normal">
+                    {tech}
+                  </Badge>
+                ))}
+              </div>
+              {work.link && (
+                <a
+                  href={work.link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-auto inline-flex items-center gap-1.5 pt-5 text-sm font-medium hover:underline"
+                >
+                  {work.link.label}
+                  <ArrowUpRight className="h-4 w-4" />
+                </a>
+              )}
+            </div>
+          ))}
         </div>
       </div>
     </section>
