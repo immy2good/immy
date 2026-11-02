@@ -84,7 +84,7 @@ export default async function CaseStudyPage({ params }: Props) {
             </h1>
             <p className="mt-6 max-w-3xl text-lg leading-relaxed text-muted-foreground">{study.lede}</p>
 
-            <dl className="mt-10 grid gap-6 border-t pt-6 sm:grid-cols-3">
+            <dl className={`mt-10 grid gap-6 border-t pt-6 sm:grid-cols-3 ${study.meta.length > 3 ? "lg:grid-cols-4" : ""}`}>
               {study.meta.map((m) => (
                 <div key={m.label}>
                   <dt className="text-xs font-medium uppercase tracking-wider text-muted-foreground">{m.label}</dt>
