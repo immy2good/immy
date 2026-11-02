@@ -7,7 +7,7 @@ Live site: https://imyousafzai.com
 ## What's on the site
 
 - **Case studies** (`lib/case-studies.ts`, rendered by `app/case-studies/[slug]/page.tsx`):
-  1. Banana EA: rebuilding a flagship trading robot for MT5
+  1. Banana EA: rebuilding flagship trade-management software for MT5
   2. EA and indicator licensing for MT4/MT5
   3. Confluence Pack for MT5
   4. AIMStack: the software factory behind iTradeAIMS
