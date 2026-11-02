@@ -11,6 +11,7 @@ Live site: https://imyousafzai.com
   2. EA and indicator licensing for MT4/MT5
   3. Confluence Pack for MT5
   4. AIMStack: the software factory behind iTradeAIMS
+  5. iTradeAIMS Docs & Academy: product docs, chart lessons and a course platform
 - **More work** cards: `components/projects.tsx`.
 - **CV**: `public/cv/cv.pdf`, linked from the header and hero. Its source is `cv/cv.html` in the
   itradeaims-job-hunt repo; run `bash cv/export.sh` there to rebuild and copy it here.
