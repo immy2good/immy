@@ -22,7 +22,6 @@ const otherWork = [
   {
     title: "MCP support automation",
     type: "Agentic business operations",
-    status: "Retired",
     description:
       "Two MCP servers (37 tools) let an agent work Discord tickets, support email, membership, CRM and TradingView access, with every customer-facing send confirmed by me first. Handled about 96 real support jobs over Aug–Sep 2026, with 63 passing tests.",
     technologies: ["MCP", "Python", "Discord API", "WordPress", "FluentCRM", "Human-in-the-loop"],
@@ -99,14 +98,7 @@ export function Projects() {
         <div className="grid gap-4 md:grid-cols-2">
           {otherWork.map((work) => (
             <div key={work.title} className="flex flex-col rounded-xl border bg-card p-6">
-              <div className="flex flex-wrap items-center gap-2">
-                <h4 className="font-semibold">{work.title}</h4>
-                {work.status && (
-                  <Badge variant="outline" className="font-normal text-muted-foreground">
-                    {work.status}
-                  </Badge>
-                )}
-              </div>
+              <h4 className="font-semibold">{work.title}</h4>
               <p className="mt-1 text-xs text-muted-foreground">{work.type}</p>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{work.description}</p>
               <div className="mt-4 flex flex-wrap gap-1.5">
