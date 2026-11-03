@@ -1,16 +1,19 @@
 import type React from "react";
 import type { Metadata, Viewport } from "next";
-import { Hanken_Grotesk, IBM_Plex_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
-const sans = Hanken_Grotesk({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+// Self-hosted (latin subset from Google Fonts, OFL) so the build never depends on a Google Fonts fetch.
+const sans = localFont({
+  src: "./fonts/hanken-grotesk-latin.woff2",
+  weight: "400 700",
   variable: "--font-sans",
 });
-const mono = IBM_Plex_Mono({
-  subsets: ["latin"],
-  weight: ["400", "500"],
+const mono = localFont({
+  src: [
+    { path: "./fonts/ibm-plex-mono-400-latin.woff2", weight: "400" },
+    { path: "./fonts/ibm-plex-mono-500-latin.woff2", weight: "500" },
+  ],
   variable: "--font-mono",
 });
 
