@@ -10,7 +10,34 @@ const config: Config = {
   ],
   theme: {
   	extend: {
+  		fontFamily: {
+  			sans: ['var(--font-sans)', 'sans-serif'],
+  			mono: ['var(--font-mono)', 'monospace']
+  		},
   		colors: {
+  			// "Quant editorial" palette from the redesign. Dark only.
+  			q: {
+  				bg: '#08090b',
+  				band: '#0b0d10',
+  				card: '#0c0e11',
+  				inset: '#111419',
+  				chip: '#15181d',
+  				line: '#1c1f24',
+  				edge: '#23272e',
+  				edge2: '#2a2e35',
+  				dash: '#2c3139',
+  				fg: '#f2f2f0',
+  				body: '#c7cad0',
+  				body2: '#b8bcc4',
+  				muted: '#8a8f98',
+  				faint: '#6b7079',
+  				faint2: '#4b5059',
+  				blue: '#4d8dff',
+  				green: '#5fd38d',
+  				amber: '#f2b84b',
+  				rose: '#f07178',
+  				live: '#3ddc84'
+  			},
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {

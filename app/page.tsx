@@ -1,23 +1,33 @@
-import { Header } from "@/components/header"
-import { Hero } from "@/components/hero"
-import { About } from "@/components/about"
-import { Skills } from "@/components/skills"
-import { Projects } from "@/components/projects"
-import { Contact } from "@/components/contact"
-import { Footer } from "@/components/footer"
+import { Header } from "@/components/header";
+import { Hero } from "@/components/hero";
+import { Ticker } from "@/components/ticker";
+import { AgentLog } from "@/components/agent-log";
+import { Projects } from "@/components/projects";
+import { BananaBand } from "@/components/banana-band";
+import { About } from "@/components/about";
+import { Stack } from "@/components/skills";
+import { Writing } from "@/components/writing";
+import { Contact } from "@/components/contact";
+import { Footer } from "@/components/footer";
+import { Reveal } from "@/components/reveal";
 
 export default function Portfolio() {
   return (
-    <div className="min-h-screen bg-background">
-      <Header />
+    <>
+      <Header home />
       <main>
         <Hero />
-        <Skills />
-        <About />
+        <Ticker />
+        <AgentLog />
         <Projects />
+        <BananaBand />
+        <About />
+        <Stack />
+        <Writing />
         <Contact />
+        <Reveal />
       </main>
       <Footer />
-    </div>
-  )
+    </>
+  );
 }

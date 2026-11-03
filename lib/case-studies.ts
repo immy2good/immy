@@ -43,6 +43,11 @@ export type CaseStudy = {
   category: string;
   title: string;
   cardTitle: string;
+  // Short name for nav, breadcrumbs and the home grid.
+  short: string;
+  sub: string;
+  // Home grid picture. Without one the card draws its own panel.
+  image?: { src: string; alt: string };
   summary: string;
   metrics: { value: string; label: string }[];
   tags: string[];
@@ -71,6 +76,9 @@ export const caseStudies: CaseStudy[] = [
     category: "Flagship product · MT4 → MT5",
     title: "Rebuilding Banana EA, trade-management software customers have run since 2017, for MetaTrader 5",
     cardTitle: "Banana EA: rebuilding flagship trade-management software for MT5",
+    short: "Banana EA",
+    sub: "Rebuilding flagship trade-management software for MT5",
+    image: { src: "/images/banana-ea-docs.webp", alt: "Banana EA documentation home on docs.itradeaims.net" },
     summary:
       "An audit of the MT4 engine found 23 defects. The MT5 rebuild fixes each one behind a failing test first, explains every difference from the old version, and took its exit design from a customer's own research.",
     metrics: [
@@ -213,6 +221,9 @@ export const caseStudies: CaseStudy[] = [
     category: "Security engineering · MT4/MT5",
     title: "Licensing that protects paid MetaTrader indicators, without making customers type a serial key",
     cardTitle: "EA and indicator licensing for MT4/MT5",
+    short: "MetaTrader Licence Server",
+    sub: "Who can run my EAs and indicators, and where",
+    image: { src: "/images/licence-server-products.webp", alt: "Licence server product list, product codes blurred" },
     summary:
       "A server-side licence system for my commercial MetaTrader products: one-click activation, per-install credentials and signed short-lived licences checked by a C++ library.",
     metrics: [
@@ -344,6 +355,9 @@ export const caseStudies: CaseStudy[] = [
     category: "MQL5 · Trading software",
     title: "A five-in-one MetaTrader 5 indicator pack where every trading rule is tested without opening MetaTrader",
     cardTitle: "Confluence Pack for MT5",
+    short: "Confluence Pack",
+    sub: "Four indicators and a dashboard, installed as one MT5 file",
+    image: { src: "/images/confluence-pack.webp", alt: "Confluence Pack dashboard on an MT5 chart" },
     summary:
       "Four analysis indicators and a dashboard that reads them all, installed as one file. Every rule replays against recorded prices and is compared byte for byte with known-good output.",
     metrics: [
@@ -488,6 +502,8 @@ export const caseStudies: CaseStudy[] = [
     category: "AI engineering · Software factory",
     title: "AIMStack: the software factory behind iTradeAIMS",
     cardTitle: "AIMStack: the software factory behind iTradeAIMS",
+    short: "AIMStack",
+    sub: "The software factory behind iTradeAIMS",
     summary:
       "The production line that built the other products on this page. A spec goes in; AI agents write and cross-review the code in isolated workspaces; nothing ships without evidence; I make every decision that matters.",
     metrics: [
@@ -635,6 +651,9 @@ export const caseStudies: CaseStudy[] = [
     category: "Documentation · Course platform",
     title: "iTradeAIMS Docs & Academy: product documentation with a course platform built in",
     cardTitle: "iTradeAIMS Docs & Academy: product docs, chart lessons and a course platform",
+    short: "Docs & Academy",
+    sub: "Product manuals and a course platform on one site",
+    image: { src: "/images/itradeaims-docs.webp", alt: "iTradeAIMS documentation site" },
     summary:
       "One site for every product manual and every course. 17 product docs, 8 courses with 106 lessons, and chart lessons that replay real candles and then ask the student to find the one that matters. A build gate stops any product from shipping without a docs decision.",
     metrics: [
@@ -739,14 +758,14 @@ export const caseStudies: CaseStudy[] = [
       { title: "Price data and teaching labels have separate origins", tag: "Integrity", decision: "A lesson records where its candles came from and, separately, who made each label and who approved it. Labels drawn to teach a concept are never presented as indicator output.", rejected: "Rejected: treating an annotated chart as one thing. A hand-drawn label could then pass for something a product detected." },
       { title: "Every product needs a docs decision", tag: "Quality", decision: "A drift gate compares the shop's product list with the docs. Each product needs either a docs page this build produces or a written reason for having none. The gate runs offline, and the shop's own CI checks that the export is current.", rejected: "Rejected: fetching the live catalogue during the build. That needs network access and credentials, and the build fails whenever the shop is down." },
       { title: "Documentation pages don't sell", tag: "Architecture", decision: "Manuals follow the layout of developer docs such as Stripe's and Tailwind's: navigation on the left, contents on the right, tables at full width. Selling stays on the shop site.", rejected: "Rejected: the earlier pages that mixed a sales showcase with the manual. Two decision records were replaced by one that says so." },
-      { title: "I removed the AI chat assistant I'd built", tag: "Product", decision: "I built iMi, a docs assistant with its own knowledge base, a serverless backend and a rule never to give trading advice. Then I removed it. Search and the plain-text export answer the same questions, with no extra build steps, chat code in every page or backend to run.", rejected: "Rejected: keeping a feature because it took work to build." },
+      { title: "The AI chat assistant is paused until its relaunch", tag: "Product", decision: "I built iMi, a docs assistant with its own knowledge base, a serverless backend and a rule never to give trading advice. I took it out of the docs build for now: search and the plain-text export answer the same questions without extra build steps, chat code in every page or a backend to run. iMi will be relaunched later.", rejected: "Rejected: keeping it in every build because it took work to make." },
     ],
     incidentsTitle: "Problems found and fixed",
     incidentsIntro: "Each of these changed how the site is built.",
     incidents: [
       { title: "Settings tables squeezed by a purchase sidebar", tag: "Layout", symptom: "On product pages, settings tables and code blocks were cramped into a narrow column.", diagnosis: "Pages were doing two jobs. A sticky sales sidebar took the width the manual needed, and there was no table of contents.", fix: "A decision record split the jobs: the docs site documents, the shop sells. Product pages moved to a standard docs layout." },
       { title: "Wording that advertising rules don't allow", tag: "Compliance", symptom: "A review found words like 'bot', 'no repaint' guarantees and unhedged probability claims across the docs.", diagnosis: "Rules for financial advertising were applied by memory, page by page, and new pages kept bringing the words back.", fix: "A compliance scanner with its own tests now checks every public page for banned terms, with written exceptions such as robots.txt." },
-      { title: "Every build changed a tracked file", tag: "Build", symptom: "Running the site locally left a modified file in git each time.", diagnosis: "The AI assistant's build step rewrote a tracked report on every run.", fix: "That step went when the assistant was removed, and builds now leave the working tree clean." },
+      { title: "Every build changed a tracked file", tag: "Build", symptom: "Running the site locally left a modified file in git each time.", diagnosis: "The AI assistant's build step rewrote a tracked report on every run.", fix: "That step went when the assistant was taken out of the build, and builds now leave the working tree clean." },
       { title: "1,870 lines of CSS on a homepage that used 50", tag: "Hygiene", symptom: "The homepage showed two navigation systems for the same catalogue and squeezed the product grid.", diagnosis: "Styles for removed sidebars and old prototypes had piled up in one stylesheet.", fix: "The homepage became a single centred catalogue, and the stylesheet went from about 1,870 lines to about 50." },
       { title: "The hosted build ran out of memory", tag: "Build", symptom: "Adding another product docs area broke the build on Netlify.", diagnosis: "Each docs area is its own Docusaurus plugin, and the bundler needed more memory than the default.", fix: "The build memory limit was raised in config, with a comment saying why." },
     ],

@@ -1,44 +1,55 @@
-"use client";
+import { TypewriterEffect } from "@/components/TypewriterEffect";
 
-import { Button } from "@/components/ui/button";
-import { ResumeDownload } from "./ResumeDownload";
-import TypewriterEffect from "./TypewriterEffect";
-import { SocialLinks } from "@/components/common/SocialLinks";
+const roles = [
+  "MT4/MT5 Expert Advisors",
+  "Pine Script tools",
+  "AI agent workflows",
+  "MCP integrations",
+  "EA licensing systems",
+];
 
 export function Hero() {
   return (
-    <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
-      <div className="container max-w-6xl mx-auto text-center">
-        <div className="max-w-5xl mx-auto">
-          <p className="text-sm sm:text-base uppercase tracking-[0.22em] text-muted-foreground mb-5">
-            MQL5 · Pine Script · AI Agent Engineering
-          </p>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-foreground mb-6">
-            I build <span className="text-primary">trading tools and AI systems</span> that do real work.
-          </h1>
-          <div className="h-12 sm:h-16 md:h-20 flex justify-center mb-2">
-            <div className="glassmorphism-container text-sm sm:text-lg md:text-2xl lg:text-3xl text-primary font-medium inline-block px-4 py-2 overflow-hidden">
-              <TypewriterEffect />
-            </div>
+    <section id="top" className="wrap pt-[clamp(48px,7vw,88px)]">
+      <p className="eyebrow text-q-muted">MQL5 · Pine Script · AI agent engineering</p>
+      <h1 className="mt-[26px] text-balance text-[clamp(48px,9vw,128px)] font-bold leading-[.94] tracking-[-0.05em]">
+        Trading tools &amp; AI systems that do <span className="text-q-blue">real work.</span>
+      </h1>
+      <div className="mt-[clamp(36px,5vw,64px)] flex flex-wrap items-start gap-x-10 gap-y-7 border-t border-q-line pb-[clamp(40px,5vw,64px)] pt-7">
+        <div className="flex flex-[1_1_220px] items-center gap-3.5">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/images/immy-profile.webp"
+            alt="Immy Yousafzai"
+            className="h-[52px] w-[52px] rounded-full object-cover object-[center_30%]"
+          />
+          <div className="text-[13px] leading-[1.45] text-q-muted">
+            Founder, iTradeAIMS
+            <br />
+            Birmingham, UK
           </div>
-          <p className="text-lg text-muted-foreground mb-12 mt-8 max-w-3xl mx-auto">
-            I&apos;ve run iTradeAIMS since 2011 and published on TradingView since 2014. I build MT4/MT5 Expert Advisors, indicators and Pine Script tools, and the AI agent workflows I use to ship them. I work spec-first and test-heavy, and nothing is called done until it&apos;s been verified.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-            <Button variant="outline" size="lg" asChild className="w-48">
-              <a href="#projects">View Case Studies</a>
-            </Button>
-            <Button variant="outline" size="lg" asChild className="w-48">
-              <a href="#contact">Get In Touch</a>
-            </Button>
-            <ResumeDownload
-              variant="outline"
-              size="lg"
-              label="Download CV"
-              className="w-48"
-            />
+        </div>
+        <p className="m-0 flex-[2_1_380px] text-pretty text-lg leading-[1.55] text-q-body2">
+          Since 2011 I&apos;ve built MT4/MT5 Expert Advisors, indicators and Pine Script tools, plus the AI agent
+          workflows I use to ship them. Spec-first, test-heavy, verified before done.
+        </p>
+        <div className="flex flex-[1_1_300px] flex-col items-start gap-[18px]">
+          <div className="flex h-[22px] items-center gap-2 whitespace-nowrap font-mono text-[15px]">
+            <span className="text-q-muted">now building</span>
+            <TypewriterEffect words={roles} className="text-q-blue" />
+            <span className="anim-blink h-[18px] w-2 bg-q-blue" aria-hidden />
           </div>
-          <SocialLinks spacing="normal" variant="ghost" size="icon" />
+          <div className="flex flex-wrap gap-2.5">
+            <a
+              href="#work"
+              className="rounded-full bg-q-fg px-5 py-[13px] text-[15px] font-semibold text-q-bg hover:text-q-bg hover:opacity-90"
+            >
+              See the work
+            </a>
+            <a href="#contact" className="rounded-full border border-q-edge2 px-5 py-3 text-[15px]">
+              Contact
+            </a>
+          </div>
         </div>
       </div>
     </section>

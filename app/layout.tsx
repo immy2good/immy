@@ -1,14 +1,22 @@
 import type React from "react";
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Hanken_Grotesk, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "@/components/theme-provider";
 
-const inter = Inter({ subsets: ["latin"] });
+const sans = Hanken_Grotesk({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-sans",
+});
+const mono = IBM_Plex_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-mono",
+});
 
-const siteTitle = "Immy Yousafzai | MT5 EA & Pine Script Developer, AI Agent Engineering";
+const siteTitle = "Immy Yousafzai · Trading tools & AI systems";
 const shareDescription =
-  "MT4/MT5 Expert Advisors, Pine Script, EA licensing and AI agent engineering. Founder of iTradeAIMS since 2011.";
+  "MT4/MT5 Expert Advisors, Pine Script tools and AI agent workflows. Founder of iTradeAIMS, Birmingham UK.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://imyousafzai.com"),
@@ -32,18 +40,19 @@ export const metadata: Metadata = {
   },
 };
 
+export const viewport: Viewport = {
+  themeColor: "#08090b",
+  colorScheme: "dark",
+};
+
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-          {children}
-        </ThemeProvider>
-      </body>
+    <html lang="en" className={`dark ${sans.variable} ${mono.variable}`}>
+      <body className="overflow-x-hidden">{children}</body>
     </html>
   );
 }

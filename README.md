@@ -12,15 +12,16 @@ Live site: https://imyousafzai.com
   3. Confluence Pack for MT5
   4. AIMStack: the software factory behind iTradeAIMS
   5. iTradeAIMS Docs & Academy: product docs, chart lessons and a course platform
-- **More work** cards: `components/projects.tsx`.
-- **CV**: `public/cv/cv.pdf`, linked from the header and hero. Its source is `cv/cv.html` in the
+- **Home page** sections: `app/page.tsx` (work grid in `components/projects.tsx`). The price ticker and agent
+  log are decorative and labelled "Illustrative, not live data".
+- **CV**: `public/cv/cv.pdf`, linked from the contact section. Its source is `cv/cv.html` in the
   itradeaims-job-hunt repo; run `bash cv/export.sh` there to rebuild and copy it here.
 - **Share images, favicon, sitemap, robots**: `app/opengraph-image.tsx`, `app/case-studies/[slug]/opengraph-image.tsx`,
   `app/icon.svg`, `app/apple-icon.png`, `app/sitemap.ts`, `app/robots.ts`.
 
 ## Stack
 
-Next.js 15, React 19, TypeScript, Tailwind CSS, Radix UI (shadcn/ui components in `components/ui`).
+Next.js 15, React 19, TypeScript, Tailwind CSS (palette `q-*` in `tailwind.config.ts`), Hanken Grotesk and IBM Plex Mono via `next/font`.
 
 ## Development
 

@@ -1,36 +1,10 @@
 "use client";
 
-import { useEffect, useId, useState } from "react";
-import { Pause, Play, RotateCcw } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import { useEffect, useId, useRef, useState } from "react";
 import type { Diagram, DiagramEdge, Tone } from "@/lib/case-studies";
 
-// Literal class strings so Tailwind keeps them.
-const ZONE: Record<Tone, string> = {
-  green: "fill-emerald-50/70 stroke-emerald-300 dark:fill-emerald-950/30 dark:stroke-emerald-800",
-  amber: "fill-amber-50/70 stroke-amber-300 dark:fill-amber-950/30 dark:stroke-amber-800",
-  blue: "fill-sky-50/70 stroke-sky-300 dark:fill-sky-950/30 dark:stroke-sky-800",
-  rose: "fill-rose-50/70 stroke-rose-300 dark:fill-rose-950/30 dark:stroke-rose-800",
-};
-const ZONE_TEXT: Record<Tone, string> = {
-  green: "fill-emerald-700 dark:fill-emerald-400",
-  amber: "fill-amber-700 dark:fill-amber-400",
-  blue: "fill-sky-700 dark:fill-sky-400",
-  rose: "fill-rose-700 dark:fill-rose-400",
-};
-const NODE: Record<Tone, string> = {
-  green: "stroke-emerald-600 dark:stroke-emerald-500",
-  amber: "stroke-amber-600 dark:stroke-amber-500",
-  blue: "stroke-sky-600 dark:stroke-sky-500",
-  rose: "stroke-rose-600 dark:stroke-rose-500",
-};
-const DOT: Record<Tone, string> = {
-  green: "bg-emerald-500",
-  amber: "bg-amber-500",
-  blue: "bg-sky-500",
-  rose: "bg-rose-500",
-};
+const TONE: Record<Tone, string> = { blue: "#4d8dff", amber: "#f2b84b", rose: "#f07178", green: "#5fd38d" };
+const STEP_MS = 2400;
 
 function labelPosition(edge: DiagramEdge) {
   if (edge.label) return { x: edge.label.x, y: edge.label.y, anchor: edge.label.anchor ?? "middle" };
@@ -41,289 +15,264 @@ function labelPosition(edge: DiagramEdge) {
   return { x: (p[0] + p[n - 2]) / 2, y: midY - 5, anchor: "middle" as const };
 }
 
-export function CaseStudyDiagram({ diagram }: { diagram: Diagram }) {
+export function CaseStudyDiagram({ diagram: d }: { diagram: Diagram }) {
   const markerId = useId().replace(/:/g, "");
-  const journeyNames = Object.keys(diagram.journeys);
-  const firstNode = Object.keys(diagram.nodes)[0];
+  const journeyNames = Object.keys(d.journeys);
+  const boxRef = useRef<HTMLDivElement>(null);
 
-  const [journey, setJourney] = useState(journeyNames[0]);
+  const [journey, setJourney] = useState(0);
   const [step, setStep] = useState(-1);
   const [playing, setPlaying] = useState(false);
-  const [selected, setSelected] = useState(firstNode);
+  const [selected, setSelected] = useState<string | null>(null);
+  const [scale, setScale] = useState(1);
 
-  const steps = diagram.journeys[journey];
+  const steps = d.journeys[journeyNames[journey]];
   const current = step >= 0 ? steps[step] : null;
   const activeEdges = new Set(current?.edges ?? []);
   const activeNode = current?.node ?? selected;
+  const node = activeNode ? d.nodes[activeNode] : null;
 
+  // Fit the drawing to its box; below 640px a CSS container query swaps it for a list.
+  useEffect(() => {
+    const el = boxRef.current;
+    if (!el) return;
+    const fit = () => setScale(Math.min(1, (el.clientWidth - 24) / d.width));
+    // Measure now as well: a background tab may not deliver the observer's first callback until it is shown.
+    fit();
+    const ro = new ResizeObserver(fit);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, [d.width]);
+
+  // Start playing on load unless the visitor prefers less motion.
+  useEffect(() => {
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) setPlaying(true);
+  }, []);
+
+  // Step through the journey, then move on to the next one and loop.
   useEffect(() => {
     if (!playing) return;
-    if (step >= steps.length - 1) {
-      setPlaying(false);
-      return;
-    }
-    const t = setTimeout(() => setStep((s) => s + 1), step < 0 ? 0 : 1800);
+    const t = setTimeout(
+      () => {
+        if (step < steps.length - 1) return setStep((s) => s + 1);
+        setJourney((j) => (j + 1) % journeyNames.length);
+        setStep(0);
+      },
+      step < 0 ? 400 : STEP_MS,
+    );
     return () => clearTimeout(t);
-  }, [playing, step, steps.length]);
+  }, [playing, step, steps.length, journeyNames.length]);
 
-  useEffect(() => {
-    if (current) setSelected(current.node);
-  }, [current]);
-
-  const chooseJourney = (name: string) => {
-    setJourney(name);
-    setStep(-1);
+  const pickNode = (id: string) => {
     setPlaying(false);
+    setStep(-1);
+    setSelected(id);
   };
 
-  const node = diagram.nodes[activeNode];
+  const pickJourney = (i: number) => {
+    setJourney(i);
+    setStep(-1);
+    setSelected(null);
+    setPlaying(true);
+  };
+
+  const nodeStyle = (id: string, tone: Tone) =>
+    id === activeNode ? { borderColor: TONE[tone], background: "#13171d" } : { borderColor: "#2a2e35", background: "#0c0e11" };
+
+  const zoneOf = (x: number) => d.zones.find((z) => x >= z.x - 5 && x < z.x + z.w);
 
   return (
-    <div className="grid gap-6 lg:grid-cols-[1fr_320px]">
-      <div className="rounded-xl border bg-card p-3 sm:p-4">
-        <div className="overflow-x-auto">
-          <svg
-            viewBox={`0 0 ${diagram.width} ${diagram.height}`}
-            className="h-auto w-full min-w-[640px] font-sans"
-            role="img"
-            aria-label="Architecture diagram. Select a box to read what it does."
+    <div>
+      <div className="mt-9 flex flex-wrap items-center gap-2">
+        {journeyNames.map((name, i) => (
+          <button
+            key={name}
+            type="button"
+            aria-pressed={i === journey}
+            onClick={() => pickJourney(i)}
+            className={`flex-none whitespace-nowrap rounded-full border px-4 py-[9px] text-sm font-medium transition-colors ${
+              i === journey ? "border-q-blue bg-[#13203a] text-q-fg" : "border-q-edge2 text-q-body2 hover:text-q-fg"
+            }`}
           >
-            <defs>
-              {(["idle", "hot"] as const).map((kind) => (
-                <marker
-                  key={kind}
-                  id={`${markerId}-${kind}`}
-                  viewBox="0 0 10 10"
-                  refX="9"
-                  refY="5"
-                  markerWidth="7"
-                  markerHeight="7"
-                  orient="auto-start-reverse"
-                >
-                  <path
-                    d="M0,0 L10,5 L0,10 z"
-                    className={kind === "hot" ? "fill-amber-500" : "fill-muted-foreground"}
-                  />
-                </marker>
-              ))}
-            </defs>
-
-            {diagram.zones.map((z) => (
-              <g key={z.label}>
-                <rect
-                  x={z.x}
-                  y={diagram.zoneTop}
-                  width={z.w}
-                  height={diagram.zoneHeight}
-                  rx={12}
-                  strokeDasharray="5 4"
-                  className={ZONE[z.tone]}
-                />
-                <text
-                  x={z.x + 14}
-                  y={diagram.zoneTop + 22}
-                  className={cn("text-[11px] font-semibold uppercase tracking-wider", ZONE_TEXT[z.tone])}
-                >
-                  {z.label}
-                </text>
-              </g>
-            ))}
-
-            {Object.entries(diagram.edges).map(([id, e]) => {
-              const hot = activeEdges.has(id);
-              return (
-                <path
-                  key={id}
-                  d={e.path}
-                  fill="none"
-                  strokeWidth={hot ? 2.5 : 1.4}
-                  markerEnd={`url(#${markerId}-${hot ? "hot" : "idle"})`}
-                  className={cn(
-                    "transition-all duration-300",
-                    hot ? "stroke-amber-500" : "stroke-muted-foreground/60",
-                  )}
-                />
-              );
-            })}
-
-            {Object.entries(diagram.edges).map(([id, e]) => {
-              if (!e.text) return null;
-              const pos = labelPosition(e);
-              const hot = activeEdges.has(id);
-              return (
-                <text
-                  key={id}
-                  x={pos.x}
-                  y={pos.y}
-                  textAnchor={pos.anchor}
-                  style={{ paintOrder: "stroke" }}
-                  strokeWidth={4}
-                  strokeLinejoin="round"
-                  className={cn(
-                    "stroke-card text-[10.5px]",
-                    hot ? "fill-foreground font-semibold" : "fill-muted-foreground",
-                  )}
-                >
-                  {e.text}
-                </text>
-              );
-            })}
-
-            {Object.entries(diagram.nodes).map(([id, n]) => {
-              const active = id === activeNode;
-              return (
-                <g
-                  key={id}
-                  role="button"
-                  tabIndex={0}
-                  aria-label={`${n.title}: ${n.sub}`}
-                  aria-pressed={active}
-                  className="cursor-pointer outline-none [&:focus-visible>rect]:stroke-[3px]"
-                  onClick={() => {
-                    setSelected(id);
-                    setStep(-1);
-                    setPlaying(false);
-                  }}
-                  onKeyDown={(ev) => {
-                    if (ev.key === "Enter" || ev.key === " ") {
-                      ev.preventDefault();
-                      setSelected(id);
-                      setStep(-1);
-                      setPlaying(false);
-                    }
-                  }}
-                >
-                  <rect
-                    x={n.x}
-                    y={n.y}
-                    width={n.w}
-                    height={n.h}
-                    rx={9}
-                    strokeWidth={active ? 2.5 : 1.4}
-                    className={cn(
-                      "fill-card transition-all duration-300",
-                      NODE[n.tone],
-                      active && "drop-shadow-md",
-                    )}
-                  />
-                  <text
-                    x={n.x + n.w / 2}
-                    y={n.y + n.h / 2 - 3}
-                    textAnchor="middle"
-                    className="fill-foreground text-[13px] font-semibold"
-                  >
-                    {n.title}
-                  </text>
-                  <text
-                    x={n.x + n.w / 2}
-                    y={n.y + n.h / 2 + 14}
-                    textAnchor="middle"
-                    className="fill-muted-foreground text-[10.5px]"
-                  >
-                    {n.sub}
-                  </text>
-                </g>
-              );
-            })}
-
-            <text
-              x={diagram.footnote.x}
-              y={diagram.footnote.y}
-              className="fill-muted-foreground text-[11px] italic"
-            >
-              {diagram.footnote.text}
-            </text>
-          </svg>
-        </div>
+            {name}
+          </button>
+        ))}
+        <button
+          type="button"
+          onClick={() => setPlaying((p) => !p)}
+          className="ml-auto flex-none whitespace-nowrap rounded-full bg-q-blue px-[18px] py-[9px] text-sm font-semibold text-white"
+        >
+          {playing ? "Pause ❚❚" : "Play ▶"}
+        </button>
       </div>
 
-      <div className="flex flex-col gap-4">
-        <div className="rounded-xl border bg-card p-5" aria-live="polite">
-          <div className="mb-2 flex items-center gap-2 text-xs font-medium uppercase tracking-wider text-muted-foreground">
-            <span className={cn("h-2 w-2 rounded-full", DOT[node.tone])} />
-            Selected component
+      <div className="mt-6 flex flex-wrap items-start gap-6">
+        <div ref={boxRef} className="dg-box min-w-0 flex-[3_1_640px] overflow-hidden rounded-[14px] border border-q-line bg-q-bg p-3">
+          <div className="dg-full relative w-full" style={{ height: d.height * scale }}>
+            <div
+              className="absolute left-0 top-0 origin-top-left"
+              style={{ width: d.width, height: d.height, transform: `scale(${scale})` }}
+            >
+              {d.zones.map((z) => (
+                <div
+                  key={z.label}
+                  className="absolute rounded-xl border border-dashed"
+                  style={{ left: z.x, top: d.zoneTop, width: z.w, height: d.zoneHeight, borderColor: "#2c3139" }}
+                >
+                  <div
+                    className="absolute left-3 top-2 font-mono text-[10px] uppercase tracking-[0.1em]"
+                    style={{ color: TONE[z.tone] }}
+                  >
+                    {z.label}
+                  </div>
+                </div>
+              ))}
+              <svg
+                className="pointer-events-none absolute inset-0"
+                width={d.width}
+                height={d.height}
+                viewBox={`0 0 ${d.width} ${d.height}`}
+                aria-hidden
+              >
+                <defs>
+                  {(["idle", "hot"] as const).map((k) => (
+                    <marker
+                      key={k}
+                      id={`${markerId}-${k}`}
+                      viewBox="0 0 10 10"
+                      refX="9"
+                      refY="5"
+                      markerWidth="7"
+                      markerHeight="7"
+                      orient="auto-start-reverse"
+                    >
+                      <path d="M0,0 L10,5 L0,10 z" fill={k === "hot" ? "#4d8dff" : "#3a3f48"} />
+                    </marker>
+                  ))}
+                </defs>
+                {Object.entries(d.edges).map(([id, e]) => {
+                  const hot = activeEdges.has(id);
+                  return (
+                    <path
+                      key={id}
+                      d={e.path}
+                      fill="none"
+                      stroke={hot ? "#4d8dff" : "#3a3f48"}
+                      strokeWidth={hot ? 2 : 1.25}
+                      markerEnd={`url(#${markerId}-${hot ? "hot" : "idle"})`}
+                      className="transition-[stroke] duration-300"
+                    />
+                  );
+                })}
+                {Object.entries(d.edges).map(([id, e]) => {
+                  if (!e.text) return null;
+                  const pos = labelPosition(e);
+                  const hot = activeEdges.has(id);
+                  return (
+                    <text
+                      key={id}
+                      x={pos.x}
+                      y={pos.y}
+                      textAnchor={pos.anchor}
+                      fill={hot ? "#f2f2f0" : "#8a8f98"}
+                      stroke="#08090b"
+                      strokeWidth={4}
+                      strokeLinejoin="round"
+                      style={{ paintOrder: "stroke" }}
+                      className="font-mono text-[10px]"
+                    >
+                      {e.text}
+                    </text>
+                  );
+                })}
+              </svg>
+              {Object.entries(d.nodes).map(([id, n]) => (
+                <button
+                  key={id}
+                  type="button"
+                  aria-pressed={id === activeNode}
+                  onClick={() => pickNode(id)}
+                  className="absolute flex flex-col justify-center rounded-[10px] border px-3 py-2 text-left text-q-fg transition-[background,border-color] duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-q-blue"
+                  style={{ left: n.x, top: n.y, width: n.w, height: n.h, ...nodeStyle(id, n.tone) }}
+                >
+                  <span className="text-[13px] font-bold leading-[1.2]">{n.title}</span>
+                  <span className="mt-[3px] font-mono text-[10px] leading-[1.3] text-q-muted">{n.sub}</span>
+                </button>
+              ))}
+              <div
+                className="absolute right-4 text-xs text-q-muted"
+                style={{ left: d.footnote.x, top: d.footnote.y - 10 }}
+              >
+                {d.footnote.text}
+              </div>
+            </div>
           </div>
-          <h3 className="text-lg font-semibold leading-tight">{node.title}</h3>
-          <p className="mb-3 text-sm text-muted-foreground">{node.sub}</p>
-          <p className="text-sm leading-relaxed">{node.detail}</p>
+
+          <div className="dg-list flex-col gap-[18px] p-1.5">
+            {d.zones.map((z) => {
+              const ids = Object.keys(d.nodes).filter((id) => zoneOf(d.nodes[id].x) === z);
+              if (!ids.length) return null;
+              return (
+                <div key={z.label} className="flex flex-col gap-2">
+                  <div className="font-mono text-[11px] uppercase tracking-[0.1em]" style={{ color: TONE[z.tone] }}>
+                    {z.label}
+                  </div>
+                  {ids.map((id) => {
+                    const n = d.nodes[id];
+                    return (
+                      <button
+                        key={id}
+                        type="button"
+                        aria-pressed={id === activeNode}
+                        onClick={() => pickNode(id)}
+                        className="min-h-[44px] rounded-[10px] border px-3.5 py-3 text-left text-q-fg transition-[background,border-color] duration-200"
+                        style={nodeStyle(id, n.tone)}
+                      >
+                        <div className="text-[15px] font-bold">{n.title}</div>
+                        <div className="mt-[3px] font-mono text-xs text-q-muted">{n.sub}</div>
+                      </button>
+                    );
+                  })}
+                </div>
+              );
+            })}
+            <p className="text-xs leading-normal text-q-muted">{d.footnote.text}</p>
+          </div>
         </div>
 
-        <div className="rounded-xl border bg-card p-5">
-          <div className="mb-3 text-xs font-medium uppercase tracking-wider text-muted-foreground">
-            Walk through a journey
+        <div className="flex flex-[1_1_300px] flex-col gap-4">
+          <div className="rounded-[14px] border border-q-line bg-q-card p-[22px]" aria-live="polite">
+            <div
+              className="font-mono text-[11px] uppercase tracking-[0.1em]"
+              style={{ color: node ? TONE[node.tone] : "#8a8f98" }}
+            >
+              {node ? node.sub : "Select any box"}
+            </div>
+            <h3 className="mt-2 text-[19px] font-bold">{node ? node.title : "Each box is a part of the system"}</h3>
+            <p className="mt-2.5 text-sm leading-[1.6] text-q-body2">
+              {node ? node.detail : "Click one to read what it does and why it was built that way."}
+            </p>
           </div>
-          <div className="mb-4 flex flex-wrap gap-1.5" role="tablist">
-            {journeyNames.map((name) => (
-              <button
-                key={name}
-                role="tab"
-                aria-selected={name === journey}
-                onClick={() => chooseJourney(name)}
-                className={cn(
-                  "rounded-full border px-3 py-1 text-xs transition-colors",
-                  name === journey
-                    ? "border-primary bg-primary text-primary-foreground"
-                    : "text-muted-foreground hover:bg-muted",
-                )}
-              >
-                {name}
-              </button>
-            ))}
-          </div>
-
-          <ol className="mb-4 space-y-1">
+          <ol className="flex flex-col gap-0.5 rounded-[14px] border border-q-line px-[22px] py-[18px]">
             {steps.map((s, i) => (
               <li key={i}>
                 <button
+                  type="button"
                   onClick={() => {
                     setPlaying(false);
+                    setSelected(null);
                     setStep(i);
                   }}
-                  className={cn(
-                    "flex w-full gap-3 rounded-md px-2 py-1.5 text-left text-sm transition-colors",
-                    i === step ? "bg-amber-500/10 text-foreground" : "text-muted-foreground hover:bg-muted",
-                  )}
+                  className={`flex w-full gap-3 py-2 text-left text-sm leading-[1.45] ${i === step ? "text-q-fg" : "text-q-muted hover:text-q-body"}`}
                 >
-                  <span
-                    className={cn(
-                      "mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border text-[10px] font-semibold",
-                      i === step && "border-amber-500 bg-amber-500 text-white",
-                      i < step && "border-amber-500 text-amber-600 dark:text-amber-400",
-                    )}
-                  >
-                    {i + 1}
+                  <span className={`flex-none pt-px font-mono text-xs ${i <= step ? "text-q-blue" : "text-q-faint"}`}>
+                    {String(i + 1).padStart(2, "0")}
                   </span>
-                  <span className="leading-snug">{s.text}</span>
+                  <span>{s.text}</span>
                 </button>
               </li>
             ))}
           </ol>
-
-          <div className="flex gap-2">
-            <Button
-              size="sm"
-              onClick={() => {
-                if (playing) return setPlaying(false);
-                if (step >= steps.length - 1) setStep(-1);
-                setPlaying(true);
-              }}
-            >
-              {playing ? <Pause className="mr-1.5 h-3.5 w-3.5" /> : <Play className="mr-1.5 h-3.5 w-3.5" />}
-              {playing ? "Pause" : "Play"}
-            </Button>
-            <Button
-              size="sm"
-              variant="outline"
-              onClick={() => {
-                setPlaying(false);
-                setStep(-1);
-              }}
-              disabled={step < 0}
-            >
-              <RotateCcw className="mr-1.5 h-3.5 w-3.5" />
-              Reset
-            </Button>
-          </div>
         </div>
       </div>
     </div>
