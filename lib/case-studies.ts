@@ -84,7 +84,7 @@ export const caseStudies: CaseStudy[] = [
     metrics: [
       { value: "23", label: "audited defects fixed" },
       { value: "1,416", label: "engine test assertions" },
-      { value: "33", label: "merged pull requests" },
+      { value: "Since 2017", label: "run by customers on MT4" },
     ],
     tags: ["MQL5", "MQL4", "Python", "Strategy Tester", "ADRs"],
     eyebrow: "Case study · Trading software · Product engineering",
@@ -227,9 +227,9 @@ export const caseStudies: CaseStudy[] = [
     summary:
       "A server-side licence system for my commercial MetaTrader products: one-click activation, per-install credentials and signed short-lived licences checked by a C++ library.",
     metrics: [
-      { value: "243", label: "merged pull requests" },
-      { value: "31", label: "design decisions" },
-      { value: "15/15", label: "crypto test vectors" },
+      { value: "1-click", label: "activation, no serial keys" },
+      { value: "6h", label: "signed licence, works through outages" },
+      { value: "MT4 + MT5", label: "32- and 64-bit signature check" },
     ],
     tags: ["Laravel", "MQL5", "C++", "RSA-PSS", "HMAC"],
     eyebrow: "Case study · Trading software · Security engineering",
@@ -363,7 +363,7 @@ export const caseStudies: CaseStudy[] = [
     metrics: [
       { value: "1", label: "file to install" },
       { value: "6", label: "golden test suites" },
-      { value: "< 5 min", label: "full check before merge" },
+      { value: "4 + 1", label: "indicators and a dashboard that reads them" },
     ],
     tags: ["MQL5", "MetaTrader 5", "Golden-file testing", "Test fixtures"],
     eyebrow: "Case study · MQL5 · Trading software",
@@ -659,7 +659,7 @@ export const caseStudies: CaseStudy[] = [
     metrics: [
       { value: "106", label: "lessons in 8 courses" },
       { value: "17", label: "product docs, one site" },
-      { value: "196", label: "unit tests on every build" },
+      { value: "6", label: "interactive tools inside lessons" },
     ],
     tags: ["Docusaurus", "React", "Lightweight Charts", "Course platform", "Netlify"],
     eyebrow: "Case study · Documentation · Course platform",
