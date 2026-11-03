@@ -79,7 +79,7 @@ function McpPanel() {
         </div>
         <div>
           <span className="text-q-blue">→</span> tradingview.access.grant{" "}
-          <span className="text-q-amber">queued · needs approval</span>
+          <span className="text-q-green">granted · verified buyer</span>
         </div>
       </div>
       <div className="mt-auto flex items-center justify-between gap-2.5 rounded-lg border border-[#3a2f17] bg-[#15120b] px-3 py-2.5">
@@ -110,13 +110,13 @@ const cards: Card[] = [
     href: "#contact",
     category: "Agentic business operations",
     title: "MCP Support Ops",
-    sub: "Agentic support with human sign-off on every send",
+    sub: "Triages Discord and email support, drafts replies, and gives verified buyers TradingView access on its own",
     metrics: [
-      { value: "37", label: "MCP tools" },
+      { value: "3-in-1", label: "Discord triage, email, TradingView access" },
+      { value: "2", label: "reply styles: owner persona or support team" },
       { value: "~96", label: "real support jobs" },
-      { value: "63", label: "passing tests" },
     ],
-    tags: ["MCP", "Python", "Discord API", "Human-in-the-loop"],
+    tags: ["MCP", "Python", "Discord API", "Playwright", "Email"],
     cta: "Ask me about it",
     visual: <McpPanel />,
   },
