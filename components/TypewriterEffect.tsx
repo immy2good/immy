@@ -1,72 +1,53 @@
-import { useState, useEffect } from "react";
+"use client";
 
-const titles = [
-  "MT4/MT5 Expert Advisor Developer",
-  "Pine Script & TradingView Developer",
-  "AI Agent & MCP Engineer",
-  "iTradeAIMS Founder since 2011",
-  "Spec-first, test-heavy builder",
-];
+import { useEffect, useState } from "react";
 
-function TypewriterEffect() {
-  const [currentTitleIndex, setCurrentTitleIndex] = useState(0);
-  const [currentText, setCurrentText] = useState("");
-  const [phase, setPhase] = useState("typing");
-  const [reducedMotion, setReducedMotion] = useState(false);
+const TICK_MS = 65;
+const HOLD_TICKS = 28; // pause on a finished word
+const GAP_TICKS = 5; // pause before the next word
 
-  // Visitors who ask for less motion get the first title, still.
-  useEffect(() => {
-    setReducedMotion(window.matchMedia("(prefers-reduced-motion: reduce)").matches);
-  }, []);
+// Types each word, holds it, deletes it, moves on. Under reduced motion it shows the first word, still.
+export function TypewriterEffect({ words, className }: { words: string[]; className?: string }) {
+  const [text, setText] = useState(words[0]);
 
   useEffect(() => {
-    if (reducedMotion) return;
-    const currentTitle = titles[currentTitleIndex];
-
-    if (phase === "typing") {
-      if (currentText.length < currentTitle.length) {
-        const timeout = setTimeout(() => {
-          setCurrentText(currentTitle.slice(0, currentText.length + 1));
-        }, 50);
-        return () => clearTimeout(timeout);
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    let word = 0;
+    let chars = 0;
+    let deleting = false;
+    let pause = 0;
+    setText("");
+    const timer = setInterval(() => {
+      if (pause > 0) {
+        pause--;
+        return;
       }
-      const timeout = setTimeout(() => setPhase("pausing"), 650);
-      return () => clearTimeout(timeout);
-    }
-
-    if (phase === "pausing") {
-      const timeout = setTimeout(() => setPhase("deleting"), 650);
-      return () => clearTimeout(timeout);
-    }
-
-    if (currentText.length > 0) {
-      const timeout = setTimeout(() => {
-        setCurrentText(currentText.slice(0, -1));
-      }, 25);
-      return () => clearTimeout(timeout);
-    }
-
-    setCurrentTitleIndex((currentTitleIndex + 1) % titles.length);
-    setPhase("typing");
-  }, [currentText, currentTitleIndex, phase, reducedMotion]);
-
-  if (reducedMotion) {
-    return (
-      <div className="flex items-center justify-center h-12 sm:h-16">
-        <span className="text-slate-400">{titles[0]}</span>
-      </div>
-    );
-  }
+      const w = words[word % words.length];
+      if (!deleting) {
+        chars++;
+        if (chars >= w.length) {
+          deleting = true;
+          pause = HOLD_TICKS;
+        }
+      } else {
+        chars--;
+        if (chars <= 0) {
+          deleting = false;
+          word++;
+          pause = GAP_TICKS;
+        }
+      }
+      setText(w.slice(0, chars));
+    }, TICK_MS);
+    return () => clearInterval(timer);
+  }, [words]);
 
   return (
-    <div className="flex items-center justify-center h-12 sm:h-16">
-      <span className="border-r-2 border-primary pr-1 animate-pulse-border">
-        <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-400 to-slate-400">
-          {currentText}
-        </span>
+    <>
+      <span className={className} aria-hidden>
+        {text}
       </span>
-    </div>
+      <span className="sr-only">{words.join(", ")}</span>
+    </>
   );
 }
-
-export default TypewriterEffect;

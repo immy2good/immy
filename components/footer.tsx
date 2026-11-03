@@ -1,26 +1,9 @@
-import { SocialLinks } from "@/components/common/SocialLinks";
-
 export function Footer() {
   return (
-    <footer className="bg-muted py-12 px-4 sm:px-6 lg:px-8">
-      <div className="container mx-auto">
-        <div className="max-w-6xl mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="mb-4 md:mb-0">
-              <h3 className="text-xl font-bold">Immy Yousafzai</h3>
-              <p className="text-muted-foreground">
-                iTradeAIMS founder · MT4/MT5 EAs · Pine Script · AI agent engineering
-              </p>
-            </div>
-            <div>
-              <SocialLinks spacing="tight" size="sm" />
-            </div>
-          </div>
-
-          <div className="border-t mt-8 pt-8 text-center text-muted-foreground">
-            <p>&copy; 2026 Immy Yousafzai. All rights reserved.</p>
-          </div>
-        </div>
+    <footer className="wrap pb-10">
+      <div className="flex flex-wrap justify-between gap-3 border-t border-q-line pt-6 text-[13px] text-q-muted">
+        <span>© 2026 I M Yousafzai</span>
+        <span>Birmingham, UK · Remote</span>
       </div>
     </footer>
   );

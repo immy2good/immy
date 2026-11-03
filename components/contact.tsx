@@ -1,15 +1,14 @@
 "use client";
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
-import { MapPin } from "lucide-react";
-import { submitContactForm } from "../lib/actions";
 import { Component, type ReactNode, useActionState } from "react";
+import { submitContactForm } from "../lib/actions";
 
 const FORM_FAILURE_MESSAGE = "Message not sent. Please try again later.";
+
+const field =
+  "rounded-[10px] border border-q-edge bg-q-bg px-3.5 py-3 text-[15px] text-q-fg outline-none transition-colors focus:border-q-blue";
+const label = "flex flex-col gap-1.5 text-[13px] text-q-body2";
+const pill = "rounded-full border border-q-edge2 px-5 py-3 text-[15px]";
 
 class ContactFormBoundary extends Component<{ children: ReactNode }, { hasError: boolean }> {
   state = { hasError: false };
@@ -25,13 +24,11 @@ class ContactFormBoundary extends Component<{ children: ReactNode }, { hasError:
   render() {
     if (this.state.hasError) {
       return (
-        <div className="space-y-3">
-          <div className="p-4 rounded-md bg-red-50 text-red-800 border border-red-200">
-            {FORM_FAILURE_MESSAGE}
-          </div>
-          <Button type="button" variant="outline" className="w-full" onClick={() => this.setState({ hasError: false })}>
+        <div className="flex flex-1 flex-col gap-3.5 rounded-[14px] border border-q-line bg-q-card p-7">
+          <div className="rounded-[10px] border border-q-rose px-3.5 py-3 text-sm text-q-rose">{FORM_FAILURE_MESSAGE}</div>
+          <button type="button" className={pill} onClick={() => this.setState({ hasError: false })}>
             Try again
-          </Button>
+          </button>
         </div>
       );
     }
@@ -44,129 +41,135 @@ function ContactForm() {
   const [state, formAction, isPending] = useActionState(submitContactForm, null);
 
   return (
-    <form action={formAction} className="relative space-y-4">
-      <div
-        className="pointer-events-none absolute -left-[9999px] h-px w-px overflow-hidden"
-        aria-hidden="true"
-      >
+    <form
+      action={formAction}
+      className="relative flex flex-col gap-3.5 rounded-[14px] border border-q-line bg-q-card p-7"
+    >
+      <div className="pointer-events-none absolute -left-[9999px] h-px w-px overflow-hidden" aria-hidden="true">
         <label htmlFor="hp_field">Leave blank</label>
-        <input
-          id="hp_field"
-          name="hp_field"
-          type="text"
-          tabIndex={-1}
-          autoComplete="off"
-          defaultValue=""
-        />
+        <input id="hp_field" name="hp_field" type="text" tabIndex={-1} autoComplete="off" defaultValue="" />
       </div>
-      <div className="grid grid-cols-2 gap-4">
-        <div className="space-y-2">
-          <Label htmlFor="firstName">First Name</Label>
-          <Input id="firstName" name="firstName" placeholder="John" required autoComplete="given-name" />
-        </div>
-        <div className="space-y-2">
-          <Label htmlFor="lastName">Last Name</Label>
-          <Input id="lastName" name="lastName" placeholder="Doe" required autoComplete="family-name" />
-        </div>
+      <h3 className="text-xl font-bold tracking-[-0.01em]">Send me a message</h3>
+      <p className="-mt-1.5 text-sm text-q-muted">
+        Hiring, consulting or collaboration. Your email stays private; replies come from me.
+      </p>
+      <div className="grid grid-cols-[repeat(auto-fit,minmax(150px,1fr))] gap-3.5">
+        <label className={label}>
+          First name
+          <input name="firstName" required autoComplete="given-name" className={field} />
+        </label>
+        <label className={label}>
+          Last name
+          <input name="lastName" required autoComplete="family-name" className={field} />
+        </label>
       </div>
-      <div className="space-y-2">
-        <Label htmlFor="email">Email</Label>
-        <Input id="email" name="email" type="email" placeholder="john@example.com" required autoComplete="email" />
-      </div>
-      <div className="space-y-2">
-        <Label htmlFor="subject">Subject</Label>
-        <Input id="subject" name="subject" placeholder="EA, Pine Script, AI workflow or role" required autoComplete="off" />
-      </div>
-      <div className="space-y-2">
-        <Label htmlFor="message">Message</Label>
-        <Textarea
-          id="message"
+      <label className={label}>
+        Email
+        <input name="email" type="email" required autoComplete="email" className={field} />
+      </label>
+      <label className={label}>
+        Subject
+        <input name="subject" required autoComplete="off" placeholder="EA, Pine Script, AI workflow or role" className={field} />
+      </label>
+      <label className={label}>
+        Message
+        <textarea
           name="message"
-          placeholder="Tell me about the role, system or business problem..."
-          className="min-h-[120px]"
           required
+          rows={5}
           autoComplete="off"
+          placeholder="Tell me about the role, system or business problem…"
+          className={`${field} resize-y leading-normal`}
         />
-      </div>
+      </label>
 
       {state && (
-        <div className={`p-4 rounded-md ${state.success ? "bg-green-50 text-green-800 border border-green-200" : "bg-red-50 text-red-800 border border-red-200"}`}>
+        <div
+          role="status"
+          className={`rounded-[10px] border px-3.5 py-3 text-sm ${state.success ? "border-q-green text-q-green" : "border-q-rose text-q-rose"}`}
+        >
           {state.message}
         </div>
       )}
 
-      <Button type="submit" className="w-full" disabled={isPending}>
-        {isPending ? "Sending..." : "Send Message"}
-      </Button>
+      <button
+        type="submit"
+        disabled={isPending}
+        className="rounded-full bg-q-blue p-[15px] text-base font-semibold text-white transition-opacity disabled:opacity-60"
+      >
+        {isPending ? "Sending…" : "Send message"}
+      </button>
     </form>
   );
 }
 
+const helpWith = [
+  "MT4/MT5 Expert Advisors and indicators",
+  "MT4 → MT5 and MQL → Pine Script",
+  "Pine Script tools with reliable alerts",
+  "EA licensing and code protection",
+  "AI agent workflows and MCP",
+];
+
+const howIWork = [
+  "Spec-driven, outcome focused",
+  "TDD, code review, explicit guardrails",
+  "Human approval for high-impact actions",
+  "Plain code where it beats AI",
+];
+
 export function Contact() {
   return (
-    <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8">
-      <div className="container mx-auto">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12">
-            Let&apos;s build something useful
-          </h2>
-
-          <div className="grid lg:grid-cols-2 gap-12">
-            <div>
-              <h3 className="text-2xl font-semibold mb-6">
-                Need an EA, a Pine Script tool or an AI workflow that actually works?
-              </h3>
-              <p className="text-lg text-muted-foreground mb-8">
-                I&apos;m open to UK remote roles, full-time or part-time, in trading technology, AI automation and agentic systems, and to freelance projects. Occasional travel is fine. Tell me what you want to build and I&apos;ll tell you plainly whether and how I&apos;d do it.
-              </p>
-
-              <div className="grid md:grid-cols-2 gap-8 mb-8">
-                <div>
-                  <h4 className="text-xl font-medium mb-4">I can help with</h4>
-                  <ul className="list-disc list-inside space-y-2 text-muted-foreground">
-                    <li>MT4/MT5 Expert Advisors and indicators</li>
-                    <li>MT4 to MT5 and MQL to Pine Script conversions</li>
-                    <li>TradingView Pine Script tools with reliable alerts</li>
-                    <li>EA licensing and code protection</li>
-                    <li>AI agent workflows and MCP integrations</li>
+    <section id="contact" className="scroll-mt-[72px] border-t border-q-line">
+      <div className="wrap pb-10 pt-[clamp(80px,10vw,136px)]">
+        <p className="eyebrow text-q-muted">UK remote roles · Freelance · Collaboration</p>
+        <h2 className="mt-5 text-balance text-[clamp(52px,9.5vw,136px)] font-bold leading-[.92] tracking-[-0.055em]">
+          Let&apos;s build something <span className="text-q-blue">useful.</span>
+        </h2>
+        <div className="mt-12 flex flex-wrap items-start gap-x-16 gap-y-12">
+          <div className="flex flex-[1_1_380px] flex-col gap-7">
+            <p className="text-pretty text-lg leading-[1.55] text-q-body2">
+              Open to UK remote roles, full-time or part-time, in trading technology, AI automation and agentic
+              systems, and to freelance projects. Tell me what you want to build and I&apos;ll tell you plainly whether
+              and how I&apos;d do it.
+            </p>
+            <div className="flex flex-wrap gap-x-10 gap-y-6">
+              {[
+                { title: "I can help with", items: helpWith },
+                { title: "How I work", items: howIWork },
+              ].map((col) => (
+                <div key={col.title} className="flex-[1_1_220px]">
+                  <h3 className="text-[13px] font-semibold text-q-blue">{col.title}</h3>
+                  <ul className="mt-3 flex flex-col gap-2 text-[15px] text-q-body">
+                    {col.items.map((i) => (
+                      <li key={i}>{i}</li>
+                    ))}
                   </ul>
                 </div>
-                <div>
-                  <h4 className="text-xl font-medium mb-4">My working style</h4>
-                  <ul className="list-disc list-inside space-y-2 text-muted-foreground">
-                    <li>Specification-driven and outcome focused</li>
-                    <li>TDD, code review and explicit guardrails</li>
-                    <li>Human approval for high-impact actions</li>
-                    <li>Pragmatic: deterministic code where it is better than AI</li>
-                  </ul>
-                </div>
-              </div>
-
-              <p className="text-lg text-muted-foreground mb-8">
-                Trading is my deepest domain, but not my only one. The common thread is solving real business problems with tested software and AI under human control.
-              </p>
-
-              <div className="space-y-4">
-                <div className="flex items-center space-x-3">
-                  <MapPin className="w-5 h-5 text-primary" />
-                  <span>Birmingham, England, UK · Remote</span>
-                </div>
-              </div>
+              ))}
             </div>
-
-            <Card>
-              <CardHeader>
-                <CardTitle>Send me a message</CardTitle>
-                <CardDescription>
-                  Hiring, consulting or collaboration - tell me what you are trying to build or automate.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <ContactFormBoundary>
-                  <ContactForm />
-                </ContactFormBoundary>
-              </CardContent>
-            </Card>
+            <div className="flex flex-wrap gap-2.5">
+              {/* The CV is one maintained PDF. Its source lives in the itradeaims-job-hunt repo (cv/cv.html). */}
+              <a href="/cv/cv.pdf" target="_blank" rel="noopener" download="Immy_Yousafzai_CV.pdf" className={pill}>
+                Download CV ↓
+              </a>
+              <a href="https://github.com/immy2good" target="_blank" rel="noopener noreferrer" className={pill}>
+                GitHub ↗
+              </a>
+              <a
+                href="https://www.linkedin.com/in/immy-yousafzai/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={pill}
+              >
+                LinkedIn ↗
+              </a>
+            </div>
+          </div>
+          <div className="flex flex-[1_1_380px] flex-col">
+            <ContactFormBoundary>
+              <ContactForm />
+            </ContactFormBoundary>
           </div>
         </div>
       </div>

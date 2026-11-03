@@ -14,6 +14,6 @@ export default async function Image({ params }: { params: Promise<{ slug: string
   return ogImage({
     eyebrow: study ? `Case study · ${study.category}` : "Case study",
     title: study?.cardTitle ?? "Case study",
-    footer: "imyousafzai.com",
+    metrics: study?.metrics,
   });
 }

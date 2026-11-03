@@ -1,63 +1,36 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+const groups = [
+  {
+    title: "Trading development",
+    skills: ["MQL5 / MQL4", "MetaTrader 4 + 5", "Expert Advisors", "Pine Script v6", "Strategy Tester", "EA licensing", "MT4 → MT5 parity"],
+  },
+  {
+    title: "AI agent engineering",
+    skills: ["Claude Code", "Codex", "Cursor · Gemini", "MCP", "Multi-agent orchestration", "Guardrails + HITL", "Spec-driven TDD"],
+  },
+  {
+    title: "Web + platforms",
+    skills: ["Python · PyTorch · ONNX", "TypeScript · React · Next.js", "Laravel · PHP", "WordPress + PMPro", "Stripe · webhooks", "Docker"],
+  },
+];
 
-export function Skills() {
-  const skillCategories = [
-    {
-      title: "Trading Development",
-      skills: [
-        "MQL5", "MQL4", "MetaTrader 5", "MetaTrader 4", "Expert Advisors",
-        "Indicators", "Pine Script v6", "TradingView", "Strategy Tester",
-        "EA Licensing", "MT4 to MT5 Conversion", "Parity Testing"
-      ],
-    },
-    {
-      title: "AI Agent Engineering",
-      skills: [
-        "Claude Code", "Codex", "Cursor", "Gemini", "Grok", "Antigravity", "MCP",
-        "Multi-Agent Orchestration", "Agent Memory", "Guardrails", "Human-in-the-Loop",
-        "Spec-Driven Development", "TDD", "Code Review"
-      ],
-    },
-    {
-      title: "Web & Platforms",
-      skills: [
-        "Python", "PowerShell", "TypeScript", "React", "Next.js", "Laravel", "PHP",
-        "WordPress", "Paid Memberships Pro", "Stripe", "PayPal", "REST APIs", "Webhooks",
-        "Amazon SES", "Docker"
-      ],
-    },
-  ];
-
+export function Stack() {
   return (
-    <section id="skills" className="py-20 px-4 sm:px-6 lg:px-8">
-      <div className="container mx-auto">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl font-bold text-center mb-4">
-            What I build with
-          </h2>
-          <p className="text-center text-muted-foreground max-w-3xl mx-auto mb-12">
-            The tools matter less than the system around them: clear specs, permissions, tests and review before anything goes live.
-          </p>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {skillCategories.map((category) => (
-              <Card key={category.title}>
-                <CardHeader>
-                  <CardTitle className="text-xl">{category.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex flex-wrap gap-2">
-                    {category.skills.map((skill) => (
-                      <Badge key={skill} variant="secondary">
-                        {skill}
-                      </Badge>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+    <section id="stack" className="scroll-mt-[72px] border-t border-q-line">
+      <div className="wrap flex flex-wrap gap-x-12 gap-y-6 py-[clamp(64px,8vw,104px)]">
+        <h2 className="flex-[1_1_220px] text-[32px] font-bold tracking-[-0.03em]">Stack</h2>
+        <div className="grid flex-[3_1_560px] gap-7">
+          {groups.map((g) => (
+            <div key={g.title} className="flex flex-wrap gap-x-6 gap-y-3.5 border-t border-q-line pt-5">
+              <h3 className="flex-[0_0_220px] text-base font-semibold">{g.title}</h3>
+              <ul className="flex flex-[1_1_300px] flex-wrap gap-2">
+                {g.skills.map((s) => (
+                  <li key={s} className="rounded-full border border-q-edge px-3 py-1.5 text-[13px] text-q-body">
+                    {s}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
       </div>
     </section>

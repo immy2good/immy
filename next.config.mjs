@@ -15,7 +15,7 @@ const nextConfig = {
   // The case studies started as static HTML files; keep their old links working.
   async redirects() {
     return [
-      { source: "/case-studies", destination: "/#projects", permanent: false },
+      { source: "/case-studies", destination: "/#work", permanent: false },
       ...["licensing", "confluence-pack", "agent-workflow"].map((slug) => ({
         source: `/case-studies/${slug}.html`,
         destination: `/case-studies/${slug}`,
