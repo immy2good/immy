@@ -15,7 +15,7 @@ export const reports: Report[] = [
     slug: "market-timing-folklore",
     title: "Market timing folklore: 14 timing rules, tested",
     short: "Market timing folklore",
-    date: "2026-08-07",
+    date: "2026-09-07",
     summary:
       "The London fix, the overnight drift, the Fed's calendar, the turn of the month, Shanghai's gold hours and bitcoin's evening, each written as a fixed rule and tested at a real broker's costs. Most of the patterns are real. Almost none of them pays, and one only worked once I changed the hour I paid the spread.",
     eyebrow: "Strategy research · myth busting",

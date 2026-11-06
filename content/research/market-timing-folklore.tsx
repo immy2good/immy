@@ -109,7 +109,7 @@ export function Body() {
           kept back. But look at its years. The gain sits almost entirely before 2016, and since 2021, after the paper, it has made about
           nothing. A pass that has already faded is a reason not to trade, not a reason to.
         </P>
-        <Figure title="Overnight after a sell-off, by year" sub="Average per night after Pepperstone's spread, in normal days; 2026 runs to September.">
+        <Figure title="Overnight after a sell-off, by year" sub="Average per night after Pepperstone's spread, in normal days; 2026 is a part year.">
           <YearBars Y={{ year: years, pnl: years.map((y) => d.overnight.by_year[String(y)]), days: years.map(() => 0) }} unit="" />
         </Figure>
       </Section>
@@ -121,7 +121,7 @@ export function Body() {
             <><strong>The turn of the month:</strong> NAS100 made +0.019R in the turn-of-month window, while random four-day longs in the same months made +0.048R. The drift is there; the calendar adds nothing to it.</>,
             <><strong>Buying the day before a Fed statement:</strong> t 2.11 pooled over US500 and NAS100. That&apos;s the best of the published flows, but it would take about 150 statements to reach t 3.</>,
             <><strong>Stocks rise in the even weeks of the Fed&apos;s cycle:</strong> even weeks earned less than random holdings of the same length, and odd weeks did better than even ones. The cycle the paper found in 1994 to 2016 isn&apos;t in these years.</>,
-            <><strong>The dollar falls on Fed days:</strong> it did, at t 2.40, from 2016 to 2025. But it did nothing in the forty statements before 2016, and went the other way in nine of the eleven since May 2025. Nine years of a pattern with nothing either side is a run of years, not a flow.</>,
+            <><strong>The dollar falls on Fed days:</strong> it did, at t 2.40, from 2016 to 2025. But it did nothing in the forty statements before 2016, and since May 2025 it has mostly gone the other way. Nine years of a pattern with nothing either side is a run of years, not a flow.</>,
           ]}
         />
       </Section>
@@ -166,7 +166,7 @@ export function Body() {
             { title: "Turn of the month", data: "NAS100, US500, GER40", stats: [["NAS100", "+0.019R"], ["Random longs", "+0.048R"], ["Adds", "nothing"]], verdict: "Failed" },
             { title: "Long before a Fed statement", data: "US500 and NAS100", stats: [["t", "2.11"], ["Needed for t 3", "~150 meetings"], ["Status", "watch list"]], verdict: "Below the bar", pass: true },
             { title: "Even weeks of the Fed cycle", data: "US indices", stats: [["Beat random", "41.4%"], ["Odd weeks", "did better"], ["Paper's years", "1994–2016"]], verdict: "Failed" },
-            { title: "Dollar falls on Fed days", data: "FX majors, 2016 to 2025", stats: [["t", "2.40"], ["Before 2016", "nothing"], ["Since 2025-05", "2 of 11 up"]], verdict: "Failed" },
+            { title: "Dollar falls on Fed days", data: "FX majors, 2016 to 2025", stats: [["t", "2.40"], ["Before 2016", "nothing"], ["Since May 2025", "mostly reversed"]], verdict: "Failed" },
             { title: "Gold rises in Shanghai's hours", data: "XAUUSD, 2016 to 2025", stats: [["Per day", "+0.017"], ["t", "1.59"], ["Twice costs", "nothing"]], verdict: "Failed" },
             { title: "Bitcoin's evening, 21:00 to 23:00 UTC", data: "BTC and ETH, 2017 to 2026", stats: [["Before fees", "+0.09%"], ["t before fees", "5.06"], ["At 0.10% a side", "−0.11%"]], verdict: "Failed on fees" },
           ]}
