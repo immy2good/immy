@@ -15,7 +15,7 @@ export const reports: Report[] = [
     slug: "market-timing-folklore",
     title: "Market timing folklore: 14 timing rules, tested",
     short: "Market timing folklore",
-    date: "2026-11-07",
+    date: "2026-08-07",
     summary:
       "The London fix, the overnight drift, the Fed's calendar, the turn of the month, Shanghai's gold hours and bitcoin's evening, each written as a fixed rule and tested at a real broker's costs. Most of the patterns are real. Almost none of them pays, and one only worked once I changed the hour I paid the spread.",
     eyebrow: "Strategy research · myth busting",
@@ -29,7 +29,7 @@ export const reports: Report[] = [
     slug: "ict-smart-money-concepts-tested",
     title: "ICT and Smart Money Concepts, tested on 23 years of data",
     short: "ICT and Smart Money Concepts, tested",
-    date: "2026-11-06",
+    date: "2026-10-07",
     summary:
       "Changes of character, liquidity sweeps, order blocks and fair value gaps, written as fixed rules and set against 10,000 random-entry histories at a real broker's costs. Including the four-hour change of character a viral video called the best of 100,000 strategies. None of them passed.",
     eyebrow: "Strategy research · myth busting",
@@ -54,6 +54,9 @@ export const reports: Report[] = [
     ],
   },
 ];
+
+// Newest first, wherever the list is shown.
+reports.sort((a, b) => b.date.localeCompare(a.date));
 
 export function getReport(slug: string) {
   return reports.find((r) => r.slug === slug);
