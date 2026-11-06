@@ -6,6 +6,7 @@ const homeLinks = [
   { href: "#about", label: "About" },
   { href: "#stack", label: "Stack" },
   { href: "#writing", label: "Writing" },
+  { href: "/research", label: "Research" },
   { href: "#contact", label: "Contact" },
 ];
 
@@ -13,6 +14,7 @@ const pageLinks = [
   { href: "/#work", label: "Work" },
   { href: "/#about", label: "About" },
   { href: "/#writing", label: "Writing" },
+  { href: "/research", label: "Research" },
   { href: "/#contact", label: "Contact" },
 ];
 

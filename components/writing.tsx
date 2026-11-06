@@ -1,3 +1,6 @@
+import Link from "next/link";
+import { reports } from "@/lib/research";
+
 const items = [
   {
     kicker: "TradingView · 2014 →",
@@ -28,6 +31,22 @@ export function Writing() {
       <div className="wrap flex flex-wrap gap-x-12 gap-y-6 py-[clamp(64px,8vw,104px)]">
         <h2 className="flex-[1_1_220px] text-[32px] font-bold tracking-[-0.03em]">Writing &amp; teaching</h2>
         <div className="flex-[3_1_560px]">
+          {reports.slice(0, 1).map((r) => (
+            <Link
+              key={r.slug}
+              href={`/research/${r.slug}`}
+              className="group flex flex-wrap items-baseline gap-x-6 gap-y-2 border-t border-q-line py-[22px] text-q-fg"
+            >
+              <span className="flex-[0_0_180px] font-mono text-xs text-q-blue">Research · {r.date.slice(0, 4)}</span>
+              <div className="flex-[1_1_280px]">
+                <div className="text-[22px] font-bold tracking-[-0.02em] group-hover:text-q-blue">{r.title}</div>
+                <div className="mt-1 text-[15px] text-q-muted">{r.summary}</div>
+              </div>
+              <span className="text-xl text-q-muted" aria-hidden>
+                →
+              </span>
+            </Link>
+          ))}
           {items.map((w) => (
             <a
               key={w.href}
