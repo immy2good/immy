@@ -10,13 +10,8 @@ const homeLinks = [
   { href: "#contact", label: "Contact" },
 ];
 
-const pageLinks = [
-  { href: "/#work", label: "Work" },
-  { href: "/#about", label: "About" },
-  { href: "/#writing", label: "Writing" },
-  { href: "/research", label: "Research" },
-  { href: "/#contact", label: "Contact" },
-];
+// Other pages show the same links as home, pointing back to its sections, so the menu never changes.
+const pageLinks = homeLinks.map((l) => ({ ...l, href: l.href.startsWith("#") ? `/${l.href}` : l.href }));
 
 // Sticky top bar. `home` uses in-page anchors; other pages link back to the home sections.
 export function Header({ home = false }: { home?: boolean }) {
