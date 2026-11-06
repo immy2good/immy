@@ -3,7 +3,7 @@ import {
   CostChart, Dist, EquityChart, Fan, Histogram, ProfileChart, EdgeChart, YearBars,
   type CostCurve, type Edge, type Equity, type MonteCarlo, type Profile, type RandomRun, type Years,
 } from "@/components/research/charts";
-import { Bullets, Chips, Dumbbell, Figure, H3, P, Pair, Section, Spec, StatsTable, Steps, Verdict } from "@/components/research/parts";
+import { Bullets, Chips, Dumbbell, Figure, Glossary, H3, P, Pair, Section, Spec, StatsTable, Steps, Verdict } from "@/components/research/parts";
 
 // The numbers come from the edge lab's runs (tools/mirror/report/build.py writes this json); the words are mine.
 type Table = { head: string[]; rows: string[][] };
@@ -24,6 +24,8 @@ const randLegend = [{ label: "Random histories", kind: "s2" as const }, { label:
 const eqLegend = [{ label: "Total", kind: "s1line" as const }, { label: "Below the last high", kind: "s2wash" as const }];
 
 export const toc = [
+  { id: "why", label: "Why I did this" },
+  { id: "reading", label: "How to read it" },
   { id: "method", label: "How I tested them" },
   { id: "gotobi", label: "1. Gotobi" },
   { id: "noise-band", label: "2. The noise band" },
@@ -45,6 +47,40 @@ export function Lede() {
 export function Body() {
   return (
     <>
+      <Section id="why" title="Why I did this">
+        <P>
+          I&apos;ve been building trading software and teaching traders since 2011. In that time I&apos;ve seen the same pattern again
+          and again: a strategy looks brilliant on a chart or in a backtest, and then it falls apart with real money. Usually nothing was
+          wrong with the code. The test was too kind. It left out the spread, it was tuned on the same data it was judged on, or it rode a
+          rising market and called that an edge.
+        </P>
+        <P>
+          So I built myself a small research lab with one job: to be hard on ideas before any money depends on them. Any idea can go in,
+          whether it&apos;s from a paper, a YouTube video, my own indicators or a popular trading rule. Each one gets written down first,
+          tested the same way, and given a verdict that stays on record, pass or fail.
+        </P>
+        <P>
+          This report is the first I&apos;m publishing. It covers the three strategies that came through best, and I&apos;ve kept the
+          weak spots in. One of them is real but no longer pays enough to trade, and I say so. The point isn&apos;t to sell a system.
+          It&apos;s to show what holds up when you test honestly, and how you can test your own ideas the same way.
+        </P>
+      </Section>
+
+      <Section id="reading" title="How to read this report">
+        <P>A few terms come up throughout. You don&apos;t need a statistics background, just these:</P>
+        <Glossary
+          items={[
+            ["Normal day", "A market's normal daily move. I measure every trade against it, so a result of +0.10 means a tenth of a normal day. That lets USDJPY, NAS100 and the crosses be compared on one scale."],
+            ["% of the account", "What the result would be if each trade were sized so a normal day's move is 1% of your account. It's a fixed, modest size, not a recommendation."],
+            ["t", "How sure we can be the result isn't luck. Around 2 is common by chance when you test many ideas; I want above 3."],
+            ["Random histories", "The same strategy with its entries moved to random times: same market, same months, same direction, same costs. If the real strategy can't beat them, its timing adds nothing."],
+            ["Simulated years", "A year built by drawing the strategy's own past trading days at random, done 10,000 times. It shows the spread of good and bad years, and how deep the drawdowns go."],
+            ["Drawdown", "How far the running total falls from its last high before it recovers."],
+            ["Breaks even at", "The round-trip cost per trade, in pips or points, at which the strategy stops making money. Compare it with what your broker charges."],
+          ]}
+        />
+      </Section>
+
       <Section title="The three, at a glance">
         <Verdict
           items={[

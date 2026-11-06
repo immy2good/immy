@@ -195,3 +195,17 @@ export function Dumbbell({ looks }: { looks: { name: string; seen: number; got: 
     </div>
   );
 }
+
+// Plain-language meanings of the terms a report uses, shown before the results.
+export function Glossary({ items }: { items: [string, string][] }) {
+  return (
+    <dl className="grid gap-x-6 gap-y-3 border-t border-q-line pt-4 text-[15px] sm:grid-cols-[170px_minmax(0,1fr)]">
+      {items.map(([k, v]) => (
+        <div key={k} className="contents">
+          <dt className="font-semibold text-q-fg">{k}</dt>
+          <dd className="mb-2 leading-[1.6] text-q-body2 sm:mb-0">{v}</dd>
+        </div>
+      ))}
+    </dl>
+  );
+}
