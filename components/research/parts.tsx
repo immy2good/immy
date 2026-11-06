@@ -209,3 +209,42 @@ export function Glossary({ items }: { items: [string, string][] }) {
     </dl>
   );
 }
+
+// The terms every report uses, in plain words. Shown in each report's "How to read this report".
+export const readingTerms: [string, string][] = [
+  ["Normal day", "A market's normal daily move. I measure every trade against it, so +0.10 means a tenth of a normal day. That puts different markets on one scale."],
+  ["R", "For a trade with a stop: its profit divided by the distance to its stop. +1R is a win the size of the risk taken."],
+  ["% of the account", "What the result would be if each trade were sized so a normal day's move is 1% of your account. A fixed, modest size, not a recommendation."],
+  ["t", "How sure we can be the result isn't luck. Around 2 is common by chance when you test many ideas; I want above 3."],
+  ["Random histories", "The same strategy with its entries moved to random times: same market, same months, same direction, same costs. If the real strategy can't beat them, its timing adds nothing."],
+  ["Simulated years", "A year built by drawing the strategy's own past trading days at random, done 10,000 times: the spread of good and bad years, and how deep the drawdowns go."],
+  ["Drawdown", "How far the running total falls from its last high before it recovers."],
+  ["Breaks even at", "The round-trip cost per trade, in pips or points, at which the strategy stops making money. Compare it with what your broker charges."],
+];
+
+// A short card per idea: what it is, where it was tested, its key numbers and its verdict.
+export function IdeaCards({ items }: { items: { title: string; data: string; stats: [string, string][]; verdict: string; pass?: boolean }[] }) {
+  return (
+    <div className="grid gap-3 sm:grid-cols-2">
+      {items.map((it) => (
+        <div key={it.title} className="flex flex-col gap-3 rounded-xl border border-q-edge bg-q-card p-4">
+          <div className="flex items-start justify-between gap-3">
+            <span className="text-[15px] font-bold leading-[1.35] tracking-[-0.01em]">{it.title}</span>
+            <span className={`shrink-0 rounded-full px-2.5 py-0.5 font-mono text-[10.5px] uppercase tracking-[0.08em] ${it.pass ? "bg-[rgba(242,184,75,.14)] text-q-amber" : "bg-[rgba(240,113,120,.12)] text-q-rose"}`}>
+              {it.verdict}
+            </span>
+          </div>
+          <span className="text-[13px] text-q-muted">{it.data}</span>
+          <dl className="mt-auto grid grid-cols-3 gap-2 border-t border-q-line pt-3">
+            {it.stats.map(([k, v]) => (
+              <div key={k}>
+                <dt className="text-[11px] text-q-muted">{k}</dt>
+                <dd className="font-mono text-[14px]">{v}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      ))}
+    </div>
+  );
+}

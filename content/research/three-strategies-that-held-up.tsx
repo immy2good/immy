@@ -3,7 +3,7 @@ import {
   CostChart, Dist, EquityChart, Fan, Histogram, ProfileChart, EdgeChart, YearBars,
   type CostCurve, type Edge, type Equity, type MonteCarlo, type Profile, type RandomRun, type Years,
 } from "@/components/research/charts";
-import { Bullets, Chips, Dumbbell, Figure, Glossary, H3, P, Pair, Section, Spec, StatsTable, Steps, Verdict } from "@/components/research/parts";
+import { Bullets, Chips, Dumbbell, Figure, Glossary, H3, P, Pair, Section, Spec, StatsTable, Steps, Verdict, readingTerms } from "@/components/research/parts";
 
 // The numbers come from the edge lab's runs (tools/mirror/report/build.py writes this json); the words are mine.
 type Table = { head: string[]; rows: string[][] };
@@ -68,17 +68,7 @@ export function Body() {
 
       <Section id="reading" title="How to read this report">
         <P>A few terms come up throughout. You don&apos;t need a statistics background, just these:</P>
-        <Glossary
-          items={[
-            ["Normal day", "A market's normal daily move. I measure every trade against it, so a result of +0.10 means a tenth of a normal day. That lets USDJPY, NAS100 and the crosses be compared on one scale."],
-            ["% of the account", "What the result would be if each trade were sized so a normal day's move is 1% of your account. It's a fixed, modest size, not a recommendation."],
-            ["t", "How sure we can be the result isn't luck. Around 2 is common by chance when you test many ideas; I want above 3."],
-            ["Random histories", "The same strategy with its entries moved to random times: same market, same months, same direction, same costs. If the real strategy can't beat them, its timing adds nothing."],
-            ["Simulated years", "A year built by drawing the strategy's own past trading days at random, done 10,000 times. It shows the spread of good and bad years, and how deep the drawdowns go."],
-            ["Drawdown", "How far the running total falls from its last high before it recovers."],
-            ["Breaks even at", "The round-trip cost per trade, in pips or points, at which the strategy stops making money. Compare it with what your broker charges."],
-          ]}
-        />
+        <Glossary items={readingTerms.filter(([k]) => k !== "R")} />
       </Section>
 
       <Section title="The three, at a glance">

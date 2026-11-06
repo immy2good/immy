@@ -12,6 +12,20 @@ export type Report = {
 
 export const reports: Report[] = [
   {
+    slug: "ict-smart-money-concepts-tested",
+    title: "ICT and Smart Money Concepts, tested on 23 years of data",
+    short: "ICT and Smart Money Concepts, tested",
+    date: "2026-11-06",
+    summary:
+      "Changes of character, liquidity sweeps, order blocks and fair value gaps, written as fixed rules and set against 10,000 random-entry histories at a real broker's costs. Including the four-hour change of character a viral video called the best of 100,000 strategies. None of them passed.",
+    eyebrow: "Strategy research · myth busting",
+    metrics: [
+      { value: "86%", label: "of random runs beat the CHoCH" },
+      { value: "23 yrs", label: "of US500 and NAS100" },
+      { value: "0 of 6", label: "ICT ideas passed" },
+    ],
+  },
+  {
     slug: "three-strategies-that-held-up",
     title: "Three strategies that held up in my testing",
     short: "Three strategies that held up",

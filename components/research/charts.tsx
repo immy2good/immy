@@ -168,7 +168,8 @@ export function EquityChart({ E, shadeFrom = "2024-10-01" }: { E: Equity; shadeF
 export type Years = { year: number[]; pnl: number[]; days: number[] };
 
 // Calendar years as bars, in % of the account.
-export function YearBars({ Y }: { Y: Years }) {
+export function YearBars({ Y, unit = "%" }: { Y: Years; unit?: string }) {
+  const u = (v: number, d = 1) => num(v, d) + unit;
   const [ref, W] = useWidth();
   const f = frame(W, W < 480 ? 200 : 220, { l: 40, r: 10, t: 18, b: 26 });
   const vals = Y.pnl, lo = Math.min(0, ...vals), hi = Math.max(0, ...vals), pad = (hi - lo) * 0.12;
@@ -177,11 +178,11 @@ export function YearBars({ Y }: { Y: Years }) {
   const bandW = (f.x1 - f.x0) / vals.length, w = Math.min(22, bandW - 4);
   return (
     <div ref={ref}>
-      <Svg f={f} label={"By calendar year: " + Y.year.map((y, i) => `${y} ${pct(vals[i])}`).join(", ")}>
+      <Svg f={f} label={"By calendar year: " + Y.year.map((y, i) => `${y} ${u(vals[i])}`).join(", ")}>
         {ticks(lo, hi, 4).map((v) => (
           <g key={v}>
             <line x1={f.x0} x2={f.x1} y1={Yv(v)} y2={Yv(v)} stroke={v === 0 ? C.axis : C.grid} />
-            <T x={f.x0 - 7} y={Yv(v) + 4} anchor="end">{sgn(v) + Math.abs(v) + "%"}</T>
+            <T x={f.x0 - 7} y={Yv(v) + 4} anchor="end">{sgn(v) + Math.abs(v) + unit}</T>
           </g>
         ))}
         {vals.map((v, i) => {
@@ -189,7 +190,7 @@ export function YearBars({ Y }: { Y: Years }) {
           return (
             <g key={Y.year[i]}>
               <path d={barPath(x, w, Yv(v), Yv(0))} fill={v >= 0 ? C.s1 : C.s2}>
-                <title>{`${Y.year[i]}${Y.year[i] === 2026 ? " to September" : ""}: ${pct(v, 2)} of the account, ${Y.days[i]} trading days`}</title>
+                <title>{`${Y.year[i]}${Y.year[i] === 2026 ? " to September" : ""}: ${u(v, 2)}${unit === "%" ? " of the account" : ""}, ${Y.days[i]} trading days`}</title>
               </path>
               {(W >= 480 || i % 2 === 0) && (
                 <T x={x + w / 2} y={f.y0 + 17} size={10.5}>{W < 480 ? "'" + String(Y.year[i]).slice(2) : Y.year[i]}</T>
@@ -244,7 +245,10 @@ export function Fan({ M }: { M: MonteCarlo }) {
 }
 
 // A plain histogram for one series: drawdowns of the simulated years, or single sessions' results.
-export function Dist({ H: h, xlab, color = "s2", digits = 0 }: { H: Hist; xlab: string; color?: "s1" | "s2"; digits?: number }) {
+export function Dist({ H: h, xlab, color = "s2", digits = 0, suffix = "%", mark }: {
+  H: Hist; xlab: string; color?: "s1" | "s2"; digits?: number; suffix?: string; mark?: { x: number; label: string };
+}) {
+  const fmt = (v: number) => num(v, digits) + suffix;
   const [ref, W] = useWidth();
   const f = frame(W, W < 480 ? 200 : 220, { l: 44, r: 14, t: 12, b: 34 });
   const e = h.edges, c = h.counts, xmin = e[0], xmax = e[e.length - 1], ymax = Math.max(...c) * 1.15;
@@ -258,13 +262,20 @@ export function Dist({ H: h, xlab, color = "s2", digits = 0 }: { H: Hist; xlab: 
             <T x={f.x0 - 8} y={Y(v) + 4} anchor="end">{v.toLocaleString("en-US")}</T>
           </g>
         ))}
-        {ticks(xmin, xmax, W < 480 ? 4 : 6).map((v) => <T key={v} x={X(v)} y={f.y0 + 17}>{pct(v, digits)}</T>)}
+        {mark && <rect x={X(mark.x)} y={f.y1} width={f.x1 - X(mark.x)} height={f.y0 - f.y1} fill={C.s1Wash} />}
+        {ticks(xmin, xmax, W < 480 ? 4 : 6).map((v) => <T key={v} x={X(v)} y={f.y0 + 17}>{fmt(v)}</T>)}
         <line x1={f.x0} x2={f.x1} y1={f.y0} y2={f.y0} stroke={C.axis} />
         {c.map((n, i) => (
           <path key={i} d={barPath(X(e[i]) + 0.75, Math.max(1, X(e[i + 1]) - X(e[i]) - 1.5), Y(n), f.y0)} fill={C[color]}>
-            <title>{`${pct(e[i], 2)} to ${pct(e[i + 1], 2)}: ${n.toLocaleString("en-US")}`}</title>
+            <title>{`${fmt(e[i])} to ${fmt(e[i + 1])}: ${n.toLocaleString("en-US")}`}</title>
           </path>
         ))}
+        {mark && (
+          <>
+            <line x1={X(mark.x)} x2={X(mark.x)} y1={f.y1} y2={f.y0} stroke={C.s1} strokeWidth={2} />
+            <T x={X(mark.x) + 6} y={f.y1 + 12} anchor="start" size={12} weight={600} color={C.text}>{mark.label}</T>
+          </>
+        )}
         <T x={(f.x0 + f.x1) / 2} y={f.H - 2} size={10.5}>{xlab}</T>
       </Svg>
     </div>
@@ -378,6 +389,83 @@ export function EdgeChart({ Eg }: { Eg: Edge }) {
           );
         })}
         <path d={line(c.map((x, i) => [f.x0 + bw * (i + 0.5), Y(x)]))} fill="none" stroke={C.s2} strokeWidth={2.25} />
+      </Svg>
+    </div>
+  );
+}
+
+export type Sides = Record<"longs" | "shorts", { trades: number; rule: number; random: number; rule_win: number; random_win: number }>;
+
+// R per trade by side: the rule beside random trades with the same side, stop and target.
+export function SideBars({ S }: { S: Sides }) {
+  const [ref, W] = useWidth();
+  const f = frame(W, W < 480 ? 240 : 260, { l: 52, r: 16, t: 24, b: 40 });
+  const cats = [["Longs", S.longs], ["Shorts", S.shorts]] as const;
+  const vals = cats.flatMap(([, s]) => [s.rule, s.random]);
+  const ymin = Math.min(0, ...vals) * 1.2, ymax = Math.max(0, ...vals) * 1.35 + 0.01;
+  const Y = (v: number) => f.y0 - ((v - ymin) / (ymax - ymin)) * (f.y0 - f.y1);
+  const band = (f.x1 - f.x0) / 2, bw = Math.min(38, band / 5), gap = W < 520 ? 16 : 8;
+  return (
+    <div ref={ref}>
+      <Svg f={f} label={`Longs: rule ${num(S.longs.rule, 3)}R, random ${num(S.longs.random, 3)}R. Shorts: rule ${num(S.shorts.rule, 3)}R, random ${num(S.shorts.random, 3)}R.`}>
+        {ticks(ymin, ymax, 5).map((v) => (
+          <g key={v}>
+            <line x1={f.x0} x2={f.x1} y1={Y(v)} y2={Y(v)} stroke={v === 0 ? C.axis : C.grid} />
+            <T x={f.x0 - 8} y={Y(v) + 4} anchor="end">{num(v)}</T>
+          </g>
+        ))}
+        {cats.map(([name, s], i) => {
+          const cx = f.x0 + band * (i + 0.5);
+          return (
+            <g key={name}>
+              {([["The rule", s.rule, C.s1, s.rule_win], ["Random", s.random, C.s2, s.random_win]] as const).map(([nm, v, col, win], k) => {
+                const x = cx + (k === 0 ? -bw - gap / 2 : gap / 2);
+                return (
+                  <g key={nm}>
+                    <path d={barPath(x, bw, Y(v), Y(0))} fill={col}>
+                      <title>{`${name}, ${nm.toLowerCase()}: ${num(v, 3)}R a trade, win rate ${(win * 100).toFixed(1)}%, ${s.trades} trades`}</title>
+                    </path>
+                    <T x={x + bw / 2} y={v >= 0 ? Y(v) - 6 : Y(v) + 15} size={11.5} weight={600} color={C.text}>{num(v, 3)}R</T>
+                  </g>
+                );
+              })}
+              <T x={cx} y={f.y0 + 22}>{`${name} (${s.trades} trades)`}</T>
+            </g>
+          );
+        })}
+      </Svg>
+    </div>
+  );
+}
+
+export type Cum = { date: string[]; rule: number[]; p5: number[]; p50: number[]; p95: number[] };
+
+// Running total of R, trade by trade, against the middle 90% of random histories.
+export function CumBand({ D }: { D: Cum }) {
+  const [ref, W] = useWidth();
+  const f = frame(W, W < 480 ? 250 : 300, { l: 48, r: 14, t: 16, b: 32 });
+  const tm = D.date.map((s) => Date.parse(s + "T00:00:00Z")), n = tm.length;
+  const all = [...D.rule, ...D.p5, ...D.p95];
+  const lo0 = Math.min(...all), hi0 = Math.max(...all, 0), pad = (hi0 - lo0) * 0.08, lo = lo0 - pad, hi = hi0 + pad;
+  const X = (t: number) => f.x0 + ((t - tm[0]) / (tm[n - 1] - tm[0])) * (f.x1 - f.x0);
+  const Y = (v: number) => f.y0 - ((v - lo) / (hi - lo)) * (f.y0 - f.y1);
+  const y0 = new Date(tm[0]).getUTCFullYear(), y1 = new Date(tm[n - 1]).getUTCFullYear(), every = W < 480 ? 6 : 3;
+  const years: number[] = [];
+  for (let y = Math.ceil(y0 / every) * every; y <= y1; y += every) if (Date.UTC(y, 0, 1) >= tm[0]) years.push(y);
+  const pts = (a: number[]) => tm.map((t, i) => [X(t), Y(a[i])] as [number, number]);
+  return (
+    <div ref={ref}>
+      <Svg f={f} label={`The rule finished at ${num(D.rule[n - 1], 0)}R; the middle of the random histories at ${num(D.p50[n - 1], 0)}R.`}>
+        {ticks(lo, hi, 5).map((v) => (
+          <g key={v}>
+            <line x1={f.x0} x2={f.x1} y1={Y(v)} y2={Y(v)} stroke={v === 0 ? C.axis : C.grid} />
+            <T x={f.x0 - 8} y={Y(v) + 4} anchor="end">{num(v, 0)}R</T>
+          </g>
+        ))}
+        {years.map((y) => <T key={y} x={X(Date.UTC(y, 0, 1))} y={f.y0 + 18}>{y}</T>)}
+        <path d={band(pts(D.p95), pts(D.p5))} fill={C.s2Wash} />
+        <path d={line(pts(D.p50))} fill="none" stroke={C.s2} strokeWidth={2} />
+        <path d={line(pts(D.rule))} fill="none" stroke={C.s1} strokeWidth={2} strokeLinejoin="round" />
       </Svg>
     </div>
   );
