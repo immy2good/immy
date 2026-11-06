@@ -31,7 +31,7 @@ export function Writing() {
       <div className="wrap flex flex-wrap gap-x-12 gap-y-6 py-[clamp(64px,8vw,104px)]">
         <h2 className="flex-[1_1_220px] text-[32px] font-bold tracking-[-0.03em]">Writing &amp; teaching</h2>
         <div className="flex-[3_1_560px]">
-          {reports.slice(0, 2).map((r) => (
+          {reports.slice(0, 3).map((r) => (
             <Link
               key={r.slug}
               href={`/research/${r.slug}`}

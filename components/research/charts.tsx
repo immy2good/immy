@@ -471,4 +471,39 @@ export function CumBand({ D }: { D: Cum }) {
   );
 }
 
+// Bars for named categories (hours of the day, say), with chosen bars in the rule's colour and the rest muted.
+export function CategoryBars({ labels, values, unit = "", highlight = [], every = 1, tip }: {
+  labels: string[]; values: number[]; unit?: string; highlight?: number[]; every?: number; tip?: (i: number) => string;
+}) {
+  const [ref, W] = useWidth();
+  const f = frame(W, W < 480 ? 210 : 230, { l: 48, r: 10, t: 16, b: 26 });
+  const lo = Math.min(0, ...values), hi = Math.max(0, ...values), pad = (hi - lo) * 0.1;
+  const Y = (v: number) => f.y0 - ((v - (lo - pad)) / (hi + pad - (lo - pad))) * (f.y0 - f.y1);
+  const bw = (f.x1 - f.x0) / values.length, w = Math.min(22, bw - 3);
+  const step = W < 480 ? Math.max(every, 3) : every;
+  return (
+    <div ref={ref}>
+      <Svg f={f} label={labels.map((l, i) => `${l} ${num(values[i], 3)}${unit}`).join(", ")}>
+        {ticks(lo - pad, hi + pad, 4).map((v) => (
+          <g key={v}>
+            <line x1={f.x0} x2={f.x1} y1={Y(v)} y2={Y(v)} stroke={v === 0 ? C.axis : C.grid} />
+            <T x={f.x0 - 7} y={Y(v) + 4} anchor="end">{num(v, 2) + unit}</T>
+          </g>
+        ))}
+        {values.map((v, i) => {
+          const x = f.x0 + bw * i + (bw - w) / 2;
+          return (
+            <g key={labels[i]}>
+              <path d={barPath(x, w, Y(v), Y(0))} fill={highlight.includes(i) ? C.s1 : "#3a4049"}>
+                <title>{tip ? tip(i) : `${labels[i]}: ${num(v, 3)}${unit}`}</title>
+              </path>
+              {i % step === 0 && <T x={x + w / 2} y={f.y0 + 17} size={10.5}>{labels[i]}</T>}
+            </g>
+          );
+        })}
+      </Svg>
+    </div>
+  );
+}
+
 export const chartColors = C;
