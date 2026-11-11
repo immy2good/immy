@@ -1,0 +1,426 @@
+[
+ {
+  "n": 71,
+  "title": "Europe's currencies fall in Europe's hours: the dollar long against EUR, GBP and CHF from 08:00 to 16:00 London",
+  "status": "killed",
+  "result": "Killed. Before costs the European half of the paper's pattern is worth +0.022 of a day's volatility (t 2.1), about half the size a pass needs. Most of that is EURUSD before 2016, and since the paper's publication it is gone after costs. The holdout was not read and stays unused.",
+  "written": "2026-11-11",
+  "scored": "2026-11-11"
+ },
+ {
+  "n": 66,
+  "title": "For day trading, the last two years pick next year's winners better than ten years do",
+  "status": "killed",
+  "result": "Killed. A two-year look back chooses day trades no better than ten years. Its 20 rules make -0.0093 a day in the year after, against -0.0057 for the ten-year chooser's (difference -0.0037, t -1.06), and its ranking matches the next year's a little less well (0.50 against 0.52, ahead in 6 of 12 years).",
+  "written": "2026-11-04",
+  "scored": "2026-11-04"
+ },
+ {
+  "n": 65,
+  "title": "A four-hour change of character pays on US500 and NAS100",
+  "status": "killed",
+  "result": "Killed. The video's best price-action setup, scored as the lab scores everything, does worse than random entries with the same side, stop and target (13.6% of runs).",
+  "written": "2026-11-04",
+  "scored": "2026-11-04"
+ },
+ {
+  "n": 64,
+  "title": "On gotobi days the yen is sold into the 9:55 fix and bought back after it",
+  "status": "pass",
+  "result": "Passes all four of the lab's tests, and is working now. The round trip makes +0.095 of a day's volatility a day after the broker's own costs on the years where its short leg was unread (t 4.77), beats every one of 10000 random round trips, holds on a second feed (HistData t 4.63), and makes nothing on other days.",
+  "written": "2026-11-04",
+  "scored": "2026-11-04"
+ },
+ {
+  "n": 63,
+  "title": "Index CFDs revert on hourly bars, where the spread is a fiftieth of a stretch",
+  "status": "killed",
+  "result": "Killed. An hourly stretch on an index does come back more than a random entry does, but by too little, and per trade the fade loses before costs as well as after. Selling rallies loses most: NAS100 runs on through them.",
+  "written": "2026-11-04",
+  "scored": "2026-11-04"
+ },
+ {
+  "n": 62,
+  "title": "Gotobi's flow starts in Tokyo's small hours: USDJPY long from 03:00 to the 9:55 fix",
+  "status": "watch",
+  "result": "The holdout points the same way and misses the bar.",
+  "written": "2026-11-04",
+  "scored": "2026-11-04"
+ },
+ {
+  "n": 61,
+  "title": "US500 rises at Europe's open after a sell-off into the US close",
+  "status": "pass",
+  "result": "Passes, at the broker's own costs: the first rule here to meet all four of the lab's tests, and one whose gain has gone.",
+  "written": "2026-11-04",
+  "scored": "2026-11-04"
+ },
+ {
+  "n": 60,
+  "title": "The commodity crosses revert on four-hour bars, where a stretch is twice the hourly one for the same spread",
+  "status": "killed",
+  "result": "Killed: over the bar, not robust. The four-hour bars did what they were meant to: a trade's gross since 2015 went from about 2.5 pips to 7.6, and per trade those years made +0.12 (t 2.40) where the hourly rule made nothing. The two feeds agree over the mirror's months (+0.22, t 4.9, on both).",
+  "written": "2026-11-04",
+  "scored": "2026-11-04"
+ },
+ {
+  "n": 59,
+  "title": "The commodity crosses' reversion is in OANDA's recorded quotes, and in the years before the rule was made",
+  "status": "killed",
+  "result": "Passes as written and robust by every test written down; since 2015 a trade makes about its cost. The reversion is real: in three feeds before costs (t 10.5 here), in every year from 2005 to 2011, and in five and a half years no test had seen, at t 5.89 after today's costs.",
+  "written": "2026-11-04",
+  "scored": "2026-11-04"
+ },
+ {
+  "n": 58,
+  "title": "The commodity crosses' reversion is in Pepperstone's own quotes",
+  "status": "killed",
+  "result": "Passes the day's score, not robust, and per trade below the bar. The day's mean still clears t 3 and beats every random run, but NZDCAD loses, so the robustness test written above fails. An EA that takes every signal earns the trade's mean, t 1.98, under the lab's 2 for the watch list, and nothing since 2025-04.",
+  "written": "2026-11-04",
+  "scored": "2026-11-10"
+ },
+ {
+  "n": 57,
+  "title": "The commodity crosses revert on hourly bars, where a stretch is worth more than the spread",
+  "status": "killed",
+  "result": "Robust on its own markets, killed on the holdout.",
+  "written": "2026-11-03",
+  "scored": "2026-11-04"
+ },
+ {
+  "n": 56,
+  "title": "The US indices' day predicts their last half hour",
+  "status": "killed",
+  "result": "Killed. The day's move does not carry into the US indices' last half hour in these years, before costs or after; the hedging flows the paper names are not what hypotheses 39 and 40 picked up.",
+  "written": "2026-11-03",
+  "scored": "2026-11-04"
+ },
+ {
+  "n": 55,
+  "title": "The noise band holds on the index CFDs outside the US",
+  "status": "killed",
+  "result": "Killed. Outside the US the noise band makes nothing on any of the four markets, and less in the second half. Hypothesis 39's edge, such as it is, belongs to the US indices.",
+  "written": "2026-11-03",
+  "scored": "2026-11-04"
+ },
+ {
+  "n": 54,
+  "title": "Gold comes back to fill its fair value gaps",
+  "status": "killed",
+  "result": "Below the bar, and not robust. A retest of a fair value gap is a better place to enter gold than a random minute with the same trade, on both sides: the closest any ICT idea has come in the lab.",
+  "written": "2026-11-03",
+  "scored": "2026-11-04"
+ },
+ {
+  "n": 53,
+  "title": "A straddle at the US jobs report pays after the real spread",
+  "status": "testing",
+  "result": null,
+  "written": "2026-11-03",
+  "scored": null
+ },
+ {
+  "n": 52,
+  "title": "A pretrained market model predicts the next bar after its training data ends",
+  "status": "testing",
+  "result": null,
+  "written": "2026-11-03",
+  "scored": null
+ },
+ {
+  "n": 51,
+  "title": "Currencies move with the futures hedgers' pressure",
+  "status": "testing",
+  "result": null,
+  "written": "2026-11-03",
+  "scored": null
+ },
+ {
+  "n": 50,
+  "title": "AUDCAD, AUDNZD and NZDCAD come back within the day: the trade under the grid bots",
+  "status": "killed",
+  "result": "Killed at the bar, on costs. The crosses do come back: a stretch past the band with RSI at an extreme reverts far more than random entries managed the same way (100% of runs), before costs at t 7.09 in these years and 8.87 in the decade before, every year positive. That is the grid bots' premise, and it is true.",
+  "written": "2026-11-03",
+  "scored": "2026-11-04"
+ },
+ {
+  "n": 49,
+  "title": "Gold's Asian range breaks at London's open",
+  "status": "killed",
+  "result": "Killed. The bot's idea makes nothing on nine years of gold; its range filter and the clock do not change that. The spread on a 1.2 ATR(M15) stop is large, and twice it loses t -4.06.",
+  "written": "2026-11-03",
+  "scored": "2026-11-04"
+ },
+ {
+  "n": 48,
+  "title": "A swept prior-day high or low turns back",
+  "status": "killed",
+  "result": "Killed. A swept prior-day high or low turns back no more often than a random minute of the same session with the same trade: 65.7% of random runs, no better than a coin. ICT's liquidity sweep, as Turtle Soup before it, picks nothing on FX.",
+  "written": "2026-11-03",
+  "scored": "2026-11-04"
+ },
+ {
+  "n": 47,
+  "title": "Gold's and oil's day predicts their last half hour before settlement",
+  "status": "killed",
+  "result": "Killed. The day's move does lean into the last half hour before settlement (before costs t 2.21), but it is worth a few thousandths of a day's volatility, less than one spread; silver's spread of about 8 basis points makes it the worst.",
+  "written": "2026-11-03",
+  "scored": "2026-11-04"
+ },
+ {
+  "n": 46,
+  "title": "Bitcoin's first half hour of the day predicts its last",
+  "status": "killed",
+  "result": "Killed. On Binance a rising first half hour does not lead to a rising last half hour, before fees or after; the short side makes nothing either. The paper's intraday momentum is not in these coins' recent years.",
+  "written": "2026-11-03",
+  "scored": "2026-11-04"
+ },
+ {
+  "n": 45,
+  "title": "The dollar falls when foreign rates are above its own",
+  "status": "testing",
+  "result": null,
+  "written": "2026-11-03",
+  "scored": null
+ },
+ {
+  "n": 44,
+  "title": "The currencies that rose most last month rise next month",
+  "status": "testing",
+  "result": null,
+  "written": "2026-11-03",
+  "scored": null
+ },
+ {
+  "n": 43,
+  "title": "FX runs on through round numbers, where the stops are",
+  "status": "killed",
+  "result": "Both killed. Round numbers neither turn price nor launch it in these years, before costs or after: fading the touch loses 0.02R before costs and 0.15R after, and buying the break loses 0.05R before and 0.18R after. A round number does differ from a placebo level, in Osler's direction.",
+  "written": "2026-11-03",
+  "scored": "2026-11-04"
+ },
+ {
+  "n": 42,
+  "title": "FX turns at round numbers",
+  "status": "killed",
+  "result": "Both killed. Round numbers neither turn price nor launch it in these years, before costs or after: fading the touch loses 0.02R before costs and 0.15R after, and buying the break loses 0.05R before and 0.18R after. A round number does differ from a placebo level, in Osler's direction.",
+  "written": "2026-11-03",
+  "scored": "2026-11-04"
+ },
+ {
+  "n": 41,
+  "title": "A busy day's move reverses the next day",
+  "status": "killed",
+  "result": "Killed. A busy day's move does not reverse the next day on these markets: before costs the rule makes +0.025 (t 1.23), and on currencies nothing. Only the US indices lean the way the paper found, which was on stock indices, at t 2.5 at best.",
+  "written": "2026-11-03",
+  "scored": "2026-11-04"
+ },
+ {
+  "n": 40,
+  "title": "A five-minute opening range breakout pays on NAS100",
+  "status": "killed",
+  "result": "Below the bar on this data. The first five minutes' colour picks the day's side better than chance (100% of random runs), in both sides and in the months after the paper, unlike on GER40 (hypothesis 13).",
+  "written": "2026-11-03",
+  "scored": "2026-11-04"
+ },
+ {
+  "n": 39,
+  "title": "US500 and NAS100 trend for the day once price leaves its usual noise around the open",
+  "status": "killed",
+  "result": "Below the bar on this data. The band picks its moments far better than chance: random entries managed the same way lose, and the rule beats every one of 10000 runs. Both halves and the months after the paper are above zero.",
+  "written": "2026-11-03",
+  "scored": "2026-11-04"
+ },
+ {
+  "n": 38,
+  "title": "Bitcoin rises in the late evening, 21:00 to 23:00 UTC",
+  "status": "killed",
+  "result": "Killed at any retail fee; the hours are real. Bitcoin and ether do rise from 21:00 to 23:00 UTC: +0.09% a day before fees, t 5.06, on both coins and in eight of nine full years, and more than a random two hours (it beats every random run, which pay the same fee).",
+  "written": "2026-11-03",
+  "scored": "2026-11-04"
+ },
+ {
+  "n": 37,
+  "title": "Carry pays at a retail broker after its financing markup",
+  "status": "killed",
+  "result": "Killed. Dollar carry made 2% a year before the broker's financing and 1% after, at a Sharpe of 0.14, and has lost since 2012. It beats random sides in 92% of runs, short of 99%. The paper's premium, about 5% a year to 2010, is not here after 1999 at a retail broker's costs.",
+  "written": "2026-11-03",
+  "scored": "2026-11-04"
+ },
+ {
+  "n": 36,
+  "title": "The dollar falls on the day of a Fed statement, before it",
+  "status": "killed",
+  "result": "Not a lead. In 2016-2025 the dollar fell into scheduled statements on every pair, most against the high-rate currencies, which is the paper's own prediction: t 2.40, a watch-list score.",
+  "written": "2026-11-03",
+  "scored": "2026-11-04"
+ },
+ {
+  "n": 35,
+  "title": "Gold rises in Shanghai's hours and falls in New York's",
+  "status": "killed",
+  "result": "Killed at t 1.59. Gold does rise more in Shanghai's hours than at other times, and falls in the same hours when Shanghai is shut, which is the cause the claim gives. But at a retail spread the long earns a sixtieth of a day's volatility, and twice the spread leaves nothing.",
+  "written": "2026-11-03",
+  "scored": "2026-11-04"
+ },
+ {
+  "n": 34,
+  "title": "The dollar falls in New York's afternoon, after the London fix",
+  "status": "killed",
+  "result": "Killed. Before costs the dollar's fall after the London fix is +0.005 of a day's volatility, an eighth of the 1999-2019 size; the spread and commission take it below zero on every pair. The yen is the worst, as the paper found it moves the other way after the fix.",
+  "written": "2026-11-03",
+  "scored": "2026-11-04"
+ },
+ {
+  "n": 33,
+  "title": "Stocks rise in the even weeks of the Fed's cycle and not in the odd ones",
+  "status": "killed",
+  "result": "Killed. Even weeks earn less than random holdings of the same length (41.4% of runs), and odd weeks earn more than even ones. The cycle the paper found in 1994-2016 is not in these years on these markets.",
+  "written": "2026-11-03",
+  "scored": "2026-11-04"
+ },
+ {
+  "n": 32,
+  "title": "US indices earn their return overnight",
+  "status": "killed",
+  "result": "Killed. The indices' nights earn +0.015 after costs, t 1.23. That is less than random stretches of the same length (+0.043; the night beats random in 4.9% of runs). The day earns +0.005. Before costs the night carries most of the indices' return (about +0.028 against the day's +0.012), as the papers say.",
+  "written": "2026-10-27",
+  "scored": "2026-10-27"
+ },
+ {
+  "n": 31,
+  "title": "USDJPY rises into the Tokyo fix on gotobi days",
+  "status": "killed",
+  "result": "Killed, narrowly, by the spread. USDJPY does rise into the 9:55 Tokyo fix on gotobi days: +0.032 a day after costs, t 2.93, about the same in both halves and in the years since publication, and above zero in ten of eleven years. The same window on other days loses -0.014. Before costs the gain is about +0.056.",
+  "written": "2026-10-27",
+  "scored": "2026-10-27"
+ },
+ {
+  "n": 30,
+  "title": "The dollar moves into the month-end London fix on the side equity hedgers must trade",
+  "status": "killed",
+  "result": "Killed. The month-end fix on the hedgers' side makes nothing: t 0.28, halves of opposite sign. It does beat random, but only because a random hour pays a wider spread than 15:00 London. Short-dollar month-ends made +0.068 (t 1.36, 67 of them) and long-dollar ones -0.066 (t -1.68, 52 of them).",
+  "written": "2026-10-27",
+  "scored": "2026-10-27"
+ },
+ {
+  "n": 29,
+  "title": "Oil bounces in the week after a 55-day low",
+  "status": "killed",
+  "result": "Killed: t 1.73, and it beats random in 97.25% of runs, short of 99%. The bounce is there in both halves and costs barely touch it (Pepperstone's oil spread is about 0.01 of a hold's volatility), but at half discovery's size, and 17 episodes cannot carry it past t 3.",
+  "written": "2026-10-27",
+  "scored": "2026-10-27"
+ },
+ {
+  "n": 28,
+  "title": "Crypto trend pays across the thirty busiest coins of each week, delisted coins included",
+  "status": "testing",
+  "result": null,
+  "written": "2026-10-26",
+  "scored": null
+ },
+ {
+  "n": 27,
+  "title": "A one-hour GER40 opening range pays with a better exit",
+  "status": "killed",
+  "result": "Killed, 0 of 8: the best is t 0.90, and none beats random in 95% of runs, let alone 99%. The exit does not make the break pay. Banking half at 1R lifts the win rate to 49% and cuts R to almost nothing: it caps the trades that run and keeps the ones that come back.",
+  "written": "2026-10-26",
+  "scored": "2026-10-26"
+ },
+ {
+  "n": 26,
+  "title": "A failed opening range break pays the other way on GER40",
+  "status": "killed",
+  "result": "Killed, 0 of 3: each is far from t 3 and from 99% of random runs. A failed break does not run the other way more than chance. The reversal makes a hundredth or two of R a trade, as much as hypothesis 13's first break and inside its noise.",
+  "written": "2026-10-26",
+  "scored": "2026-10-26"
+ },
+ {
+  "n": 25,
+  "title": "Crypto trend, long or flat on spot coins, pays after a UK exchange's fees",
+  "status": "watch",
+  "result": "Killed: it passes, but is not robust. It is the lab's first pass of the main bar: +1.310% a week, t 3.42 (Sharpe 1.14), against random +0.589%, beating 100% of runs; at 0.80% a side +1.223%, t 3.19, also a pass. Both halves are positive (2017-2021 +2.318%, 2022 on +0.413%, t 1.16).",
+  "written": "2026-10-26",
+  "scored": "2026-10-26"
+ },
+ {
+  "n": 24,
+  "title": "Trend following on daily closes has an edge across Pepperstone's markets",
+  "status": "watch",
+  "result": "Killed. The rule makes +0.627% a month, t 2.28 (Sharpe 0.23, 54% of months up); random makes +0.064% and the rule beats 95.0% of runs. Not robust either: 2012 on loses.",
+  "written": "2026-10-26",
+  "scored": "2026-10-26"
+ },
+ {
+  "n": 23,
+  "title": "Night Hunter Pro's live trades beat random entries at Pepperstone's costs",
+  "status": "killed",
+  "result": "Not scored: the replay does not match the account. 1,467 trades replay (193 EURAUD dropped, the rest outside sound months or after the ticks end). The median price gap is 0.5 pip at entry and 0.6 at exit, and 58.1% of trades are within 1 pip of the ledger's pips, against the 80% required.",
+  "written": "2026-10-26",
+  "scored": "2026-10-26"
+ },
+ {
+  "n": 21,
+  "title": "Night scalping on FX crosses has an edge after a real broker's costs",
+  "status": "killed",
+  "result": "Killed, 14 of 14. The band fade is real and the broker takes it. Before costs it makes +0.07R to +0.12R a trade on every pair, t 3.8 to 6.9, in both halves, and +0.07R to +0.20R in every neighbour; it also beats random moments in the same hours (97.8% to 100%).",
+  "written": "2026-10-26",
+  "scored": "2026-10-26"
+ },
+ {
+  "n": 20,
+  "title": "The London 4pm fix moves FX in a way a day trader can take",
+  "status": "killed",
+  "result": "Killed, 20 of 20. The fix does not move these pairs in a way that pays. Before any spread the reversal makes between -0.003R and +0.005R a trade on every pair; the stop is a London session's range, about 100 pips on EURUSD, so that is half a pip at best. The spread alone (about 0.009R) is twice it.",
+  "written": "2026-10-26",
+  "scored": "2026-10-26"
+ },
+ {
+  "n": 19,
+  "title": "Three published equity-index flows have an edge on index CFDs",
+  "status": "watch",
+  "result": "Killed, 12 of 12. Intraday momentum is gone on these markets: before any cost it makes -0.001R on NAS100, -0.005R on US500 and +0.003R on GER40 over 1,400 to 2,400 days each. The first half hour says nothing about the last. Costs only make it lose. The turn of the month does not beat holding the index on other days.",
+  "written": "2026-10-26",
+  "scored": "2026-10-26"
+ },
+ {
+  "n": 18,
+  "title": "An H1 inside bar beyond the exchange's opening price has an edge, in a robust form",
+  "status": "killed",
+  "result": "Killed: none of the six comes near t 3, and none of the 25 market-form runs reaches t 1.1.",
+  "written": "2026-10-26",
+  "scored": "2026-10-26"
+ },
+ {
+  "n": 17,
+  "title": "Lobot with a 5R or 10R target, in UK-time windows, has an edge on H1",
+  "status": "killed",
+  "result": "Killed: none of the twenty comes near t 3, and nineteen lose on real ticks. The best, USDJPY DIBS 10R, makes +0.025R (t 0.61), and loses from 2016 to 2020. A 5R or 10R target barely moves R from hypothesis 16's open runner.",
+  "written": "2026-10-25",
+  "scored": "2026-10-25"
+ },
+ {
+  "n": 16,
+  "title": "Lobot, inside bars on the European open line, has an edge on FX H1 and GER40",
+  "status": "killed",
+  "result": "Killed: none of the twelve comes near t 3. Every FX test and both GER40 H4 tests lose on real ticks, and lose on the chart's own bars too, so TradingView's fills are not what is missing. DIBS loses more than the script in every test but GER40 H1, where both are noise. GER40 H1's positive means are a handful of slices.",
+  "written": "2026-10-25",
+  "scored": "2026-10-25"
+ },
+ {
+  "n": 13,
+  "title": "Opening range breakouts have an edge on GER40",
+  "status": "killed",
+  "result": "Killed: all four are far from t 3. The range breaks are a coin toss after spread: almost every day breaks one side, and the break says little about the rest of the day. Longs beat shorts in every rule, which is the DAX's rise over these years, not the breakout.",
+  "written": "2026-10-25",
+  "scored": "2026-10-25"
+ },
+ {
+  "n": 10,
+  "title": "LuxAlgo's Smart Money Concepts has an edge on GER40",
+  "status": "killed",
+  "result": "Killed: all nine fail, and every one loses after costs. A 2R target needs a 33% win rate before costs; the script's marks win 29% to 35%, and spread and swap take the rest. No rule is positive in more than half its years. BOS and CHoCH do no better apart: the best, internal BOS on H1, is +0.001R.",
+  "written": "2026-10-25",
+  "scored": "2026-10-25"
+ }
+]
