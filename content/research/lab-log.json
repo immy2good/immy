@@ -67,7 +67,7 @@
   "n": 59,
   "title": "The commodity crosses' reversion is in OANDA's recorded quotes, and in the years before the rule was made",
   "status": "killed",
-  "result": "Passes as written and robust by every test written down; since 2015 a trade makes about its cost. The reversion is real: in three feeds before costs (t 10.5 here), in every year from 2005 to 2011, and in five and a half years no test had seen, at t 5.89 after today's costs.",
+  "result": "Failed on cost. The reversion is real: in three feeds before costs (t 10.5), in every year from 2005 to 2011, and at t 5.89 in years no test had seen. But a trade's gross fell from 9.6 pips before 2010 to 2.3 from 2020, so after costs it has made about nothing since 2015, and the holdout was already lost on hypothesis 57.",
   "written": "2026-11-04",
   "scored": "2026-11-04"
  },
@@ -75,7 +75,7 @@
   "n": 58,
   "title": "The commodity crosses' reversion is in Pepperstone's own quotes",
   "status": "killed",
-  "result": "Passes the day's score, not robust, and per trade below the bar. The day's mean still clears t 3 and beats every random run, but NZDCAD loses, so the robustness test written above fails. An EA that takes every signal earns the trade's mean, t 1.98, under the lab's 2 for the watch list, and nothing since 2025-04.",
+  "result": "Failed on cost. The day's score clears t 3, but NZDCAD loses, so it is not robust, and per trade it makes t 1.98 and nothing since 2025-04. The stretch does revert (t 9.3 before costs); at the broker's spread a trade keeps about half a pip.",
   "written": "2026-11-04",
   "scored": "2026-11-10"
  },
@@ -339,7 +339,7 @@
   "n": 25,
   "title": "Crypto trend, long or flat on spot coins, pays after a UK exchange's fees",
   "status": "watch",
-  "result": "Killed: it passes, but is not robust. It is the lab's first pass of the main bar: +1.310% a week, t 3.42 (Sharpe 1.14), against random +0.589%, beating 100% of runs; at 0.80% a side +1.223%, t 3.19, also a pass. Both halves are positive (2017-2021 +2.318%, 2022 on +0.413%, t 1.16).",
+  "result": "Over the bar, not robust, so on the watch list. Long or flat on the 4-week trend makes +1.310% a week, t 3.42, beating every random run, but only t 1.94 without its best ten weeks. It is kept to be judged on the months to come.",
   "written": "2026-10-26",
   "scored": "2026-10-26"
  },
@@ -347,7 +347,7 @@
   "n": 24,
   "title": "Trend following on daily closes has an edge across Pepperstone's markets",
   "status": "watch",
-  "result": "Killed. The rule makes +0.627% a month, t 2.28 (Sharpe 0.23, 54% of months up); random makes +0.064% and the rule beats 95.0% of runs. Not robust either: 2012 on loses.",
+  "result": "Below the bar, so on the watch list. The 12-month trend makes +0.627% a month, t 2.28, and beats 95.0% of random runs, but loses from 2012 on. It is kept to be judged on the months to come.",
   "written": "2026-10-26",
   "scored": "2026-10-26"
  },
@@ -355,7 +355,7 @@
   "n": 23,
   "title": "Night Hunter Pro's live trades beat random entries at Pepperstone's costs",
   "status": "killed",
-  "result": "Not scored: the replay does not match the account. 1,467 trades replay (193 EURAUD dropped, the rest outside sound months or after the ticks end). The median price gap is 0.5 pip at entry and 0.6 at exit, and 58.1% of trades are within 1 pip of the ledger's pips, against the 80% required.",
+  "result": "Failed at the first step, so never scored: the replay does not match the account. Only 58.1% of trades replay within 1 pip of the ledger, against the 80% required; the gap is the feeds' spread, not the entries' timing.",
   "written": "2026-10-26",
   "scored": "2026-10-26"
  },
@@ -379,7 +379,7 @@
   "n": 19,
   "title": "Three published equity-index flows have an edge on index CFDs",
   "status": "watch",
-  "result": "Killed, 12 of 12. Intraday momentum is gone on these markets: before any cost it makes -0.001R on NAS100, -0.005R on US500 and +0.003R on GER40 over 1,400 to 2,400 days each. The first half hour says nothing about the last. Costs only make it lose. The turn of the month does not beat holding the index on other days.",
+  "result": "Below the bar, so on the watch list. Intraday momentum makes nothing, and the turn of the month adds nothing to the index's drift. The pre-FOMC drift is the one with a sign: NAS100 and US500 long into a scheduled statement make +0.051R pooled, t 2.11, beating 94.6% of random runs. It is kept to be judged on the statements to come.",
   "written": "2026-10-26",
   "scored": "2026-10-26"
  },
