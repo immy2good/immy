@@ -25,6 +25,11 @@ export default function ResearchIndex() {
             Every idea is written down before it&apos;s tested, run on recorded broker quotes at real costs, and set against 10,000
             random-entry histories. I publish what fails as well as what holds up.
           </p>
+          <p className="mt-5 text-[15px] text-q-muted">
+            <Link href="/research/log" className="text-q-blue underline-offset-4 hover:underline">
+              The lab log: every idea tested, pass or fail →
+            </Link>
+          </p>
         </header>
         <section className="wrap pb-20">
           {reports.map((r) => (

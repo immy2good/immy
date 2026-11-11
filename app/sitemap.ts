@@ -13,6 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     })),
     { url: `${base}/research`, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/research/log`, changeFrequency: "weekly", priority: 0.7 },
     ...reports.map((r) => ({
       url: `${base}/research/${r.slug}`,
       lastModified: r.date,
