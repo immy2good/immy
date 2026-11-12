@@ -12,6 +12,20 @@ export type Report = {
 
 export const reports: Report[] = [
   {
+    slug: "bill-williams-trading-chaos-tested",
+    title: "Bill Williams' Trading Chaos, tested on forex",
+    short: "Trading Chaos, tested",
+    date: "2026-11-12",
+    summary:
+      "The three Wise Men, written as fixed rules: the divergent bar to get in, the Awesome Oscillator and fractals to add on in a 1-4-3-2-1 pyramid, the Alligator's red line to get out. Tested on nine forex pairs on hourly, four-hour and daily charts against random starts managed the same way. It failed on all three; its one pass rested on five trades and was gone in later years.",
+    eyebrow: "Strategy research · myth busting",
+    metrics: [
+      { value: "0 of 3", label: "charts passed" },
+      { value: "5 of 2,949", label: "campaigns carried the one pass" },
+      { value: "−0.349R", label: "a campaign on unseen years" },
+    ],
+  },
+  {
     slug: "market-timing-folklore",
     title: "Market timing folklore: 14 timing rules, tested",
     short: "Market timing folklore",
