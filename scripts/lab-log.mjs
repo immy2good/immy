@@ -12,7 +12,7 @@ const dir = process.argv[2] ?? "D:/itrad/repos/itradeaims-edge-lab/artifacts/exp
 
 // Tests of the owner's own products stay in the lab's log and off the public page; other people's
 // named products are published.
-const OWN_PRODUCTS = new Set([1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 14, 15, 22, 67, 68, 69, 70, 72, 73, 74, 75]);
+const OWN_PRODUCTS = new Set([1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 14, 15, 22, 67, 68, 69, 70, 72, 73, 74, 75, 76]);
 
 // Where the verdict's opening words contradict the status a reader sees, the page carries a plain
 // summary instead, with the verdict's own figures. The watch list (the lab's ADR 0005) is a status
