@@ -12,6 +12,20 @@ export type Report = {
 
 export const reports: Report[] = [
   {
+    slug: "scalping-strategies-tested",
+    title: "Scalping the DAX: 21 tries, no edge after costs",
+    short: "Scalping the DAX, tested",
+    date: "2026-11-22",
+    summary:
+      "Four fades of the DAX's busiest moments, a published flow after the US close, a seasonal procedure and two machine-learning models, on ten years of five-minute bars at Pepperstone's real spread. Every rule was written down first and the last two years kept aside. None earned its spread: the best idea made 3 points a trade before costs and still fell short of the bar.",
+    eyebrow: "Strategy research · scalping",
+    metrics: [
+      { value: "21", label: "scalping variants tested" },
+      { value: "0", label: "passed" },
+      { value: "5%", label: "of a 30-minute DAX move goes on the spread" },
+    ],
+  },
+  {
     slug: "bill-williams-trading-chaos-tested",
     title: "Bill Williams' Trading Chaos, tested on forex",
     short: "Trading Chaos, tested",
