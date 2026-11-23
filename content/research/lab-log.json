@@ -1,5 +1,69 @@
 [
  {
+  "n": 86,
+  "title": "A model pooled over four markets picks 30-minute or 2-hour trades that pay, out of sample",
+  "status": "killed",
+  "result": "Killed, both. Pooling four markets gives the model no forecast of the next 30 minutes (it loses before costs), and at two hours its small gain is mostly the long side's drift, t 1.25 against its twins. The holdout stays unread.",
+  "written": "2026-11-22",
+  "scored": "2026-11-22"
+ },
+ {
+  "n": 85,
+  "title": "A walk-forward model of the next 30 minutes picks trades that pay",
+  "status": "killed",
+  "result": "Killed. The walk-forward model of the next 30 minutes is worth 0.27 points a trade before costs, under a quarter of the spread; t 1.14 against its twins.",
+  "written": "2026-11-22",
+  "scored": "2026-11-22"
+ },
+ {
+  "n": 84,
+  "title": "The DAX's half hours keep their sign from one year to the next",
+  "status": "killed",
+  "result": "Killed. No half hour of the DAX day kept its sign, net of the spread, steadily enough over earlier years to be traded in any year from 2019 to 2022.",
+  "written": "2026-11-22",
+  "scored": "2026-11-22"
+ },
+ {
+  "n": 83,
+  "title": "GER40 rises from 08:00 to 09:00 after a fall into the US close",
+  "status": "killed",
+  "result": "Killed. The DAX's hour from 08:00 after a fall into the US close makes +1.45 bps a trade after costs, the paper's shape, but t 1.75 against its twins is far under the mark and twice the cost leaves t 0.58.",
+  "written": "2026-11-22",
+  "scored": "2026-11-22"
+ },
+ {
+  "n": 82,
+  "title": "The Xetra closing auction's push turns back after it",
+  "status": "killed",
+  "result": "Killed. The move after the Xetra closing auction does not undo the move into it by more than the spread: the best variant (k 1, out at 18:00) is worth about a point a trade before costs, t 0.77 against its twins.",
+  "written": "2026-11-22",
+  "scored": "2026-11-22"
+ },
+ {
+  "n": 81,
+  "title": "An extreme five-minute bar turns back",
+  "status": "killed",
+  "result": "Killed. An extreme five-minute bar does not turn back by more than the spread: before costs the best variant (z 4, six bars) is worth half a point a trade, t 0.47 against its twins.",
+  "written": "2026-11-22",
+  "scored": "2026-11-22"
+ },
+ {
+  "n": 80,
+  "title": "The Xetra open fills the overnight gap",
+  "status": "killed",
+  "result": "Killed. Fading the overnight gap at the Xetra open, to the prior close with a gap's stop, loses after costs in all four variants; none beats its twins by more than t 0.11.",
+  "written": "2026-11-22",
+  "scored": "2026-11-22"
+ },
+ {
+  "n": 79,
+  "title": "A large first quarter hour of Xetra turns back",
+  "status": "killed",
+  "result": "Killed. Fading a large first quarter hour of Xetra loses before costs at both sizes and both exits; a large opening move ran on instead (t -2.08 against its twins at k 2), which one try in sixteen gives by chance.",
+  "written": "2026-11-22",
+  "scored": "2026-11-22"
+ },
+ {
   "n": 78,
   "title": "A Fruit campaign, pyramided on the Wise Man add-ons and held to the red line, beats random starts on FX H1, H4 and D1",
   "status": "killed",

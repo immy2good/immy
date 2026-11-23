@@ -1,0 +1,298 @@
+{
+ "variants": [
+  {
+   "id": "79a",
+   "name": "Fade a big first 15 min, k1, out 10:00",
+   "trades": 475,
+   "net_bps": -3.554,
+   "gross_pts": -3.13,
+   "t_twins": -1.38,
+   "t_own": -1.73
+  },
+  {
+   "id": "79b",
+   "name": "Fade a big first 15 min, k1, out 17:30",
+   "trades": 476,
+   "net_bps": -4.242,
+   "gross_pts": -3.43,
+   "t_twins": -0.66,
+   "t_own": -0.95
+  },
+  {
+   "id": "79c",
+   "name": "Fade a big first 15 min, k2, out 10:00",
+   "trades": 103,
+   "net_bps": -13.667,
+   "gross_pts": -15.02,
+   "t_twins": -2.08,
+   "t_own": -2.12
+  },
+  {
+   "id": "79d",
+   "name": "Fade a big first 15 min, k2, out 17:30",
+   "trades": 103,
+   "net_bps": -12.371,
+   "gross_pts": -14.26,
+   "t_twins": -1.04,
+   "t_own": -1.06
+  },
+  {
+   "id": "80a",
+   "name": "Fill the gap, k0.5, out 10:00",
+   "trades": 895,
+   "net_bps": -2.313,
+   "gross_pts": -1.81,
+   "t_twins": -0.8,
+   "t_own": -1.46
+  },
+  {
+   "id": "80b",
+   "name": "Fill the gap, k0.5, out 17:30",
+   "trades": 896,
+   "net_bps": -2.292,
+   "gross_pts": -1.98,
+   "t_twins": -0.56,
+   "t_own": -0.87
+  },
+  {
+   "id": "80c",
+   "name": "Fill the gap, k1, out 10:00",
+   "trades": 447,
+   "net_bps": -1.847,
+   "gross_pts": -1.41,
+   "t_twins": -0.23,
+   "t_own": -0.71
+  },
+  {
+   "id": "80d",
+   "name": "Fill the gap, k1, out 17:30",
+   "trades": 447,
+   "net_bps": -0.989,
+   "gross_pts": -0.42,
+   "t_twins": 0.11,
+   "t_own": -0.21
+  },
+  {
+   "id": "81a",
+   "name": "Fade an extreme bar, z3, 15 min",
+   "trades": 1923,
+   "net_bps": -0.959,
+   "gross_pts": 0.1,
+   "t_twins": 0.11,
+   "t_own": -1.87
+  },
+  {
+   "id": "81b",
+   "name": "Fade an extreme bar, z3, 30 min",
+   "trades": 1923,
+   "net_bps": -1.161,
+   "gross_pts": -0.04,
+   "t_twins": -0.13,
+   "t_own": -1.54
+  },
+  {
+   "id": "81c",
+   "name": "Fade an extreme bar, z4, 15 min",
+   "trades": 691,
+   "net_bps": -1.492,
+   "gross_pts": -0.57,
+   "t_twins": -0.52,
+   "t_own": -1.67
+  },
+  {
+   "id": "81d",
+   "name": "Fade an extreme bar, z4, 30 min",
+   "trades": 691,
+   "net_bps": -0.533,
+   "gross_pts": 0.68,
+   "t_twins": 0.47,
+   "t_own": -0.46
+  },
+  {
+   "id": "82a",
+   "name": "Fade the close, every day, to 18:00",
+   "trades": 1724,
+   "net_bps": -1.196,
+   "gross_pts": -0.17,
+   "t_twins": -0.48,
+   "t_own": -2.96
+  },
+  {
+   "id": "82b",
+   "name": "Fade the close, every day, to 18:30",
+   "trades": 1724,
+   "net_bps": -1.402,
+   "gross_pts": -0.35,
+   "t_twins": -0.73,
+   "t_own": -2.47
+  },
+  {
+   "id": "82c",
+   "name": "Fade the close, big moves, to 18:00",
+   "trades": 430,
+   "net_bps": -0.198,
+   "gross_pts": 1.15,
+   "t_twins": 0.77,
+   "t_own": -0.2
+  },
+  {
+   "id": "82d",
+   "name": "Fade the close, big moves, to 18:30",
+   "trades": 430,
+   "net_bps": -0.575,
+   "gross_pts": 0.99,
+   "t_twins": 0.31,
+   "t_own": -0.38
+  },
+  {
+   "id": "83_after_fall",
+   "name": "Long 08:00-09:00 after a US-close fall",
+   "trades": 822,
+   "net_bps": 1.448,
+   "gross_pts": 3.04,
+   "t_twins": 1.75,
+   "t_own": 1.7
+  },
+  {
+   "id": "85",
+   "name": "Walk-forward model, 30 min",
+   "trades": 10534,
+   "net_bps": -0.708,
+   "gross_pts": 0.26,
+   "t_twins": 1.14,
+   "t_own": -2.97
+  }
+ ],
+ "europe_open": {
+  "after_fall": {
+   "trades": 822,
+   "net_bps": 1.448,
+   "t_twins": 1.75
+  },
+  "every_day": {
+   "trades": 1718,
+   "net_bps": 0.063,
+   "t_twins": -0.09
+  },
+  "after_rise": {
+   "trades": 888,
+   "net_bps": -1.218,
+   "t_twins": -1.62
+  }
+ },
+ "europe_open_years": {
+  "2016": 0.83,
+  "2017": -1.97,
+  "2018": 0.62,
+  "2019": -0.33,
+  "2020": 6.08,
+  "2021": 2.24,
+  "2022": 2.15
+ },
+ "pooled": [
+  {
+   "hold": "H6",
+   "trades": 1889,
+   "gross_bps": -0.242,
+   "net_bps": -1.31,
+   "t_twins": -0.85,
+   "long_bps": -1.42,
+   "short_bps": -1.14,
+   "by_market": {
+    "GER40": {
+     "trades": 302,
+     "net_bps": -0.62,
+     "gross_bps": 0.1,
+     "t_own": -0.63
+    },
+    "NAS100": {
+     "trades": 525,
+     "net_bps": -1.34,
+     "gross_bps": -0.39,
+     "t_own": -1.48
+    },
+    "US500": {
+     "trades": 637,
+     "net_bps": -0.99,
+     "gross_bps": 0.27,
+     "t_own": -1.72
+    },
+    "XAUUSD": {
+     "trades": 425,
+     "net_bps": -2.24,
+     "gross_bps": -1.07,
+     "t_own": -2.93
+    }
+   }
+  },
+  {
+   "hold": "H24",
+   "trades": 2186,
+   "gross_bps": 1.553,
+   "net_bps": 0.544,
+   "t_twins": 1.25,
+   "long_bps": 1.13,
+   "short_bps": -1.28,
+   "by_market": {
+    "GER40": {
+     "trades": 498,
+     "net_bps": -0.17,
+     "gross_bps": 0.54,
+     "t_own": -0.13
+    },
+    "NAS100": {
+     "trades": 629,
+     "net_bps": 2.07,
+     "gross_bps": 2.98,
+     "t_own": 1.43
+    },
+    "US500": {
+     "trades": 732,
+     "net_bps": -0.33,
+     "gross_bps": 0.9,
+     "t_own": -0.33
+    },
+    "XAUUSD": {
+     "trades": 327,
+     "net_bps": 0.64,
+     "gross_bps": 1.81,
+     "t_own": 0.41
+    }
+   }
+  }
+ ],
+ "costs": [
+  {
+   "market": "GER40",
+   "spread": 0.9,
+   "move30": 16.989,
+   "move2h": 37.033,
+   "cost30_pct": 5.3,
+   "cost2h_pct": 2.4
+  },
+  {
+   "market": "NAS100",
+   "spread": 1.0,
+   "move30": 16.72,
+   "move2h": 37.85,
+   "cost30_pct": 6.0,
+   "cost2h_pct": 2.6
+  },
+  {
+   "market": "XAUUSD",
+   "spread": 0.13,
+   "move30": 1.83,
+   "move2h": 4.037,
+   "cost30_pct": 7.1,
+   "cost2h_pct": 3.2
+  },
+  {
+   "market": "US500",
+   "spread": 0.4,
+   "move30": 3.671,
+   "move2h": 8.165,
+   "cost30_pct": 10.9,
+   "cost2h_pct": 4.9
+  }
+ ]
+}
