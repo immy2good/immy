@@ -1,5 +1,13 @@
 [
  {
+  "n": 101,
+  "title": "Tom Hougaard's School Run pays after the broker's spread, on its own or with his overnight-range filter",
+  "status": "pass",
+  "result": "One of 82 passes: the DAX Advanced School Run (4th 5-minute bar, stop orders 2 points outside it, both sides) with a fixed 0.33% stop and a 2R target, +0.135R a trade after 0.9 points, t 6.44 against random entries on 2016 to 2022, and +0.188R, t 6.57 on the 2023 to 2026 holdout. His bar stop, overnight filter, adding rule and every FTSE form add nothing.",
+  "written": "2026-11-25",
+  "scored": "2026-11-25"
+ },
+ {
   "n": 86,
   "title": "A model pooled over four markets picks 30-minute or 2-hour trades that pay, out of sample",
   "status": "killed",
