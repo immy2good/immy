@@ -12,6 +12,20 @@ export type Report = {
 
 export const reports: Report[] = [
   {
+    slug: "hougaard-school-run-tested",
+    title: "Tom Hougaard's School Run, tested: 82 variations, one that held up",
+    short: "Tom Hougaard's School Run, tested",
+    date: "2026-11-25",
+    summary:
+      "The breakout rules a well-known DAX trader publishes, with the exits he never gives, his overnight-range filter and his rule for adding to winners, tested in 82 variations on ten years of tick data at Pepperstone's real spread. His rules as written fail, and the filter and the adding add nothing. One form passed: his Advanced School Run on the DAX with a fixed 0.33% stop and a 2R target, which then held up on four years it had never seen.",
+    eyebrow: "Strategy research · trader rules tested",
+    metrics: [
+      { value: "82", label: "variations tested" },
+      { value: "1", label: "passed, and held up unseen" },
+      { value: "+0.19R", label: "a trade on 2023 to 2026" },
+    ],
+  },
+  {
     slug: "scalping-strategies-tested",
     title: "Scalping the DAX: 21 tries, no edge after costs",
     short: "Scalping the DAX, tested",
