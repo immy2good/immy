@@ -66,8 +66,8 @@ export function Body() {
       <Section id="rules" title="His written rules">
         <Bullets
           items={[
-            <><strong>School Run (DAX, December 2022).</strong> Take the second 15-minute bar after the Xetra open, 09:15 to 09:30 Frankfurt. Place a buy stop 2 points above its high and a sell stop 2 points below its low. Both can fill the same day. Stop: the other end of the bar, or a fixed 40 points. &quot;I do not have an exit rule!&quot;</>,
-            <><strong>Advanced School Run (DAX, 2023).</strong> The same, on the fourth 5-minute bar, 09:15 to 09:20. The stop sits at the opposite order. &quot;This strategy does not operate with a target.&quot;</>,
+            <><strong>School Run (DAX, December 2022).</strong> Take the second 15-minute bar after the DAX cash open at 08:00 London: 08:15 to 08:30 London (09:15 to 09:30 Frankfurt, the same moment all year). Place a buy stop 2 points above its high and a sell stop 2 points below its low. Both can fill the same day. Stop: the other end of the bar, or a fixed 40 points. &quot;I do not have an exit rule!&quot;</>,
+            <><strong>Advanced School Run (DAX, 2023).</strong> The same, on the fourth 5-minute bar, 08:15 to 08:20 London. The stop sits at the opposite order. &quot;This strategy does not operate with a target.&quot;</>,
             <><strong>Other markets (2025 slides).</strong> The School Run on the Dow and Nasdaq, and a &quot;1st bar&quot; setup on the FTSE&apos;s 5-minute chart, named but not defined.</>,
             <><strong>Adding to winners (2018 manual).</strong> Add at +75 points with the stop moved to entry, aiming for 225 points.</>,
             <><strong>The overnight filter (third parties only).</strong> If the bar sits above the 00:00 to 06:00 UK range, take longs only; below it, shorts only; inside it, fade. He shows research on it in his slides but never states the rule.</>,
@@ -128,9 +128,9 @@ export function Body() {
         <H3>The rule</H3>
         <Bullets
           items={[
-            <>At 09:20 Frankfurt, take the 09:15 to 09:20 five-minute DAX bar.</>,
+            <>At 08:20 London, take the 08:15 to 08:20 five-minute DAX bar (09:15 to 09:20 in Frankfurt; the two clocks change on the same dates, so it is the same bar all year).</>,
             <>Buy stop 2 points above its high, sell stop 2 points below its low. Both can fill the same day, one after the other.</>,
-            <>Stop 0.33% of price from entry (about 80 points at 24,000). Target twice that. Otherwise out at 17:29.</>,
+            <>Stop 0.33% of price from entry (about 80 points at 24,000). Target twice that. Otherwise out at 16:29 London, as the DAX cash session closes.</>,
           ]}
         />
         <StatsTable
