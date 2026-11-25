@@ -1,9 +1,17 @@
 [
  {
+  "n": 102,
+  "title": "Some exit or management rule makes Hougaard's School Run entry pay after the spread",
+  "status": "killed",
+  "result": "Killed, first stage and holdout. 480 exits on his DAX entry (targets, break-even, trailing stops, part exits, time exits, adds) on five stops: the best is t 3.09 against random entries, against a mark of 5.06, and every family averages t 1.0 to 1.9. The best cell made -0.023R a trade on 2023 to 2026.",
+  "written": "2026-11-25",
+  "scored": "2026-11-25"
+ },
+ {
   "n": 101,
   "title": "Tom Hougaard's School Run pays after the broker's spread, on its own or with his overnight-range filter",
-  "status": "pass",
-  "result": "One of 82 passes: the DAX Advanced School Run (4th 5-minute bar, stop orders 2 points outside it, both sides) with a fixed 0.33% stop and a 2R target, +0.135R a trade after 0.9 points, t 6.44 against random entries on 2016 to 2022, and +0.188R, t 6.57 on the 2023 to 2026 holdout. His bar stop, overnight filter, adding rule and every FTSE form add nothing.",
+  "status": "killed",
+  "result": "Killed, after a correction. The first scoring passed one cell (DAX Advanced School Run, 0.33% stop, 2R target, t 6.44, holdout t 6.57), but the tool filled the day's second stop order at its own level after price had already gone past it. With real fills that cell makes +0.023R a trade, t 1.55, and -0.002R on the 2023 to 2026 holdout. His bar stop, overnight filter, adding rule and every FTSE form add nothing.",
   "written": "2026-11-25",
   "scored": "2026-11-25"
  },

@@ -1,41 +1,39 @@
 import raw from "./hougaard-school-run.json";
-import { YearBars } from "@/components/research/charts";
+import { CategoryBars, YearBars } from "@/components/research/charts";
 import { Bullets, Chips, Figure, Glossary, H3, IdeaCards, P, Section, Spec, StatsTable, Verdict, readingTerms } from "@/components/research/parts";
 
-// The numbers come from the edge lab's hypothesis 101 (tools/school_run.py); the words are mine.
-type Cell = { trades: number; days: number; r_net: number; t_twins: number; t_net: number; win: number };
+// The numbers come from the edge lab's hypotheses 101 (as corrected) and 102 (tools/school_run.py,
+// school_run_fills.py and school_exits.py); the words are mine.
+type Fixed = { form: string; stage1_r: number; stage1_t: number; holdout_r: number; holdout_t: number };
+type Exit = { cell: string; trades: number; r: number; t: number; win: number };
 const d = raw as unknown as {
-  cells: Record<string, Cell & { years: Record<string, number> }>;
-  best_years: Record<string, number>;
-  holdout: Cell;
-  second_feed: { trades: number; r_net: number; t_twins: number; same_days_main: { r_net: number; t_twins: number } };
-  neighbours: { name: string; r_net: number; t_twins: number }[];
-  holdout_slip: { r_net: number; t_net: number };
-  mark: number;
-  tries: number;
+  mark101: number;
+  mark102: number;
+  tries101: number;
+  tries102: number;
+  bugged: { stage1: { r: number; t: number }; holdout: { r: number; t: number } };
+  second_trades: { stage1: number; holdout: number };
+  first_trades: { stage1: number; holdout: number };
+  impossible: { n: number; of: number };
+  fixed: Fixed[];
+  best_exits: Exit[];
+  families: [string, number][];
+  holdout_best: { days: number; r: number; t: number; years: Record<string, number> };
 };
-const c = d.cells;
-const best = c["DAX ASR P T"];
-const ho = d.holdout;
 const sign = (x: number, k = 3) => (x > 0 ? "+" : x < 0 ? "−" : "") + Math.abs(x).toFixed(k);
 const R = (x: number) => `${sign(x)}R`;
-const years = Object.keys(d.best_years).map(Number);
-
-const SETUPS: [string, string][] = [
-  ["DAX SR", "DAX School Run (2nd 15-min bar)"],
-  ["DAX ASR", "DAX Advanced School Run (4th 5-min bar)"],
-  ["FTSE FB", "FTSE first 5-min bar"],
-  ["FTSE SR", "FTSE 2nd 15-min bar"],
-  ["NAS SR", "Nasdaq 2nd 15-min bar"],
-];
+const tt = (x: number) => sign(x, 2).replace("+", "");
+const hb = d.holdout_best;
+const hyears = Object.keys(hb.years).map(Number);
+const total = d.tries101 + d.tries102;
 
 export const toc = [
+  { id: "correction", label: "Correction" },
   { id: "who", label: "Who he is" },
   { id: "rules", label: "His written rules" },
   { id: "method", label: "How I tested" },
-  { id: "grid", label: "82 variations" },
-  { id: "winner", label: "The one that passed" },
-  { id: "checks", label: "Trying to break it" },
+  { id: "entry", label: "The entry, with real fills" },
+  { id: "exits", label: "480 exits" },
   { id: "claim", label: "The 10k to 50k claim" },
   { id: "takeaways", label: "What it teaches" },
 ];
@@ -44,10 +42,10 @@ export function Lede() {
   return (
     <>
       Tom Hougaard trades the DAX and FTSE in the London morning and the Dow and Nasdaq at the US open, and says he turned a £10,000
-      account into many times that in 2025. His only written rules are breakouts of one bar soon after the open, with no exit rule. I wrote
-      them down as fixed rules, added the exits he never gives, his overnight-range filter and his rule for adding to winners, and tested
-      82 variations on ten years of tick data at Pepperstone&apos;s real spread. Most failed. One passed, and kept passing on four years it had
-      never seen.
+      account into many times that in 2025. His only written rules are breakouts of one bar soon after the open, with no exit rule. I
+      tested them in {total} variations on ten years of tick data at Pepperstone&apos;s real spread: his stops, the exits he never gives,
+      his overnight-range filter, his rule for adding to winners, and then 480 exits and ways of managing the trade. None of them has an
+      edge. Whatever he makes, it isn&apos;t in the rules he has written down.
     </>
   );
 }
@@ -55,6 +53,22 @@ export function Lede() {
 export function Body() {
   return (
     <>
+      <Section id="correction" title="A correction to the first version of this report">
+        <P>
+          This page first said one form passed: the DAX Advanced School Run with a fixed 0.33% stop and a 2R target, at{" "}
+          {R(d.bugged.stage1.r)} a trade and t {d.bugged.stage1.t} on 2016 to 2022, and {R(d.bugged.holdout.r)} on 2023 to 2026. That
+          was a bug in my backtest, found when I started building the version to run on a demo account.
+        </P>
+        <P>
+          His rule places two stop orders, one above the bar and one below. When the first trade ended, my code filled the second order
+          at its own price even when the market had already gone well past it. A long stopped out 0.33% down is already far below the
+          sell stop, so that short could never have filled there. {d.impossible.n} of the {d.impossible.of.toLocaleString()} second
+          trades began in a minute already past their level, and those trades carried the whole result: the first trades of the day made{" "}
+          {R(d.first_trades.stage1)}, the second {R(d.second_trades.stage1)}. With the fill fixed, the pass is gone. A second, separate
+          check of the code found the same bug.
+        </P>
+      </Section>
+
       <Section id="who" title="Who he is, and what he actually publishes">
         <P>
           Hougaard is a Danish trader based in the UK, the author of <em>Best Loser Wins</em> (2022), who streams his trading on YouTube and
@@ -78,13 +92,11 @@ export function Body() {
       <Section id="method" title="How I tested">
         <Spec
           rows={[
-            ["Data", "One-minute bars built from HistData and Dukascopy ticks: DAX and FTSE from 2016, Nasdaq from 2016. The Dow's ticks start in May 2024, too late to test fairly, so it is left out."],
-            ["Costs", "Pepperstone's measured spread at those hours, charged once a round trip: DAX 0.9 points, FTSE 1.2, Nasdaq 1.0."],
-            ["Exits", "He gives none, so I fixed three before testing: out at the session's close; a target at twice the risk (2R); or the stop to break-even at +1R."],
-            ["Stops", "Bar: at the opposite order, his Advanced rule. Fixed: 0.33% of price, his 40 points when the DAX was at 12,000."],
-            ["Order", "Every variation and the pass mark written down and committed before any result was read."],
-            ["Stages", "All 82 scored on 2016 to 2022. Only a pass would see 2023 to October 2026, and only once."],
-            ["The bar", `Beat entries at the same minute, side, stop and exit on the month's other days, by t above ${d.mark}: the lab's mark after about 1,300 ideas tried.`],
+            ["Data", "One-minute bars built from HistData and Dukascopy ticks: DAX, FTSE and Nasdaq from 2016. The Dow's ticks start in May 2024, too late to test fairly. The best exits were replayed on ten-second bars and agreed within 0.01R."],
+            ["Costs", "Pepperstone's measured spread at those hours, charged on every lot: DAX 0.9 points, FTSE 1.2, Nasdaq 1.0."],
+            ["Order", "Every variation and its pass mark written down and committed before any result was read."],
+            ["Stages", "Everything scored on 2016 to 2022. Only the best candidate saw 2023 to October 2026."],
+            ["The bar", `Beat entries at the same minute, side, stop and exit on the month's other days, by t above ${d.mark101} for the first ${d.tries101} variations and ${d.mark102} for the 480 exits: the lab's mark after about 1,800 ideas tried.`],
           ]}
         />
         <Glossary items={readingTerms.filter(([k]) => ["R", "t"].includes(k))} />
@@ -93,77 +105,62 @@ export function Body() {
       <Section title="The verdict, at a glance">
         <Verdict
           items={[
-            { k: "Variations tested", v: String(d.tries), n: "Five setups, two stops, three exits, the overnight filter two ways, and his adding rule." },
-            { k: "Passed", v: "1", n: "The DAX Advanced School Run with a fixed 0.33% stop and a 2R target." },
-            { k: "On unseen years", v: R(ho.r_net), n: `A trade after the spread, 2023 to October 2026, t ${ho.t_twins.toFixed(2)} against random entries.` },
+            { k: "Variations tested", v: String(total), n: `${d.tries101} setups, stops, filters and adds, then 480 exits and ways of managing the trade on his DAX entry.` },
+            { k: "Passed", v: "0", n: "The one early pass was a fill bug in my backtest. Fixed, it makes about nothing." },
+            { k: "Best exit on unseen years", v: R(hb.r), n: `A trade after the spread, 2023 to October 2026, t ${tt(hb.t)} against random entries.` },
           ]}
         />
       </Section>
 
-      <Section id="grid" title="82 variations: what failed, and why">
-        <Chips items={[{ label: "81 below the bar", tone: "fail" }, { label: "1 passed", tone: "pass" }]} />
-        <P>Each cell is the average R a trade after the spread, then t against random entries, on 2016 to 2022. The bar-stop forms with a 2R target did no better than those shown.</P>
+      <Section id="entry" title="The entry, with real fills">
+        <Chips items={[{ label: `${d.tries101} variations`, tone: "plain" }, { label: "0 passed", tone: "fail" }]} />
+        <P>
+          The first round tried five setups (two DAX bars, two FTSE bars, the Nasdaq bar), his bar stop and a fixed 0.33% stop, three
+          exits fixed in advance, his overnight filter both ways, and his adding rule. With his bar stop, his filter or his adding, nothing
+          came near the bar even with the bug, and no FTSE form made money. The one apparent pass, on the DAX Advanced bar, looks like
+          this with real fills, traded three ways:
+        </P>
         <StatsTable
           table={{
-            head: ["Setup", "Bar stop, out at close", "Fixed stop, out at close", "Fixed stop, 2R", "Fixed stop, break-even"],
-            rows: SETUPS.map(([k, name]) => [
-              name,
-              ...["B E", "P E", "P T", "P BE"].map((m) => `${sign(c[`${k} ${m}`].r_net)} · ${c[`${k} ${m}`].t_twins.toFixed(2)}`),
-            ]),
+            head: ["DAX Advanced School Run, 0.33% stop, 2R target", "2016 to 2022", "t", "2023 to 2026", "t"],
+            rows: d.fixed.map((f) => [f.form, R(f.stage1_r), tt(f.stage1_t), R(f.holdout_r), tt(f.holdout_t)]),
           }}
         />
-        <Bullets
-          items={[
-            <><strong>The School Run as he writes it fails.</strong> With the stop at the other end of the bar, 15 to 30 points on the DAX, the noise after the open stops it out too often. The best bar-stop form makes {R(c["DAX ASR B BE"].r_net)} at t {c["DAX ASR B BE"].t_twins.toFixed(2)}.</>,
-            <><strong>The FTSE has nothing.</strong> Every FTSE form is near zero or below after its 1.2-point spread.</>,
-            <><strong>The overnight filter adds nothing.</strong> Trading only with the range&apos;s side keeps a sixth of the trades and no form reaches t 2. Fading inside the range loses in every form with a target: inside the range the breakout runs on too.</>,
-            <><strong>Adding to winners adds nothing.</strong> One more lot at +0.625% with the stop at entry changes how results are spread, not their average (DAX Advanced {R(c["DAX ASR B E add"].r_net)}, t {c["DAX ASR B E add"].t_twins.toFixed(2)}). The lab found the same when it pyramided another strategy&apos;s trades.</>,
-            <><strong>The fixed stop is what matters.</strong> Every DAX and Nasdaq form with the 0.33% stop is positive. Only one clears the bar.</>,
-          ]}
-        />
+        <P>
+          A few hundredths of an R a trade on the years it was chosen on, and nothing on the four years after. The overnight filter and the
+          adding rule changed how results were spread, not their average.
+        </P>
       </Section>
 
-      <Section id="winner" title="The one that passed">
-        <Chips items={[{ label: "First stage passed", tone: "pass" }, { label: "Holdout passed", tone: "pass" }]} />
-        <H3>The rule</H3>
-        <Bullets
-          items={[
-            <>At 08:20 London, take the 08:15 to 08:20 five-minute DAX bar (09:15 to 09:20 in Frankfurt; the two clocks change on the same dates, so it is the same bar all year).</>,
-            <>Buy stop 2 points above its high, sell stop 2 points below its low. Both can fill the same day, one after the other.</>,
-            <>Stop 0.33% of price from entry (about 80 points at 24,000). Target twice that. Otherwise out at 16:29 London, as the DAX cash session closes.</>,
-          ]}
-        />
-        <StatsTable
-          table={{
-            head: ["DAX Advanced School Run, fixed stop, 2R", "Trades", "Per trade after spread", "Win rate", "t against random"],
-            rows: [
-              ["2016 to 2022 (tested on)", best.trades, R(best.r_net), `${Math.round(best.win * 100)}%`, best.t_twins.toFixed(2)],
-              ["2023 to Oct 2026 (unseen, read once)", ho.trades, R(ho.r_net), `${Math.round(ho.win * 100)}%`, ho.t_twins.toFixed(2)],
-            ],
-          }}
-        />
-        <Figure title="Per trade by year" sub="Average R a trade after a 0.9-point spread. 2016 to 2022 were tested on; 2023 to 2026 were unseen until the rule was fixed.">
-          <YearBars Y={{ year: years, pnl: years.map((y) => d.best_years[String(y)]), days: years.map(() => 0) }} unit="R" />
+      <Section id="exits" title="480 ways to get out">
+        <Chips items={[{ label: "480 exits", tone: "plain" }, { label: "0 passed", tone: "fail" }]} />
+        <P>
+          He gives an entry and no exit, so if he has an edge it may be in how he manages the trade. I kept his entry fixed (both DAX bars,
+          the first fill only or both orders) and tried five stops, from his bar stop to ones sized by volatility, with 24 ways to manage
+          each: fixed targets from 1R to 4R, break-even, trailing stops, bar trails, a chandelier, time exits, taking a half or thirds off,
+          and adding once or twice.
+        </P>
+        <Figure title="Every way of managing the trade does about the same" sub={`Average t against random entries for each of the 24 managements, over its 20 cells, 2016 to 2022. The pass mark was ${d.mark102}.`}>
+          <CategoryBars labels={d.families.map(([k]) => k)} values={d.families.map(([, v]) => v)} every={4} />
         </Figure>
         <P>
-          Every one of the eleven years is above zero, and the four unseen years are better than the seven it was chosen on. That&apos;s rare.
-          Most rules that clear a first test fade on new data.
+          The entry leans about 0.04R a trade above a random one under every exit, and no exit turns that lean into more. Exits change the
+          shape: taking thirds off wins half the trades, a break-even stop one in seven. Adding raises the R a trade because it adds risk,
+          and raises the random entries&apos; R just as much. The best five of 480:
         </P>
-      </Section>
-
-      <Section id="checks" title="Trying to break it">
-        <Bullets
-          items={[
-            <><strong>A second version of the code.</strong> I wrote the rule again as a plain loop, separately. Same {best.trades.toLocaleString()} trades, same {R(best.r_net)}.</>,
-            <><strong>The broker&apos;s own prices.</strong> On Pepperstone&apos;s recorded GER40 one-minute bars, January 2025 to October 2026: {d.second_feed.trades} trades, {R(d.second_feed.r_net)}, t {d.second_feed.t_twins.toFixed(2)}. Our tick data on the same days: {R(d.second_feed.same_days_main.r_net)}.</>,
-            <><strong>Slippage.</strong> A stop order at the open can fill worse than its level. Charging 2 extra points a trade leaves {R(d.holdout_slip.r_net)} on the unseen years.</>,
-            <><strong>Nearby settings.</strong> It is not one lucky number: {d.neighbours.slice(0, 4).map((n) => `${n.name.toLowerCase()} ${R(n.r_net)}`).join(", ")}, all positive with t above 4.7.</>,
-          ]}
+        <StatsTable
+          table={{
+            head: ["Best exits, 2016 to 2022", "Trades", "Per trade", "Win rate", "t against random"],
+            rows: d.best_exits.map((e) => [e.cell, e.trades.toLocaleString(), R(e.r), `${Math.round(e.win * 100)}%`, e.t.toFixed(2)]),
+          }}
         />
         <P>
-          What I can&apos;t yet measure from one-minute bars is how a real stop order fills in the first minutes of the DAX. The next step is
-          a forward run on a demo account, which the lab asks of every pass before real money.
+          The best, t 3.09, is what luck gives the best of 480 tries. I still ran it once on 2023 to 2026, which it had never seen:{" "}
+          {R(hb.r)} a trade over {hb.days} days.
         </P>
+        <Figure title="The best exit on unseen years" sub="Thirds off at 1R, 2R and 3R on the DAX Advanced bar, first fill only. Average R a trade after the 0.9-point spread.">
+          <YearBars Y={{ year: hyears, pnl: hyears.map((y) => hb.years[String(y)]), days: hyears.map(() => 0) }} unit="R" />
+        </Figure>
       </Section>
 
       <Section id="claim" title="The 10k to 50k claim">
@@ -171,19 +168,20 @@ export function Body() {
           The challenge was real: a £10,000 account from 6 January 2025, traded partly on stream. His own figures, as one forum poster
           transcribed them, were about £42,000 including withdrawals by April, about £72,000 of value by June, and &quot;up 800%&quot; by July.
           I found no broker statement or audit, and the same poster counted most of the gains as made off stream. So the claim is his
-          word, not evidence. The test above doesn&apos;t rest on it.
+          word, not evidence. If his results are real, they come from judgement this test can&apos;t copy: which days to trade, when to
+          get out, when to flip.
         </P>
       </Section>
 
       <Section title="Every idea I tested">
         <IdeaCards
           items={[
-            { title: "School Run as written (bar stop)", data: "DAX, 2016 to 2022, 6 variations", stats: [["Best per trade", R(c["DAX ASR B BE"].r_net)], ["Best t", c["DAX ASR B BE"].t_twins.toFixed(2)], ["Passed", "0 of 6"]], verdict: "Failed" },
-            { title: "School Run, fixed stop", data: "DAX, 2016 to 2022, 6 variations", stats: [["Best per trade", R(best.r_net)], ["Best t", best.t_twins.toFixed(2)], ["Passed", "1 of 6"]], verdict: "Passed", pass: true },
-            { title: "FTSE first bar and 2nd bar", data: "FTSE, 2016 to 2022, 12 variations", stats: [["Best per trade", R(c["FTSE FB P BE"].r_net)], ["Best t", c["FTSE FB P BE"].t_twins.toFixed(2)], ["Passed", "0 of 12"]], verdict: "Failed" },
-            { title: "Nasdaq School Run", data: "Nasdaq, 2016 to 2022, 6 variations", stats: [["Best per trade", R(c["NAS SR P E"].r_net)], ["Best t", c["NAS SR P T"].t_twins.toFixed(2)], ["Passed", "0 of 6"]], verdict: "Below the bar" },
-            { title: "Overnight-range filter", data: "DAX and FTSE, 2019 to 2022, 48 variations", stats: [["Best t", c["DAX ASR P BE F1"].t_twins.toFixed(2)], ["Fades", "lose"], ["Passed", "0 of 48"]], verdict: "Failed" },
-            { title: "Adding to winners", data: "DAX, 2016 to 2022, 4 variations", stats: [["Best t", c["DAX ASR B E add"].t_twins.toFixed(2)], ["Effect", "shape only"], ["Passed", "0 of 4"]], verdict: "Failed" },
+            { title: "School Run as written (bar stop)", data: "DAX, 2016 to 2022", stats: [["Exits", "3 fixed"], ["Best t", "under 2.5"], ["Passed", "no"]], verdict: "Failed" },
+            { title: "School Run, fixed stop", data: "DAX, 2016 to 2026", stats: [["Real fills", R(d.fixed[0].stage1_r)], ["Unseen years", R(d.fixed[0].holdout_r)], ["Passed", "no"]], verdict: "Failed" },
+            { title: "FTSE first bar and 2nd bar", data: "FTSE, 2016 to 2022", stats: [["Variations", "12"], ["After spread", "about zero"], ["Passed", "0 of 12"]], verdict: "Failed" },
+            { title: "Nasdaq School Run", data: "Nasdaq, 2016 to 2022", stats: [["Best, fixed", "+0.020R"], ["t", "1.90"], ["Passed", "no"]], verdict: "Failed" },
+            { title: "Overnight-range filter", data: "DAX and FTSE, 2019 to 2022", stats: [["Variations", "48"], ["Fades", "lose"], ["Passed", "0 of 48"]], verdict: "Failed" },
+            { title: "480 exits on his entry", data: "DAX, 2016 to 2026", stats: [["Best t", "3.09"], ["Unseen years", R(hb.r)], ["Passed", "0 of 480"]], verdict: "Failed" },
           ]}
         />
       </Section>
@@ -191,17 +189,16 @@ export function Body() {
       <Section id="takeaways" title="What it teaches">
         <Bullets
           items={[
-            <><strong>Test what a trader writes, not what he says.</strong> His public rules have no exit, so his own results can&apos;t be copied. Fixing simple exits in advance made them testable.</>,
-            <><strong>The stop can matter more than the entry.</strong> The same entry lost with a tight stop and paid with a wide one. Noise after the open kills tight stops.</>,
-            <><strong>Filters and adding rarely make an edge.</strong> His overnight filter and his pyramid changed nothing that the plain rule didn&apos;t already do.</>,
-            <><strong>Count your tries.</strong> With 82 variations, a t of 3 means little. This one cleared 4.97 and then held up on four unseen years, which is why I take it seriously.</>,
+            <><strong>Test what a trader writes, not what he says.</strong> His public rules have no exit and no way to choose days. Written down and tested, the entry is close to a coin toss.</>,
+            <><strong>An exit can&apos;t rescue an entry.</strong> 480 ways of getting out moved money between trades. None made the entry pay, because random entries managed the same way did as well.</>,
+            <><strong>Check how every order fills.</strong> My one pass came from orders filled at prices the market had already left. A result that looks too good is a reason to check the fills before anything else.</>,
+            <><strong>Count your tries.</strong> With {total} variations, a t of 3 is what luck gives. The bar rises with every try for that reason.</>,
           ]}
         />
         <p className="mt-2 border-t border-q-line pt-5 text-[13px] leading-[1.6] text-q-muted">
-          Data: one-minute bars built from HistData and Dukascopy ticks; Pepperstone&apos;s recorded GER40 bars for the second check; costs
-          from Pepperstone UK&apos;s recorded spreads. Hougaard&apos;s rules from his own published documents; the overnight filter from third
-          parties. Every rule was written down before it was tested. Research, not financial advice: past results don&apos;t promise future
-          ones.
+          Data: one-minute and ten-second bars built from HistData and Dukascopy ticks; costs from Pepperstone UK&apos;s recorded spreads.
+          Hougaard&apos;s rules from his own published documents; the overnight filter from third parties. Every rule was written down before
+          it was tested. Corrected on 25 November 2026. Research, not financial advice: past results don&apos;t promise future ones.
         </p>
       </Section>
     </>

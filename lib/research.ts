@@ -13,16 +13,16 @@ export type Report = {
 export const reports: Report[] = [
   {
     slug: "hougaard-school-run-tested",
-    title: "Tom Hougaard's School Run, tested: 82 variations, one that held up",
+    title: "Tom Hougaard's School Run, tested: 562 variations, no edge",
     short: "Tom Hougaard's School Run, tested",
     date: "2026-11-25",
     summary:
-      "The breakout rules a well-known DAX trader publishes, with the exits he never gives, his overnight-range filter and his rule for adding to winners, tested in 82 variations on ten years of tick data at Pepperstone's real spread. His rules as written fail, and the filter and the adding add nothing. One form passed: his Advanced School Run on the DAX with a fixed 0.33% stop and a 2R target, which then held up on four years it had never seen.",
+      "The breakout rules a well-known DAX trader publishes, tested with his stops, his overnight-range filter, his rule for adding to winners and 480 exits he never gives, on ten years of tick data at Pepperstone's real spread. None has an edge. An early pass in this report was a fill bug in my backtest; corrected, it makes about nothing, and the best exit made nothing on four unseen years.",
     eyebrow: "Strategy research · trader rules tested",
     metrics: [
-      { value: "82", label: "variations tested" },
-      { value: "1", label: "passed, and held up unseen" },
-      { value: "+0.19R", label: "a trade on 2023 to 2026" },
+      { value: "562", label: "variations tested" },
+      { value: "0", label: "passed, with real fills" },
+      { value: "−0.02R", label: "the best exit on 2023 to 2026" },
     ],
   },
   {
